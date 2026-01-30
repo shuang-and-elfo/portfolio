@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snapchat+ | Shuang Li</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #fdfbf9;
+            --bg-alt: #ffffff;
+            --text: #2d2a26;
+            --text-secondary: #6b6864;
+            --text-tertiary: #a39e99;
+            --accent: #c4a1ff;
+            --accent-hover: #a67df5;
+            --blush: #f8e8e8;
+            --rose: #e8b4b8;
+            --lavender: #d4c4e8;
+            --border: #ece8e4;
+            --shadow: rgba(0, 0, 0, 0.03);
+            --snap-yellow: #FFFC00;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        ::selection {
+            background: var(--lavender);
+            color: var(--text);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(253, 251, 249, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 1rem 3rem;
+            box-shadow: 0 1px 0 var(--border);
+        }
+
+        .nav-logo {
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            color: var(--text);
+            letter-spacing: -0.02em;
+            transition: opacity 0.3s;
+        }
+
+        .nav-logo:hover {
+            opacity: 0.6;
+        }
+
+        .nav-back {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            transition: color 0.3s, gap 0.3s;
+        }
+
+        .nav-back:hover {
+            color: var(--text);
+            gap: 0.75rem;
+        }
+
+        /* Hero */
+        .case-hero {
+            padding: 10rem 3rem 6rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .case-hero-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-tertiary);
+            margin-bottom: 1rem;
+        }
+
+        .case-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 500;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+        }
+
+        .case-hero-description {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            line-height: 1.7;
+            margin-bottom: 3rem;
+        }
+
+        .case-meta {
+            display: flex;
+            gap: 3rem;
+            flex-wrap: wrap;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .meta-item h4 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-tertiary);
+            margin-bottom: 0.5rem;
+        }
+
+        .meta-item p {
+            font-size: 1rem;
+            color: var(--text);
+        }
+
+        /* Hero Image */
+        .case-hero-image {
+            width: 100%;
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 3rem;
+        }
+
+        .case-hero-image .image-container {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: linear-gradient(135deg, #FFFC00 0%, #ffe066 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Content Sections */
+        .case-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 3rem;
+        }
+
+        .case-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .case-content h3 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin: 2.5rem 0 1rem;
+            color: var(--text);
+        }
+
+        .case-content p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .case-content ul {
+            margin: 1.5rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .case-content li {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: var(--blush);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2.5rem 0;
+        }
+
+        .highlight-box h4 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-tertiary);
+            margin-bottom: 1rem;
+        }
+
+        .highlight-box p {
+            font-size: 1.1rem;
+            color: var(--text);
+            margin-bottom: 0;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            background: var(--bg-alt);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Image Gallery */
+        .case-gallery {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 3rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .gallery-item {
+            aspect-ratio: 4/3;
+            background: var(--lavender);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .gallery-item.full {
+            grid-column: 1 / -1;
+            aspect-ratio: 2/1;
+        }
+
+        /* Process Section */
+        .process-steps {
+            display: grid;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .process-step {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1.5rem;
+            align-items: start;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: var(--lavender);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text);
+        }
+
+        .step-content h4 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-content p {
+            margin-bottom: 0;
+        }
+
+        /* Next Project */
+        .next-project {
+            background: var(--bg-alt);
+            padding: 6rem 3rem;
+            text-align: center;
+        }
+
+        .next-project-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-tertiary);
+            margin-bottom: 1rem;
+        }
+
+        .next-project h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .next-project a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: gap 0.3s;
+        }
+
+        .next-project a:hover {
+            gap: 0.75rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem 3rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--text);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .case-hero, .case-content {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+
+            .case-hero-image, .case-gallery {
+                padding: 0 1.5rem;
+            }
+
+            .case-meta {
+                gap: 1.5rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-item.full {
+                aspect-ratio: 4/3;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .fade-in-delay-1 { animation-delay: 0.1s; }
+        .fade-in-delay-2 { animation-delay: 0.2s; }
+        .fade-in-delay-3 { animation-delay: 0.3s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="nav">
+        <a href="index.html" class="nav-back">
+            <span>←</span>
+            Back to home
+        </a>
+        <a href="index.html" class="nav-logo">Shuang Li</a>
+    </nav>
+
+    <!-- Hero -->
+    <section class="case-hero">
+        <p class="case-hero-label fade-in">Case Study</p>
+        <h1 class="fade-in fade-in-delay-1">Snapchat+</h1>
+        <p class="case-hero-description fade-in fade-in-delay-2">
+            Growing Snapchat's premium subscription from 3M to 24M subscribers by reimagining the subscriber experience and defining the product roadmap.
+        </p>
+        <div class="case-meta fade-in fade-in-delay-3">
+            <div class="meta-item">
+                <h4>Role</h4>
+                <p>Design Owner</p>
+            </div>
+            <div class="meta-item">
+                <h4>Company</h4>
+                <p>Snap Inc.</p>
+            </div>
+            <div class="meta-item">
+                <h4>Timeline</h4>
+                <p>2021 – Present</p>
+            </div>
+            <div class="meta-item">
+                <h4>Team</h4>
+                <p>PM, Engineering, Research</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hero Image -->
+    <div class="case-hero-image">
+        <div class="image-container">👻</div>
+    </div>
+
+    <!-- Overview -->
+    <section class="case-content">
+        <h2>Overview</h2>
+        <p>
+            Snapchat+ is Snap's premium subscription service that gives users access to exclusive, experimental, and pre-release features. As the design owner, I was responsible for driving the product direction and crafting the end-to-end subscriber experience.
+        </p>
+        <p>
+            Working closely with product managers, I defined the roadmap, ran research-backed iterations, and regularly pitched major feature ideas directly to CEO Evan Spiegel and the executive team.
+        </p>
+
+        <div class="highlight-box">
+            <h4>The Challenge</h4>
+            <p>
+                How might we create a premium experience that feels valuable enough for users to pay for, while maintaining Snapchat's core identity and not fragmenting the user base?
+            </p>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="case-content">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">24M</div>
+                <div class="stat-label">Subscribers</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">8x</div>
+                <div class="stat-label">Growth in 2 years</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">Features launched</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process -->
+    <section class="case-content">
+        <h2>My Approach</h2>
+        <p>
+            Leading design for a subscription product requires balancing user value, business goals, and brand integrity. Here's how I approached the challenge:
+        </p>
+
+        <div class="process-steps">
+            <div class="process-step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h4>Understanding subscriber psychology</h4>
+                    <p>Conducted research to understand what makes users feel a subscription is "worth it"—beyond just features, it's about status, identity, and belonging.</p>
+                </div>
+            </div>
+            <div class="process-step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h4>Defining the feature framework</h4>
+                    <p>Created a framework for evaluating potential features: Is it exclusive enough? Does it feel premium? Will it drive conversions without alienating free users?</p>
+                </div>
+            </div>
+            <div class="process-step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h4>Rapid iteration with data</h4>
+                    <p>Established a culture of testing and learning, using data to understand which features drove the most value and retention.</p>
+                </div>
+            </div>
+            <div class="process-step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h4>Executive storytelling</h4>
+                    <p>Developed compelling narratives to pitch new ideas to leadership, connecting design decisions to business outcomes and user value.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <div class="case-gallery">
+        <div class="gallery-grid">
+            <div class="gallery-item">⭐</div>
+            <div class="gallery-item">🎨</div>
+            <div class="gallery-item full">✨</div>
+        </div>
+    </div>
+
+    <!-- Key Features -->
+    <section class="case-content">
+        <h2>Key Features Designed</h2>
+        
+        <h3>Custom App Icons</h3>
+        <p>
+            Designed a collection of exclusive app icons that let subscribers personalize their home screen. This became one of the most beloved features, driving significant word-of-mouth.
+        </p>
+
+        <h3>Priority Story Replies</h3>
+        <p>
+            Created a system where subscriber replies appear first to their friends, making them feel more connected and valued in conversations.
+        </p>
+
+        <h3>Exclusive Badges & Indicators</h3>
+        <p>
+            Designed subtle but meaningful visual indicators that show subscriber status, balancing the desire for recognition with Snapchat's playful aesthetic.
+        </p>
+
+        <h3>Early Access Features</h3>
+        <p>
+            Established a framework for rolling out experimental features to subscribers first, creating a sense of exclusivity and gathering valuable feedback.
+        </p>
+    </section>
+
+    <!-- Impact -->
+    <section class="case-content">
+        <h2>Impact & Learnings</h2>
+        <p>
+            The success of Snapchat+ demonstrated that users are willing to pay for experiences that make them feel special and give them more control over their digital identity.
+        </p>
+        <ul>
+            <li>Grew from 3M to 24M subscribers in just two years</li>
+            <li>Became a significant new revenue stream for Snap</li>
+            <li>Created a testing ground for new features before wider rollout</li>
+            <li>Built a framework for subscription UX that influenced other teams</li>
+        </ul>
+
+        <div class="highlight-box">
+            <h4>Key Insight</h4>
+            <p>
+                The most successful premium features weren't about functionality—they were about identity and self-expression. Users wanted to feel unique and recognized.
+            </p>
+        </div>
+    </section>
+
+    <!-- Next Project -->
+    <section class="next-project">
+        <p class="next-project-label">Next Project</p>
+        <h2>Sponsored Snaps</h2>
+        <a href="sponsored-snaps.html">
+            View case study
+            <span>→</span>
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Shuang Li. Crafted with care.</p>
+        <div class="footer-links">
+            <a href="resume.pdf" target="_blank">Resume</a>
+            <a href="https://www.linkedin.com/in/shuangshuangli/" target="_blank">LinkedIn</a>
+            <a href="mailto:shuang.sara.li@gmail.com">Email</a>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation scroll effect
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>

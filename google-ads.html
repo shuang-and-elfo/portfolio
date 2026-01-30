@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Google Shopping | Shuang Li</title>
+    <title>Google Ads Smart Campaigns | Shuang Li</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
@@ -162,7 +162,15 @@
             padding: 0 3rem;
         }
 
-        .case-hero-image .gallery-item {
+        .case-hero-image .image-container {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: linear-gradient(135deg, #a8d8ea 0%, #d4f0f0 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
         }
 
@@ -240,7 +248,7 @@
         /* Stats Grid */
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
             margin: 3rem 0;
         }
@@ -266,6 +274,46 @@
             color: var(--text-secondary);
         }
 
+        /* Before After */
+        .before-after {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .before-after-item {
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .before-after-item.before {
+            background: #fff5f5;
+        }
+
+        .before-after-item.after {
+            background: #f0fff4;
+        }
+
+        .before-after-item h5 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+            color: var(--text-tertiary);
+        }
+
+        .before-after-item ul {
+            margin: 0;
+            padding-left: 1.25rem;
+        }
+
+        .before-after-item li {
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
         /* Image Gallery */
         .case-gallery {
             max-width: 1200px;
@@ -280,32 +328,28 @@
         }
 
         .gallery-item {
+            aspect-ratio: 4/3;
+            background: var(--lavender);
             border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: auto;
-            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
         }
 
         .gallery-item.full {
             grid-column: 1 / -1;
+            aspect-ratio: 2/1;
         }
 
-        .gallery-caption {
-            text-align: center;
-            font-size: 0.9rem;
-            color: var(--text-tertiary);
-            margin-top: 1rem;
+        .gallery-item.blue {
+            background: linear-gradient(135deg, #a8d8ea 0%, #d4f0f0 100%);
         }
 
         /* Project Cards */
         .project-cards {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem;
             margin: 2rem 0;
         }
@@ -332,6 +376,19 @@
             font-size: 0.9rem;
             margin-bottom: 0;
             line-height: 1.6;
+        }
+
+        /* Problem Statement */
+        .problem-stat {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            text-align: center;
+            padding: 3rem 0;
+            color: var(--text);
+        }
+
+        .problem-stat span {
+            color: #e57373;
         }
 
         /* Section Divider */
@@ -457,6 +514,14 @@
                 grid-template-columns: 1fr;
             }
 
+            .before-after {
+                grid-template-columns: 1fr;
+            }
+
+            .problem-stat {
+                font-size: 2rem;
+            }
+
             footer {
                 flex-direction: column;
                 gap: 1rem;
@@ -496,9 +561,9 @@
     <!-- Hero -->
     <section class="case-hero">
         <p class="case-hero-label fade-in">Case Study</p>
-        <h1 class="fade-in fade-in-delay-1">Google Shopping</h1>
+        <h1 class="fade-in fade-in-delay-1">Google Ads Smart Campaigns</h1>
         <p class="case-hero-description fade-in fade-in-delay-2">
-            Providing unique value to shoppers in a mega-competitive space—creating a personalized homepage experience that helps users discover products and buy with confidence.
+            Helping small businesses grow and compete with the bigger guys through simplified, automated advertising—no learning curve required.
         </p>
         <div class="case-meta fade-in fade-in-delay-3">
             <div class="meta-item">
@@ -511,155 +576,231 @@
             </div>
             <div class="meta-item">
                 <h4>Timeline</h4>
-                <p>May 2019 – Nov 2019</p>
+                <p>Jan 2018 – May 2019</p>
             </div>
             <div class="meta-item">
                 <h4>Impact</h4>
-                <p>+22.59% Add to Carts</p>
+                <p>+7.94% conversion, 90k+ adoption</p>
             </div>
         </div>
     </section>
 
     <!-- Hero Image -->
     <div class="case-hero-image">
-        <div class="gallery-item">
-            <img src="images/shopping-price-insights.png" alt="'What do most people pay?' feature showing price distribution, brand recommendations, and top picks">
-        </div>
+        <div class="image-container">📢</div>
     </div>
 
     <!-- Overview -->
     <section class="case-content">
         <h2>The Challenge</h2>
         <p>
-            Google Shopping was competing in a mega-competitive space—we were 10 years behind Amazon. To win, we couldn't just match the competition. We needed to provide unique value that shoppers couldn't find anywhere else.
+            Google Ads is incredibly powerful—but that power comes with complexity. For small business owners juggling a hundred responsibilities, learning a complex ad platform isn't realistic.
         </p>
-
-        <div class="highlight-box soft-blue">
-            <h4>The Opportunity</h4>
-            <p>
-                How might we leverage Google's unique strengths—search intelligence, personalization, and cross-platform presence—to create a shopping experience that feels distinctly valuable?
-            </p>
-        </div>
+        <p>
+            That's why we built Smart Campaigns: a campaign type that offers an automated ad experience with no learning curve. My mission was to help small advertisers grow their businesses and compete with the bigger guys.
+        </p>
 
         <div class="project-cards">
             <div class="project-card">
-                <div class="project-card-icon">🏠</div>
-                <h4>Personalized Homepage</h4>
-                <p>A redesigned homepage with smart recommendations tailored to each shopper.</p>
+                <div class="project-card-icon">✍️</div>
+                <h4>Signup Redesign</h4>
+                <p>Transformed a 13-step flow with 14.5% conversion into a streamlined experience.</p>
             </div>
             <div class="project-card">
-                <div class="project-card-icon">✅</div>
-                <h4>Buy with Confidence</h4>
-                <p>Features that help shoppers make informed decisions and trust their purchases.</p>
+                <div class="project-card-icon">📊</div>
+                <h4>Dashboard Redesign</h4>
+                <p>Rebuilt the management experience to show what actually matters to small businesses.</p>
+            </div>
+            <div class="project-card">
+                <div class="project-card-icon">🌐</div>
+                <h4>Ads Landing Pages</h4>
+                <p>Created auto-generated business pages for advertisers without websites.</p>
             </div>
         </div>
     </section>
 
-    <!-- Project 1: Homepage -->
+    <!-- Project 1: Signup -->
     <div class="section-divider">
         <span class="section-number">1</span>
     </div>
 
     <section class="case-content">
-        <h2>A More Personalized Homepage</h2>
+        <h2>Redesigning the Signup Experience</h2>
         
+        <p class="problem-stat">
+            13 steps. <span>14.5%</span> conversion rate.
+        </p>
+
         <p>
-            The existing Google Shopping homepage was underutilized. Users went directly to search, missing opportunities for discovery. We set out to create a destination worth visiting—a place where shoppers could browse, discover, and find things they didn't know they wanted.
+            Our signup flow was long and repetitive. The visual design was outdated, the language was confusing, and it lacked proper guidance. We needed a complete overhaul.
         </p>
 
         <div class="highlight-box">
-            <h4>Design Goal</h4>
+            <h4>The Process</h4>
             <p>
-                Create a homepage with really good recommendations—ones that feel personally relevant, not just algorithmically generated.
+                From the drawing board to UX approval, we spent 4 months with 30+ iterations—testing and refining every step of the experience.
             </p>
         </div>
 
-        <h3>The Approach</h3>
-        <p>
-            We leveraged Google's deep understanding of user intent—search history, browsing patterns, and cross-platform signals—to surface products that matched each user's interests and needs.
-        </p>
-        
+        <h3>What We Changed</h3>
+
+        <div class="before-after">
+            <div class="before-after-item before">
+                <h5>Before</h5>
+                <ul>
+                    <li>Outdated, enterprise-y look</li>
+                    <li>Lengthy, confusing descriptions</li>
+                    <li>Intimidating ad creation</li>
+                    <li>Irrelevant sample ads</li>
+                    <li>Complex budget selection</li>
+                </ul>
+            </div>
+            <div class="before-after-item after">
+                <h5>After</h5>
+                <ul>
+                    <li>Clean, modern, consistent design</li>
+                    <li>Conversational, helpful language</li>
+                    <li>Auto-generated ad text suggestions</li>
+                    <li>Smart defaults based on vertical</li>
+                    <li>Budget packages with price anchors</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>Smart Defaults That Save Time</h3>
         <ul>
-            <li><strong>Personalized product feeds:</strong> Recommendations based on browsing history, search queries, and purchase patterns</li>
-            <li><strong>Category discovery:</strong> Curated collections that introduce users to new product categories</li>
-            <li><strong>Deal surfacing:</strong> Prominent placement for sales and limited-time offers to drive return visits</li>
-            <li><strong>Price tracking:</strong> Let users follow products and get notified when prices drop</li>
+            <li><strong>Business vertical → Prefilled keywords:</strong> We recognized your industry and suggested relevant keywords</li>
+            <li><strong>Business vertical → Ad text suggestions:</strong> Auto-generated copy based on what works in your category</li>
+            <li><strong>Sign-in account → Business profile:</strong> Pulled your business info automatically</li>
+            <li><strong>Business profile → Website:</strong> Pre-populated from your existing web presence</li>
         </ul>
 
-        <h3>Key Insight</h3>
+        <h3>Ad Creation: Before & After</h3>
         <p>
-            Shopping isn't just about finding specific items—it's also about discovery. By making browsing enjoyable and serendipitous, we could capture a different user intent entirely: the joy of window shopping, digitized.
+            The old ad creation step had a 24% drop-off rate. Advertisers felt intimidated and didn't know what to write. The sample ad was irrelevant to their vertical, making it hard to relate.
+        </p>
+        <p>
+            We fixed this with auto-generated ad text suggestions, clear expectations about where ads would show, and more conversational language throughout.
+        </p>
+
+        <h3>Budget Selection: Before & After</h3>
+        <p>
+            15% of users dropped off at budget selection. Many tried to "test it out" with the lowest budget possible—which made their campaigns hard to succeed. Showing both views and clicks was confusing since we charge by clicks.
+        </p>
+        <p>
+            We introduced budget packages that offer stronger price anchors, and simplified to show only click estimates so users understand exactly what they're paying for.
         </p>
     </section>
 
     <section class="case-content">
         <div class="stats-grid">
             <div class="stat-item">
-                <div class="stat-number">+5.65%</div>
-                <div class="stat-label">Whole page engagement</div>
+                <div class="stat-number">+7.94%</div>
+                <div class="stat-label">Conversion rate</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number">+22.59%</div>
-                <div class="stat-label">Add to Carts</div>
+                <div class="stat-number">+2.4%</div>
+                <div class="stat-label">Average budget</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">+4.11%</div>
+                <div class="stat-label">Revenue per listing</div>
             </div>
         </div>
+        <p style="text-align: center; color: var(--text-tertiary); font-size: 0.9rem;">Fully launched June 2020</p>
     </section>
 
-    <!-- Project 2: Buy with Confidence -->
+    <!-- Project 2: Dashboard -->
     <div class="section-divider">
         <span class="section-number">2</span>
     </div>
 
     <section class="case-content">
-        <h2>Helping Shoppers Buy with Confidence</h2>
+        <h2>Campaign Management Redesign</h2>
         
         <p>
-            Online shopping comes with inherent uncertainty. Is this the right size? Is this a good deal? Will I regret this purchase? We explored ways to reduce this anxiety and help shoppers feel confident in their decisions.
+            Small advertisers didn't know what actions to take looking at their dashboard. As a result, our retention rate was low. They'd set up a campaign and then... never come back.
         </p>
 
-        <div class="highlight-box">
-            <h4>The Challenge</h4>
+        <div class="highlight-box soft-blue">
+            <h4>Key Insight</h4>
             <p>
-                How might we reduce purchase anxiety and help shoppers make informed decisions—especially for considered purchases like clothing, electronics, and home goods?
+                Small advertisers care less about fancy charts. They want to understand if "the ad is working," they want transparency to trust the product, and they want to know what actions to take to improve performance.
             </p>
         </div>
 
-        <h3>Explorations</h3>
+        <h3>The Approach</h3>
         <p>
-            We explored multiple approaches across different product categories, testing with real users to understand what information they needed most at the moment of decision.
+            I explored different frameworks for a recommendation feed: gallery style, vertical feed, and horizontal style. We tested with advertisers at different stages and populated a set of cards customized for each business.
         </p>
-
-        <ul>
-            <li><strong>Rich product information:</strong> Detailed specs, sizing guides, and comparison tools</li>
-            <li><strong>Social proof:</strong> Reviews, ratings, and real customer photos</li>
-            <li><strong>Price context:</strong> Historical pricing, price comparisons across retailers</li>
-            <li><strong>Return policies:</strong> Clear information about returns and guarantees</li>
-        </ul>
-
         <p>
-            The explorations spanned categories from women's down jackets to Nike Air Max sneakers—understanding that different products require different confidence-building signals.
+            Ultimately, we decided to provide in-context recommendations at the right spots—showing relevant actions when and where users could actually take them.
         </p>
     </section>
 
-    <!-- Explorations Gallery -->
-    <div class="case-gallery">
-        <div class="gallery-grid">
-            <div class="gallery-item full">
-                <img src="images/shopping-nike-price.png" alt="Nike Air Max 270 product page with price tracking showing 'Total price is low for this item' and 6-month price history">
+    <section class="case-content">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">+8.8%</div>
+                <div class="stat-label">Monthly Active Users</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">+9.5%</div>
+                <div class="stat-label">Daily Active Users</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">+3.25%</div>
+                <div class="stat-label">Revenue per listing</div>
             </div>
         </div>
-        <p class="gallery-caption">Nike Air Max 270 product page with price insights and history tracking</p>
+        <p style="text-align: center; color: var(--text-tertiary); font-size: 0.9rem;">Fully launched October 2020</p>
+    </section>
+
+    <!-- Project 3: Landing Pages -->
+    <div class="section-divider">
+        <span class="section-number">3</span>
     </div>
 
-    <div class="case-gallery">
-        <div class="gallery-grid">
-            <div class="gallery-item full">
-                <img src="images/shopping-personalized.png" alt="Google Shopping personalized homepage showing welcome message, recommendations, and trip packing suggestions">
+    <section class="case-content">
+        <h2>Ads Landing Pages</h2>
+        
+        <div class="highlight-box">
+            <h4>The Challenge</h4>
+            <p>
+                How might we help advertisers create ads on the web without having a website?
+            </p>
+        </div>
+
+        <p>
+            Many small businesses—especially in emerging markets—wanted to advertise but didn't have a website to send traffic to. This was a significant barrier to entry.
+        </p>
+
+        <h3>The Solution</h3>
+        <p>
+            We created an auto-generated business listing page with responsive loading, dynamic ordering, conversion tracking, and all the technical capabilities of a proper landing page.
+        </p>
+        <p>
+            The key insight was integrating this directly into the ad signup flow, minimizing the information advertisers need to provide. If they could describe their business, we could build them a page.
+        </p>
+    </section>
+
+    <section class="case-content">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">90k+</div>
+                <div class="stat-label">Advertiser adoption</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">+5.4%</div>
+                <div class="stat-label">Conversion rate</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">+8.9%</div>
+                <div class="stat-label">Revenue per listing</div>
             </div>
         </div>
-        <p class="gallery-caption">Personalized homepage with "Pick up where you left off" and contextual recommendations based on upcoming trips</p>
-    </div>
-
+        <p style="text-align: center; color: var(--text-tertiary); font-size: 0.9rem;">Full launch in Brazil, November 2020</p>
+    </section>
 
     <!-- Reflection -->
     <section class="case-content">
@@ -668,15 +809,15 @@
         <div class="highlight-box lavender">
             <h4>Key Learnings</h4>
             <p>
-                Competing with Amazon wasn't about copying their features—it was about finding our unique strengths. Google's search intelligence and cross-platform presence gave us insights that no other shopping platform had. The key was translating those signals into genuinely helpful shopping experiences.
+                Working on Smart Campaigns taught me that the best simplification isn't about removing features—it's about removing cognitive load. Small business owners don't have time to become advertising experts, but they do have goals they want to achieve. Our job was to bridge that gap.
             </p>
         </div>
 
         <ul>
-            <li><strong>Personalization must feel personal:</strong> Generic "recommended for you" isn't enough—users can tell when recommendations are truly relevant</li>
-            <li><strong>Discovery is undervalued:</strong> Not every shopping session starts with a specific intent—creating space for browsing unlocks new engagement</li>
-            <li><strong>Confidence drives conversion:</strong> Reducing anxiety at the moment of purchase is just as important as getting users to that moment</li>
-            <li><strong>Play to your strengths:</strong> Being 10 years behind doesn't mean you can't win—it means you need to compete differently</li>
+            <li><strong>Smart defaults are powerful:</strong> Pre-filling based on context dramatically reduces friction</li>
+            <li><strong>Transparency builds trust:</strong> Users need to understand what's happening, even if it's automated</li>
+            <li><strong>Meet users where they are:</strong> Not everyone has a website, and that shouldn't prevent them from growing their business</li>
+            <li><strong>Iterate relentlessly:</strong> 30+ iterations over 4 months—real improvement comes from continuous refinement</li>
         </ul>
     </section>
 

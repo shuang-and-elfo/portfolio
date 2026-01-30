@@ -543,6 +543,13 @@
             border-radius: 4px;
             box-shadow: 3px 3px 0 #1a1a1a;
             z-index: 10;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        a.photo-label:hover {
+            transform: scale(1.05);
+            box-shadow: 4px 4px 0 #1a1a1a;
         }
 
         .label-left {
@@ -894,7 +901,7 @@
 <body>
     <!-- Navigation -->
     <nav id="nav">
-        <a href="#" class="nav-logo"><img src="logo.png" alt="Shuang Li"></a>
+        <a href="#" class="nav-logo"><img src="images/logo.png" alt="Shuang Li"></a>
         <ul class="nav-links">
             <li><a href="#work" class="active">Work</a></li>
             <li><a href="#about">About</a></li>
@@ -906,7 +913,7 @@
     <section class="hero page" id="home">
         <div class="hero-content">
             <div class="hero-logo">
-                <img src="logo.png" alt="Shuang Li">
+                <img src="images/logo.png" alt="Shuang Li">
             </div>
             <p class="hero-greeting">
                 <span class="wave">👋</span>
@@ -976,20 +983,44 @@
 
             <!-- Project 3 -->
             <article class="project-card">
+                <div class="project-image" style="background: linear-gradient(135deg, #4285f4 0%, #34a853 100%);">
+                    <div class="project-image-placeholder">📢</div>
+                </div>
+                <div class="project-content">
+                    <span class="project-number">03</span>
+                    <h3>Google Ads Smart Campaigns</h3>
+                    <p class="project-meta">Google • Ads • 2018–2019</p>
+                    <p class="project-description">
+                        Redesigned the Smart Campaigns signup experience from 13 steps with 14.5% conversion to a streamlined flow with +7.94% improvement. Built campaign management tools and auto-generated landing pages adopted by 90k+ advertisers.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">SMB Products</span>
+                        <span class="tag">Signup UX</span>
+                        <span class="tag">Ads</span>
+                    </div>
+                    <a href="google-ads.html" class="project-link">
+                        View case study
+                        <span class="arrow">→</span>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Project 4 -->
+            <article class="project-card">
                 <div class="project-image" style="background: linear-gradient(135deg, #a8d8ea 0%, #d4f0f0 100%);">
                     <div class="project-image-placeholder">🛒</div>
                 </div>
                 <div class="project-content">
-                    <span class="project-number">03</span>
-                    <h3>Google Shopping & Smart Campaigns</h3>
-                    <p class="project-meta">Google • Ads & Commerce • 2018–2021</p>
+                    <span class="project-number">04</span>
+                    <h3>Google Shopping</h3>
+                    <p class="project-meta">Google • Commerce • 2019</p>
                     <p class="project-description">
-                        Led end-to-end design for major initiatives across Google Ads and Shopping. Built and scaled Smart Campaigns to help small businesses advertise easily, and launched Google Shopping's new homepage with product discovery and personalized price tracking.
+                        Redesigned the Google Shopping homepage with personalized product discovery and confidence-building features. Drove +22.59% increase in Add to Carts and +5.65% whole page engagement.
                     </p>
                     <div class="project-tags">
                         <span class="tag">Commerce UX</span>
-                        <span class="tag">SMB Products</span>
                         <span class="tag">Personalization</span>
+                        <span class="tag">Discovery</span>
                     </div>
                     <a href="google-shopping.html" class="project-link">
                         View case study
@@ -1005,9 +1036,9 @@
     <section class="about" id="about">
         <div class="about-container">
             <div class="about-image fade-in">
-                <img src="shuang-photo.png" alt="Shuang with Elfo the corgi" class="about-photo">
+                <img src="images/shuang-photo.png" alt="Shuang with Elfo the corgi" class="about-photo">
                 <span class="photo-label label-left">Shuang</span>
-                <span class="photo-label label-right">Elfo</span>
+                <a href="elfo.html" class="photo-label label-right">Elfo</a>
             </div>
             <div class="about-content fade-in">
                 <h2>A bit about me</h2>
@@ -1021,7 +1052,7 @@
                     A lifetime ago, I ran a small <a href="https://www.youtube.com/@climbingwhispers" target="_blank" class="inline-link">YouTube channel</a> teaching Mandarin-speaking climbers. It was niche but fun, and every now and then someone still recognizes me at a climbing gym, which always makes me laugh.
                 </p>
                 <p class="about-text">
-                    Outside of work and climbing, I live in Los Angeles with my two young kids and our corgi, Elfo, who collectively keep life delightfully chaotic. I'm also an Airbnb Superhost, which lets me create thoughtful, memorable experiences for people in the real world, not just on screens.
+                    Outside of work and climbing, I live in Los Angeles with my two young kids and our corgi, <a href="elfo.html" class="inline-link">Elfo</a>, who collectively keep life delightfully chaotic. I'm also an Airbnb Superhost, which lets me create thoughtful, memorable experiences for people in the real world, not just on screens.
                 </p>
 
                 <div class="about-links">

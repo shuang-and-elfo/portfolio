@@ -69,16 +69,20 @@
         }
 
         .nav-logo {
-            font-weight: 600;
-            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
             text-decoration: none;
-            color: var(--text);
-            letter-spacing: -0.02em;
             transition: opacity 0.3s;
         }
 
         .nav-logo:hover {
-            opacity: 0.6;
+            opacity: 0.7;
+        }
+
+        .nav-logo img {
+            height: 50px;
+            width: 50px;
+            object-fit: contain;
         }
 
         .nav-back {
@@ -450,7 +454,7 @@
             <span>←</span>
             Back to home
         </a>
-        <a href="index.html" class="nav-logo">Shuang Li</a>
+        <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="Shuang Li"></a>
     </nav>
 
     <!-- Hero -->

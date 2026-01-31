@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome | Shuang Li</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="apple-touch-icon" href="images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .login-container {
+            text-align: center;
+            padding: 3rem;
+            max-width: 700px;
+            width: 100%;
+        }
+
+        .logo {
+            width: 300px;
+            height: 300px;
+            margin: 0 auto 2.5rem;
+            display: block;
+        }
+
+        .title {
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: #1a1a1a;
+            margin-bottom: 1.5rem;
+        }
+
+        .wave {
+            display: inline-block;
+            margin-right: 0.25rem;
+            animation: wave 2.5s ease-in-out infinite;
+            transform-origin: 70% 70%;
+        }
+
+        @keyframes wave {
+            0%, 100% { transform: rotate(0deg); }
+            10% { transform: rotate(14deg); }
+            20% { transform: rotate(-8deg); }
+            30% { transform: rotate(14deg); }
+            40% { transform: rotate(-4deg); }
+            50%, 100% { transform: rotate(0deg); }
+        }
+
+        .prompt {
+            font-size: 1.1rem;
+            color: #1a1a1a;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+
+        .password-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .password-input {
+            padding: 0.9rem 1.5rem;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            border: none;
+            border-bottom: 2px solid #FFB4A2;
+            outline: none;
+            transition: all 0.3s ease;
+            text-align: center;
+            letter-spacing: 0.15em;
+            background: transparent;
+            width: 220px;
+            font-weight: 300;
+        }
+
+        .password-input:focus {
+            border-bottom-color: #E8978A;
+            letter-spacing: 0.2em;
+        }
+
+        .password-input::placeholder {
+            letter-spacing: 0.05em;
+            color: #ccc;
+            font-weight: 300;
+            font-style: italic;
+        }
+
+        .lets-go {
+            display: none;
+            margin-top: 2rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 400;
+            color: #1a1a1a;
+            text-decoration: none;
+            cursor: pointer;
+            background: #FFF0EC;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            border: none;
+            transition: all 0.3s ease;
+            opacity: 0;
+        }
+
+        .lets-go.visible {
+            display: inline-block;
+            opacity: 1;
+        }
+
+        .lets-go:hover {
+            background: #ffe4dd;
+            transform: translateY(-2px);
+        }
+
+        .error-message {
+            color: #e74c3c;
+            font-size: 0.85rem;
+            margin-top: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.2s;
+            font-weight: 300;
+        }
+
+        .error-message.visible {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .login-container {
+                padding: 2rem 1.5rem;
+            }
+
+            .logo {
+                width: 200px;
+                height: 200px;
+            }
+
+            .title {
+                font-size: 1.8rem;
+            }
+
+            .prompt {
+                font-size: 0.95rem;
+            }
+
+            .password-input {
+                width: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <img src="images/logo.png" alt="Logo" class="logo">
+        <h1 class="title"><span class="wave">👋</span> Hello, I'm Shuang</h1>
+        <p class="prompt">Curious about my work? Please enter the password.</p>
+        
+        <form class="password-form" onsubmit="return checkPassword(event)">
+            <input 
+                type="password" 
+                class="password-input" 
+                id="password" 
+                placeholder="password"
+                autocomplete="off"
+                autofocus
+                oninput="checkLength()"
+            >
+        </form>
+        
+        <button class="lets-go" id="letsGo" onclick="checkPassword(event)">Let's go</button>
+        
+        <p class="error-message" id="error">Incorrect password. Please try again.</p>
+    </div>
+
+    <script>
+        const PORTFOLIO_PASSWORD = 'shuang2026';
+        const letsGoBtn = document.getElementById('letsGo');
+        
+        function checkLength() {
+            const input = document.getElementById('password').value;
+            if (input.length > 6) {
+                letsGoBtn.classList.add('visible');
+            } else {
+                letsGoBtn.classList.remove('visible');
+            }
+        }
+        
+        function checkPassword(e) {
+            e.preventDefault();
+            const input = document.getElementById('password').value;
+            const error = document.getElementById('error');
+            
+            if (input === PORTFOLIO_PASSWORD) {
+                sessionStorage.setItem('portfolio_auth', 'true');
+                window.location.href = 'index.html';
+            } else {
+                error.classList.add('visible');
+                document.getElementById('password').value = '';
+                document.getElementById('password').focus();
+                letsGoBtn.classList.remove('visible');
+                
+                setTimeout(() => {
+                    error.classList.remove('visible');
+                }, 3000);
+            }
+            
+            return false;
+        }
+        
+        document.getElementById('password').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkPassword(e);
+            }
+        });
+        
+        if (sessionStorage.getItem('portfolio_auth') === 'true') {
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

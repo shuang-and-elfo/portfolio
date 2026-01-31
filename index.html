@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shuang Li | Staff Product Designer</title>
+    <title>Shuang Li | Product Designer</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="apple-touch-icon" href="images/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
@@ -899,6 +901,12 @@
     </style>
 </head>
 <body>
+    <script>
+        // Check authentication
+        if (sessionStorage.getItem('portfolio_auth') !== 'true') {
+            window.location.href = 'login.html';
+        }
+    </script>
     <!-- Navigation -->
     <nav id="nav">
         <a href="#" class="nav-logo"><img src="images/logo.png" alt="Shuang Li"></a>
@@ -1043,7 +1051,7 @@
             <div class="about-content fade-in">
                 <h2>A bit about me</h2>
                 <p class="about-text">
-                    Hey there! I'm Shuang, a product designer with 10+ years of experience building products used by millions of people. I love turning ambiguous, high-stakes problems into clear, intuitive experiences that feel good to use. I currently lead design for Snapchat+ and ad formats at <a href="https://www.snapchat.com/" target="_blank" class="inline-link">Snap</a>, and before that I spent several years at <a href="https://design.google/" target="_blank" class="inline-link">Google</a> designing across Google Ads, Shopping, and Chrome.
+                    Hey there! My name is Shuang Li, a product designer with 10+ years of experience building products used by millions of people. I love turning ambiguous, high-stakes problems into clear, intuitive experiences that feel good to use. I currently lead design for Snapchat+ and ad formats at <a href="https://www.snapchat.com/" target="_blank" class="inline-link">Snap</a>, and before that I spent several years at <a href="https://design.google/" target="_blank" class="inline-link">Google</a> designing across Google Ads, Shopping, and Chrome.
                 </p>
                 <p class="about-text">
                     When I'm not designing, you'll probably find me bouldering. I love climbing outdoors at places like Bishop and Red Rocks; the problem-solving, the fresh air, and the community are my favorite way to reset.

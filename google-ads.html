@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
     <title>Google Ads Smart Campaigns | Shuang Li</title>
-    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
     <link rel="apple-touch-icon" href="images/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -18,17 +20,18 @@
 
         :root {
             --bg: #ffffff;
-            --bg-alt: #ffffff;
+            --bg-alt: #faf5f3;
             --text: #1a1a1a;
             --text-secondary: #1a1a1a;
-            --text-tertiary: #1a1a1a;
-            --accent: #FFF0EC;
-            --accent-hover: #ffe4dd;
-            --blush: #FFF0EC;
-            --rose: #e8b4b8;
-            --lavender: #FFF0EC;
-            --border: #e8e8e8;
-            --shadow: rgba(0, 0, 0, 0.03);
+            --text-tertiary: #888888;
+            --accent: #faf5f3;
+            --accent-hover: #f5eeeb;
+            --blush: #faf5f3;
+            --peach: #fff0ec;
+            --coral: #f5d8d2;
+            --border: #f0e4e0;
+            --shadow: rgba(245, 216, 210, 0.3);
+            --shadow-hover: 0 8px 24px rgba(245, 216, 210, 0.4);
         }
 
         html {
@@ -36,7 +39,7 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
             color: var(--text);
             background: var(--bg);
             line-height: 1.6;
@@ -118,9 +121,9 @@
         }
 
         .case-hero h1 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Sora', sans-serif;
             font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 500;
+            font-weight: 600;
             line-height: 1.2;
             letter-spacing: -0.02em;
             margin-bottom: 1.5rem;
@@ -184,16 +187,17 @@
         }
 
         .case-content h2 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Sora', sans-serif;
             font-size: 2rem;
-            font-weight: 500;
+            font-weight: 600;
             margin-bottom: 1.5rem;
             letter-spacing: -0.02em;
         }
 
         .case-content h3 {
+            font-family: 'Sora', sans-serif;
             font-size: 1.25rem;
-            font-weight: 500;
+            font-weight: 600;
             margin: 2.5rem 0 1rem;
             color: var(--text);
         }
@@ -264,9 +268,9 @@
         }
 
         .stat-number {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Sora', sans-serif;
             font-size: 2.5rem;
-            font-weight: 500;
+            font-weight: 600;
             color: var(--text);
             margin-bottom: 0.5rem;
         }
@@ -382,7 +386,7 @@
 
         /* Problem Statement */
         .problem-stat {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Sora', sans-serif;
             font-size: 3rem;
             text-align: center;
             padding: 3rem 0;
@@ -432,9 +436,9 @@
         }
 
         .next-project h2 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Sora', sans-serif;
             font-size: 2.5rem;
-            font-weight: 500;
+            font-weight: 600;
             margin-bottom: 1.5rem;
         }
 
@@ -552,9 +556,10 @@
 </head>
 <body>
     <script>
-        if (sessionStorage.getItem('portfolio_auth') !== 'true') {
-            window.location.href = 'login.html';
-        }
+        // Authentication check (DISABLED - uncomment to enable)
+        // if (sessionStorage.getItem('portfolio_auth') !== 'true') {
+        //     window.location.href = 'login.html';
+        // }
     </script>
     <!-- Navigation -->
     <nav id="nav">

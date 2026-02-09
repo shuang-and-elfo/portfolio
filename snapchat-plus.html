@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
     <title>Snapchat+ | Shuang Li</title>
-    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
     <link rel="apple-touch-icon" href="images/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -17,18 +19,19 @@
         }
 
         :root {
-            --bg: #fdfbf9;
-            --bg-alt: #ffffff;
-            --text: #2d2a26;
-            --text-secondary: #6b6864;
-            --text-tertiary: #a39e99;
-            --accent: #c4a1ff;
-            --accent-hover: #a67df5;
-            --blush: #f8e8e8;
-            --rose: #e8b4b8;
-            --lavender: #d4c4e8;
-            --border: #ece8e4;
-            --shadow: rgba(0, 0, 0, 0.03);
+            --bg: #ffffff;
+            --bg-alt: #faf5f3;
+            --text: #1a1a1a;
+            --text-secondary: #1a1a1a;
+            --text-tertiary: #888888;
+            --accent: #faf5f3;
+            --accent-hover: #f5eeeb;
+            --blush: #faf5f3;
+            --peach: #fff0ec;
+            --coral: #f5d8d2;
+            --border: #f0e4e0;
+            --shadow: rgba(245, 216, 210, 0.3);
+            --shadow-hover: 0 8px 24px rgba(245, 216, 210, 0.4);
             --snap-yellow: #FFFC00;
         }
 
@@ -37,7 +40,7 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
             color: var(--text);
             background: var(--bg);
             line-height: 1.6;
@@ -60,7 +63,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(253, 251, 249, 0.85);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             transition: all 0.3s ease;
@@ -119,9 +122,9 @@
         }
 
         .case-hero h1 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Sora', sans-serif;
             font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 500;
+            font-weight: 600;
             line-height: 1.2;
             letter-spacing: -0.02em;
             margin-bottom: 1.5rem;
@@ -185,16 +188,17 @@
         }
 
         .case-content h2 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Sora', sans-serif;
             font-size: 2rem;
-            font-weight: 500;
+            font-weight: 600;
             margin-bottom: 1.5rem;
             letter-spacing: -0.02em;
         }
 
         .case-content h3 {
+            font-family: 'Sora', sans-serif;
             font-size: 1.25rem;
-            font-weight: 500;
+            font-weight: 600;
             margin: 2.5rem 0 1rem;
             color: var(--text);
         }
@@ -257,9 +261,9 @@
         }
 
         .stat-number {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Sora', sans-serif;
             font-size: 2.5rem;
-            font-weight: 500;
+            font-weight: 600;
             color: var(--text);
             margin-bottom: 0.5rem;
         }
@@ -350,9 +354,9 @@
         }
 
         .next-project h2 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Sora', sans-serif;
             font-size: 2.5rem;
-            font-weight: 500;
+            font-weight: 600;
             margin-bottom: 1.5rem;
         }
 
@@ -455,9 +459,10 @@
 </head>
 <body>
     <script>
-        if (sessionStorage.getItem('portfolio_auth') !== 'true') {
-            window.location.href = 'login.html';
-        }
+        // Authentication check (DISABLED - uncomment to enable)
+        // if (sessionStorage.getItem('portfolio_auth') !== 'true') {
+        //     window.location.href = 'login.html';
+        // }
     </script>
     <!-- Navigation -->
     <nav id="nav">
@@ -634,7 +639,7 @@
     <section class="next-project">
         <p class="next-project-label">Next Project</p>
         <h2>Sponsored Snaps</h2>
-        <a href="sponsored-snaps.html">
+        <a href="ad-formats.html">
             View case study
             <span>→</span>
         </a>

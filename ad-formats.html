@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Snap Ad Formats | Shuang Li</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
+    <link rel="apple-touch-icon" href="images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #ffffff;
+            --bg-alt: #faf5f3;
+            --text: #1a1a1a;
+            --text-secondary: #1a1a1a;
+            --text-tertiary: #888888;
+            --accent: #faf5f3;
+            --accent-light: #fce8e4;
+            --accent-coral: #f5d8d2;
+            --blush: #faf5f3;
+            --peach: #fff0ec;
+            --border: #f0e4e0;
+            --shadow: rgba(245, 216, 210, 0.3);
+            --shadow-hover: 0 8px 24px rgba(245, 216, 210, 0.4);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        ::selection {
+            background: var(--accent);
+            color: var(--text);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 1rem 3rem;
+            box-shadow: 0 1px 0 var(--border);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-logo:hover {
+            opacity: 0.7;
+        }
+
+        .nav-logo img {
+            height: 50px;
+            width: 50px;
+            object-fit: contain;
+        }
+
+        .nav-back {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            transition: color 0.3s, gap 0.3s;
+        }
+
+        .nav-back:hover {
+            color: var(--text);
+            gap: 0.75rem;
+        }
+
+        /* Hero */
+        .case-hero {
+            padding: 12rem 3rem 6rem;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .case-hero h1 {
+            font-family: 'Sora', sans-serif;
+            font-size: clamp(2.4rem, 5vw, 3.5rem);
+            font-weight: 600;
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+            margin-bottom: 2rem;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, var(--peach) 0%, var(--coral-light) 100%);
+            padding: 0 0.15em;
+            border-radius: 4px;
+        }
+
+        .case-hero-description {
+            font-size: 1.35rem;
+            color: var(--text-secondary);
+            max-width: 960px;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .case-meta {
+            display: flex;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .meta-item h4 {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-tertiary);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .meta-item p {
+            font-size: 0.95rem;
+            color: var(--text);
+        }
+
+        /* Content */
+        .case-section {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 5rem 3rem;
+        }
+
+        .case-section.intro {
+            padding: 2rem 3rem 3rem;
+        }
+
+        .case-section.wide {
+            max-width: 960px;
+        }
+
+        .section-title {
+            font-family: 'Sora', sans-serif;
+            font-size: clamp(1.6rem, 3vw, 2rem);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+            line-height: 1.3;
+        }
+
+        .section-subtitle {
+            font-family: 'Sora', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin: 2.5rem 0 1rem;
+            color: var(--text);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .section-subtitle:first-of-type {
+            margin-top: 1.5rem;
+        }
+
+        .case-section p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .case-section p strong {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .case-section ul {
+            margin: 1.5rem 0 2rem;
+            padding-left: 1.25rem;
+        }
+
+        .case-section li {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Callout */
+        .callout {
+            background: var(--blush);
+            padding: 2rem 2.5rem;
+            border-radius: 12px;
+            margin: 2.5rem 0;
+            border-left: 4px solid var(--accent-coral);
+        }
+
+        .callout.accent {
+            background: var(--accent-light);
+        }
+
+        .callout p {
+            font-size: 1.1rem;
+            color: var(--text);
+            margin-bottom: 0;
+            font-style: italic;
+            line-height: 1.8;
+        }
+
+        .callout p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Media Comparison */
+        .media-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .media-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .media-label {
+            font-weight: 600;
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            line-height: 1.25;
+        }
+
+        .media-item img,
+        .media-item video {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 12px;
+        }
+
+        @media (max-width: 600px) {
+            .media-comparison {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Single Media */
+        .media-single {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+
+        .media-single video {
+            max-width: 280px;
+            border-radius: 24px;
+        }
+
+        .media-single img {
+            max-width: 100%;
+            border-radius: 12px;
+        }
+
+        .media-single--phone img {
+            max-width: 260px;
+            border-radius: 28px;
+        }
+
+        /* Before/After Comparison */
+        .before-after-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .comparison-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .comparison-label {
+            font-family: 'Sora', sans-serif;
+            font-weight: 600;
+            font-size: 0.7rem;
+            color: var(--text-tertiary);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            line-height: 1.2;
+        }
+
+        .comparison-item video,
+        .comparison-item img {
+            width: 100%;
+            max-width: 240px;
+            border-radius: 20px;
+        }
+
+        .comparison-caption {
+            font-size: 0.7rem;
+            color: var(--text-tertiary);
+            text-align: center;
+            margin-top: 0.5rem;
+            line-height: 1.25;
+        }
+
+        @media (max-width: 600px) {
+            .before-after-comparison {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        /* Text with Media (side by side) */
+        .text-with-media {
+            display: grid;
+            grid-template-columns: 7fr 3fr;
+            gap: 2.5rem;
+            align-items: start;
+            margin: 1.5rem 0 2rem;
+        }
+
+        .text-content p {
+            margin-bottom: 1.25rem;
+        }
+
+        .text-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .media-aside img {
+            width: 100%;
+            border-radius: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .text-with-media {
+                grid-template-columns: 1fr;
+            }
+
+            .media-aside {
+                order: -1;
+                max-width: 180px;
+                margin: 0 auto;
+            }
+        }
+
+        /* Charts Row */
+        .charts-row {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .chart-item {
+            text-align: center;
+        }
+
+        .chart-item img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        .chart-item.half-width img {
+            max-width: 50%;
+        }
+
+        .chart-caption {
+            font-size: 0.7rem;
+            color: var(--text-tertiary);
+            margin-top: 0.5rem;
+            line-height: 1.25;
+        }
+
+        @media (max-width: 600px) {
+            .chart-item.half-width img {
+                max-width: 80%;
+            }
+        }
+
+        /* Chart & Insight Images */
+        .insight-image,
+        .chart-image {
+            max-width: 100%;
+            border-radius: 12px;
+        }
+
+        .chart-image {
+            max-width: 600px;
+        }
+
+        /* Use Cases Grid */
+        .use-cases-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .media-row-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+            align-items: start;
+        }
+
+        .media-row-item img,
+        .media-row-item video {
+            width: 100%;
+            border-radius: 16px;
+        }
+
+        .use-case-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .use-case-item img,
+        .use-case-item video {
+            width: 100%;
+            max-width: 200px;
+            border-radius: 16px;
+        }
+
+        .use-case-caption {
+            font-size: 0.55rem;
+            color: var(--text-tertiary);
+            text-align: center;
+            margin-top: 0.4rem;
+            line-height: 1;
+        }
+
+        .use-case-caption strong {
+            font-size: 0.7rem;
+            color: var(--text);
+            display: block;
+            margin-bottom: 0.05rem;
+        }
+
+        @media (max-width: 768px) {
+            .use-cases-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .use-case-item img,
+            .use-case-item video {
+                max-width: 240px;
+            }
+
+            .media-row-3 {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .media-row-item img,
+            .media-row-item video {
+                max-width: 280px;
+                margin: 0 auto;
+                display: block;
+            }
+        }
+
+        /* Insight Cards */
+        .insight-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .insight-card {
+            background: var(--accent);
+            border: none;
+            border-radius: 12px;
+            padding: 1.75rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .insight-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .insight-card h4 {
+            font-family: 'Sora', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text);
+        }
+
+        .insight-card p {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+            line-height: 1.7;
+        }
+
+        /* Project Grid */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .project-card-feature {
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        .project-card-feature:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--coral);
+        }
+
+        .project-card-label {
+            font-family: 'Sora', sans-serif;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #b89890;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            background: var(--accent);
+            padding: 0.35rem 0.75rem;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .project-card-feature h3 {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text);
+        }
+
+        .project-card-feature p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Stats */
+        .stats-row {
+            display: flex;
+            gap: 3rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+            padding: 2rem;
+            background: var(--accent);
+            border-radius: 16px;
+        }
+
+        .stat-item {
+            text-align: left;
+        }
+
+        .stat-number {
+            font-family: 'Sora', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--text);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            max-width: 140px;
+        }
+
+        /* Image */
+        .case-image {
+            max-width: 960px;
+            margin: 4rem auto;
+            padding: 0 3rem;
+        }
+
+        .case-image img {
+            width: 100%;
+            border-radius: 12px;
+        }
+
+        .case-image figcaption {
+            text-align: center;
+            font-size: 0.7rem;
+            color: var(--text-tertiary);
+            margin-top: 0.5rem;
+            line-height: 1.25;
+        }
+
+        .image-placeholder {
+            background: linear-gradient(135deg, var(--accent) 0%, #f5f0ed 100%);
+            border-radius: 16px;
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 20px,
+                rgba(0,0,0,0.01) 20px,
+                rgba(0,0,0,0.01) 40px
+            );
+        }
+
+        .image-placeholder span {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            opacity: 0.6;
+            font-style: italic;
+            position: relative;
+        }
+
+        /* Segment Flow */
+        .segment-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2.5rem 0;
+            flex-wrap: wrap;
+        }
+
+        .segment-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1.5rem 2rem;
+            background: var(--accent);
+            border-radius: 12px;
+            min-width: 160px;
+        }
+
+        .segment-number {
+            width: 32px;
+            height: 32px;
+            background: var(--accent-coral);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text);
+        }
+
+        .segment-label {
+            font-size: 0.9rem;
+            color: var(--text);
+            text-align: center;
+        }
+
+        .segment-arrow {
+            font-size: 1.5rem;
+            color: var(--accent-coral);
+            font-weight: 300;
+        }
+
+        @media (max-width: 768px) {
+            .segment-flow {
+                flex-direction: column;
+            }
+
+            .segment-arrow {
+                transform: rotate(90deg);
+            }
+        }
+
+        /* Divider */
+        .divider {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+
+        .divider hr {
+            border: none;
+            height: 1px;
+            background: var(--border);
+        }
+
+        /* Next Project */
+        .next-project {
+            background: var(--bg-alt);
+            padding: 6rem 3rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .next-project-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-tertiary);
+            margin-bottom: 1rem;
+        }
+
+        .next-project h2 {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .next-project a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: gap 0.3s;
+        }
+
+        .next-project a:hover {
+            gap: 0.75rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem 3rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--text);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .case-hero {
+                padding: 8rem 1.5rem 4rem;
+            }
+
+            .case-section {
+                padding: 3rem 1.5rem;
+            }
+
+            .case-image {
+                padding: 0 1.5rem;
+            }
+
+            .case-meta {
+                gap: 1.5rem;
+            }
+
+            .insight-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-row {
+                gap: 2rem;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .fade-in-delay-1 { animation-delay: 0.1s; }
+        .fade-in-delay-2 { animation-delay: 0.2s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // Authentication check (DISABLED - uncomment to enable)
+        // if (sessionStorage.getItem('portfolio_auth') !== 'true') {
+        //     window.location.href = 'login.html';
+        // }
+    </script>
+
+    <!-- Navigation -->
+    <nav id="nav">
+        <a href="index.html" class="nav-back">
+            <span>←</span>
+            Back to home
+        </a>
+        <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="Shuang Li"></a>
+    </nav>
+
+    <!-- Hero -->
+    <section class="case-hero">
+        <h1 class="fade-in">Designing <span class="highlight">Performant</span> Ad Formats that Feel <span class="highlight">Native</span> on Snapchat</h1>
+        <div class="case-meta fade-in fade-in-delay-2">
+            <div class="meta-item">
+                <h4>Role</h4>
+                <p>Design Lead</p>
+            </div>
+            <div class="meta-item">
+                <h4>Company</h4>
+                <p>Snap Inc.</p>
+            </div>
+            <div class="meta-item">
+                <h4>Timeline</h4>
+                <p>2021–2024</p>
+            </div>
+            <div class="meta-item">
+                <h4>Scope</h4>
+                <p>Full-funnel ad formats</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Intro -->
+    <section class="case-section intro">
+        <p>
+            Over three years, I led the design of ad formats across Snapchat's surfaces, shaping how ads across different verticals look and behave. I helped evolve Snapchat's advertising experience from a patchwork of legacy patterns into a more mature, scalable system, while also driving improvements in ad performance and revenue.
+        </p>
+        <p>
+            The work focused on making ads feel native to the product, grounding design decisions in real user behavior, and improving ad performance by earning consideration rather than forcing clicks.
+        </p>
+        <p>
+            Below are a few selected highlights and key learnings from this work.
+        </p>
+    </section>
+
+    <!-- Section 1: Winning the First Few Seconds -->
+    <section class="case-section">
+        <h2 class="section-title">Winning the First Few Seconds</h2>
+
+        <p>
+            The first and most important step in the ad funnel is not the click. It is getting people to stay long enough to give the ad a real chance.
+        </p>
+        <p>
+            On Snapchat, people move fast. Tapping to skip is instinctive, not dismissive. Through behavioral analysis and research, we learned that consideration only begins after users spend a few seconds with the content. If an ad fails to earn that moment, everything downstream—clicks, installs, conversions—is compromised.
+        </p>
+        <p>
+            I focused on making the opening moments of an ad easier to engage with. The goal was to quickly communicate value and relevance so users were more likely to pause instead of immediately skipping.
+        </p>
+
+        <div class="use-cases-grid">
+            <div class="use-case-item">
+                <img src="images/ad formats/app_install_2.jpg" alt="App Install Ad">
+                <p class="use-case-caption">Adding app store reviews</p>
+            </div>
+            <div class="use-case-item">
+                <video autoplay loop muted playsinline>
+                    <source src="images/ad formats/ar_ad.mp4" type="video/mp4">
+                </video>
+                <p class="use-case-caption">AR try-on experiences that invite low-effort interaction</p>
+            </div>
+            <div class="use-case-item">
+                <img src="images/ad formats/dta.jpg" alt="Travel ad">
+                <p class="use-case-caption">Social proof example showing friend activity</p>
+            </div>
+        </div>
+
+        <p>
+            Most product ads are boring, with a plain staging background. I proposed using GenAI to dynamically generate backgrounds by understanding the product tags in the catalog and user profile, to vividly showcase how the product is used in different occasions.
+        </p>
+
+        <div class="before-after-comparison">
+            <div class="comparison-item">
+                <p class="comparison-label">Before</p>
+                <img src="images/ad formats/single dpa before.png" alt="Plain staging background">
+                <p class="comparison-caption">Plain staging background</p>
+            </div>
+            <div class="comparison-item">
+                <p class="comparison-label">After</p>
+                <video autoplay loop muted playsinline>
+                    <source src="images/ad formats/single dpa after.mp4" type="video/mp4">
+                </video>
+                <p class="comparison-caption">GenAI backgrounds stitched together</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"><hr></div>
+
+    <!-- Section 2: Turning Attention into Consideration -->
+    <section class="case-section">
+        <h2 class="section-title">Turning Attention into Consideration</h2>
+
+        <p>
+            Users who remain after the first few seconds are no longer passive viewers. They are showing early intent, and the experience should respond accordingly.
+        </p>
+        <p>
+            Research and behavioral data showed that consideration builds gradually. Higher-quality engagement begins several seconds into the experience, not immediately on load. Showing all interactive elements upfront often overwhelms users or distracts from the content itself.
+        </p>
+        <p>
+            I led multiple projects focused on supporting consideration for these deeper viewers.
+        </p>
+
+        <p class="section-subtitle">Progressive Disclosure</p>
+        <p>
+            Instead of presenting all actions at once, the ad experience evolves over time. The ad card appears after a short delay, then expands and becomes more prominent later, aligning with moments when users are more likely to engage intentionally.
+        </p>
+        <div class="media-single">
+            <video autoplay loop muted playsinline>
+                <source src="images/ad formats/progressive disclosure.mp4" type="video/mp4">
+            </video>
+        </div>
+        <p>
+            We tested several variants of the delay (500ms, 750ms, 1000ms) and expansion (2.5s, 3s, 4s) and launched the most performant one (1s, 3s). Accidental clicks were reduced by 47%, while high-quality clicks increased by 33%.
+        </p>
+
+        <p class="section-subtitle">Redesigned Dynamic Product Ads</p>
+        <p>
+            Eye-tracking studies showed that visual attention concentrated near the top and center of the screen, while most of our legacy CTAs lived lower down. I redesigned these formats with larger, more prominent product tiles placed in attention-dense areas so interaction aligned with where people naturally look.
+        </p>
+        <div class="media-single">
+            <img src="images/ad formats/domino.jpg" alt="Redesigned Dynamic Product Ad layout">
+        </div>
+        <p>
+            <strong>Impact:</strong> This became the biggest product ad format evolution in the last 5 years. The launch drove +89.2% conversion rate and +39% dynamic product ad revenue.
+        </p>
+    </section>
+
+    <div class="divider"><hr></div>
+
+    <!-- Section 3: Good Clicks -->
+    <section class="case-section">
+        <h2 class="section-title">We Do Not Want Just Clicks. We Want the <span class="highlight">Good</span> Clicks.</h2>
+
+        <p>
+            Many early interactions with an ad can be accidental, driven by navigation rather than interest. Optimizing for raw click volume creates noisy signals and degrades both user experience and advertiser performance.
+        </p>
+        <p>
+            To address this, I focused on designing guardrails that protect intent.
+        </p>
+        <p>
+            I defined clearer navigation and activation zones so skipping content remained easy, while intentional engagement required deliberate action.
+        </p>
+        <div class="media-single">
+            <img src="images/ad formats/ui guardrails.jpg" alt="Navigation and activation zones">
+        </div>
+        <p>
+            At the system level, this work shifted success metrics away from raw CTR toward higher-quality engagement and more reliable downstream signals.
+        </p>
+    </section>
+
+    <div class="divider"><hr></div>
+
+    <!-- Section 4: The Most Effective Ads Do Not Feel Like Ads -->
+    <section class="case-section">
+        <h2 class="section-title">The Most Effective Ads Do Not Feel Like Ads</h2>
+        <p>
+            Across all stages of the funnel, the strongest results consistently came from ads that felt native to the product.
+        </p>
+        <p>
+            A significant part of my work focused on cleaning up and unifying ad UI so formats felt consistent with Snapchat's organic language. This included reducing visual clutter, borrowing from familiar elements like captions and stickers, and aligning interaction patterns across surfaces so ads no longer felt layered on top of the experience.
+        </p>
+        <!-- Visual: to be added -->
+
+        <p class="section-subtitle">Sponsored Snaps</p>
+        <p>
+            This philosophy culminated in <strong>Sponsored Snaps</strong>, Snapchat's first ad product in Chat and the most sensitive surface in the app.
+        </p>
+        <p>
+            As the lead designer, I took Sponsored Snaps from early concept through executive pitch and approval, defining how ads could exist in a highly personal, high-frequency space without breaking social norms. The guiding principle was simple: <strong>it should feel like your favorite brand sent you a Snap, not like you were shown an ad.</strong>
+        </p>
+        <p>
+            Imagine getting a Snap from Starbucks. You open it, reply with a quick emoji, and suddenly you're craving that pumpkin spice latte. That's the experience we designed for—Sponsored Snaps blend seamlessly into the chat feed, reuse familiar affordances, and respect expectations users already have for messaging.
+        </p>
+
+        <div class="media-row-3">
+            <div class="media-row-item" style="transform: scale(0.96); transform-origin: top center;">
+                <img src="images/ad formats/sponsored snaps/chat feed.png" alt="Chat feed with Sponsored Snap">
+            </div>
+            <div class="media-row-item">
+                <video autoplay loop muted playsinline>
+                    <source src="images/ad formats/sponsored snaps/sponsored snap.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="media-row-item">
+                <video autoplay loop muted playsinline>
+                    <source src="images/ad formats/sponsored snaps/chat_interaction.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+
+        <p>
+            We've since expanded Sponsored Snaps beyond brand takeovers. Creators can now send Snaps directly to their followers on special occasions like birthdays, creating direct, personal engagement with fans.
+        </p>
+
+        <div class="media-single">
+            <video autoplay loop muted playsinline>
+                <source src="images/ad formats/sponsored snaps/creator.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <p class="section-subtitle">Sponsored Slots on Maps</p>
+        <p>
+            The same principle—ads that don't feel like ads—drove a newer format idea. We used to show ads mainly for physical stores, which captured only a small slice of the real economy. I proposed adding lightweight, contextual ad slots in places where people already expect to see promotion in the real world: for example, billboards along highways in Maps. That concept became <strong>Sponsored Slots on Maps</strong>. The pitch was well received by leadership and is being prioritized.
+        </p>
+        <div class="media-single">
+            <video autoplay loop muted playsinline>
+                <source src="images/ad formats/sponsored snaps/billboard ad.mp4" type="video/mp4">
+            </video>
+        </div>
+    </section>
+
+    <div class="divider"><hr></div>
+
+    <!-- Takeaway -->
+    <section class="case-section">
+        <h2 class="section-title">Takeaway</h2>
+        <p>
+            Working in this space made it clear how sensitive monetization surfaces really are. Small decisions about timing, placement, and interaction can determine whether an ad earns attention or gets dismissed as noise.
+        </p>
+        <p>
+            The strongest results came not from pushing harder on CTAs, but from designing formats that respect user intent and give people time to decide. That principle continues to guide how I approach monetization design.
+        </p>
+    </section>
+
+    <!-- Next Project -->
+    <section class="next-project">
+        <p class="next-project-label">Next Project</p>
+        <h2>Google Shopping</h2>
+        <a href="google-shopping.html">
+            View case study
+            <span>→</span>
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Shuang Li</p>
+        <div class="footer-links">
+            <a href="resume_shuang_li.pdf" target="_blank">Resume</a>
+            <a href="https://www.linkedin.com/in/shuangshuangli/" target="_blank">LinkedIn</a>
+            <a href="mailto:shuang.sara.li@gmail.com">Email</a>
+        </div>
+    </footer>
+
+    <script>
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>

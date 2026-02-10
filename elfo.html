@@ -39,6 +39,8 @@
             -webkit-font-smoothing: antialiased;
             min-height: 100vh;
             overflow-x: hidden;
+            -webkit-user-select: text;
+            user-select: text;
         }
 
         /* Floating disco elements */
@@ -70,6 +72,8 @@
             bottom: 0;
             pointer-events: none;
             z-index: 0;
+            -webkit-user-select: none;
+            user-select: none;
         }
 
         .star {
@@ -106,6 +110,8 @@
             text-align: center;
             position: relative;
             z-index: 2;
+            -webkit-user-select: text;
+            user-select: text;
         }
 
         .hero-emoji {
@@ -146,6 +152,8 @@
             padding: 3rem 1rem 6rem;
             position: relative;
             z-index: 2;
+            -webkit-user-select: text;
+            user-select: text;
         }
 
         .section-title {
@@ -213,6 +221,8 @@
             padding: 4rem 2rem 6rem;
             position: relative;
             z-index: 2;
+            -webkit-user-select: text;
+            user-select: text;
         }
 
         .back-link {
@@ -292,9 +302,9 @@
 <body>
     <script>
         // Authentication check (DISABLED - uncomment to enable)
-        // if (sessionStorage.getItem('portfolio_auth') !== 'true') {
-        //     window.location.href = 'login.html';
-        // }
+        if (sessionStorage.getItem('portfolio_auth') !== 'true') {
+            window.location.href = 'login.html';
+        }
     </script>
     <!-- Floating disco elements -->
     <div class="disco-ball">🪩</div>

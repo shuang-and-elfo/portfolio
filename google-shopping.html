@@ -108,7 +108,7 @@
         /* Hero */
         .case-hero {
             padding: 10rem 3rem 6rem;
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
@@ -142,8 +142,6 @@
             gap: 3rem;
             flex-wrap: wrap;
             padding: 2rem 0;
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
         }
 
         .meta-item h4 {
@@ -159,21 +157,9 @@
             color: var(--text);
         }
 
-        /* Hero Image */
-        .case-hero-image {
-            width: 100%;
-            max-width: 1200px;
-            margin: 4rem auto;
-            padding: 0 3rem;
-        }
-
-        .case-hero-image .gallery-item {
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-        }
-
         /* Content Sections */
         .case-content {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 4rem 3rem;
         }
@@ -279,6 +265,10 @@
             padding: 0 3rem;
         }
 
+        .case-gallery.gallery-tight {
+            margin: 2rem auto;
+        }
+
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -291,7 +281,8 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
         }
 
-        .gallery-item img {
+        .gallery-item img,
+        .gallery-item video {
             width: 100%;
             height: auto;
             display: block;
@@ -340,26 +331,12 @@
             line-height: 1.6;
         }
 
-        /* Section Divider */
-        .section-divider {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 4rem 3rem 0;
-            border-top: 1px solid var(--border);
-        }
-
-        .section-number {
-            display: inline-block;
-            width: 32px;
-            height: 32px;
-            background: var(--text);
-            color: white;
-            border-radius: 50%;
+        /* Launch date (above stats) */
+        .launch-date {
             text-align: center;
-            line-height: 32px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-bottom: 1rem;
+            font-size: 1.15rem;
+            color: var(--text);
+            margin-bottom: 1.5rem;
         }
 
         /* Next Project */
@@ -434,12 +411,12 @@
                 padding: 1rem 1.5rem;
             }
 
-            .case-hero, .case-content, .section-divider {
+            .case-hero, .case-content {
                 padding-left: 1.5rem;
                 padding-right: 1.5rem;
             }
 
-            .case-hero-image, .case-gallery {
+            .case-gallery {
                 padding: 0 1.5rem;
             }
 
@@ -492,9 +469,9 @@
 <body>
     <script>
         // Authentication check (DISABLED - uncomment to enable)
-        // if (sessionStorage.getItem('portfolio_auth') !== 'true') {
-        //     window.location.href = 'login.html';
-        // }
+        if (sessionStorage.getItem('portfolio_auth') !== 'true') {
+            window.location.href = 'login.html';
+        }
     </script>
     <!-- Navigation -->
     <nav id="nav">
@@ -525,52 +502,16 @@
                 <h4>Timeline</h4>
                 <p>May 2019 – Nov 2019</p>
             </div>
-            <div class="meta-item">
-                <h4>Impact</h4>
-                <p>+22.59% Add to Carts</p>
-            </div>
         </div>
     </section>
-
-    <!-- Hero Image -->
-    <div class="case-hero-image">
-        <div class="gallery-item">
-            <img src="images/shopping-price-insights.png" alt="'What do most people pay?' feature showing price distribution, brand recommendations, and top picks">
-        </div>
-    </div>
 
     <!-- Overview -->
     <section class="case-content">
         <h2>The Challenge</h2>
         <p>
-            Google Shopping was competing in a mega-competitive space—we were 10 years behind Amazon. To win, we couldn't just match the competition. We needed to provide unique value that shoppers couldn't find anywhere else.
+            Google Shopping was competing in a mega-competitive space—we were 10 years behind Amazon. To win, we couldn't just match the competition. We needed to provide unique value that shoppers couldn't find anywhere else. How might we leverage Google's unique strengths—search intelligence, personalization, and cross-platform presence—to create a shopping experience that feels distinctly valuable? We focused on two areas: a personalized homepage with smart recommendations tailored to each shopper, and features that help shoppers make informed decisions and trust their purchases.
         </p>
-
-        <div class="highlight-box soft-blue">
-            <h4>The Opportunity</h4>
-            <p>
-                How might we leverage Google's unique strengths—search intelligence, personalization, and cross-platform presence—to create a shopping experience that feels distinctly valuable?
-            </p>
-        </div>
-
-        <div class="project-cards">
-            <div class="project-card">
-                <div class="project-card-icon">🏠</div>
-                <h4>Personalized Homepage</h4>
-                <p>A redesigned homepage with smart recommendations tailored to each shopper.</p>
-            </div>
-            <div class="project-card">
-                <div class="project-card-icon">✅</div>
-                <h4>Buy with Confidence</h4>
-                <p>Features that help shoppers make informed decisions and trust their purchases.</p>
-            </div>
-        </div>
     </section>
-
-    <!-- Project 1: Homepage -->
-    <div class="section-divider">
-        <span class="section-number">1</span>
-    </div>
 
     <section class="case-content">
         <h2>A More Personalized Homepage</h2>
@@ -598,13 +539,18 @@
             <li><strong>Price tracking:</strong> Let users follow products and get notified when prices drop</li>
         </ul>
 
-        <h3>Key Insight</h3>
-        <p>
-            Shopping isn't just about finding specific items—it's also about discovery. By making browsing enjoyable and serendipitous, we could capture a different user intent entirely: the joy of window shopping, digitized.
-        </p>
+        <div class="case-gallery">
+            <div class="gallery-grid">
+                <div class="gallery-item full">
+                    <video src="images/google shopping/compressed/personalized-homepage.mp4" autoplay loop muted playsinline aria-label="Personalized homepage experience"></video>
+                </div>
+            </div>
+            <p class="gallery-caption">Personalized homepage with "Pick up where you left off" and contextual recommendations based on upcoming trips</p>
+        </div>
     </section>
 
     <section class="case-content">
+        <p class="launch-date">Fully launched December 2019</p>
         <div class="stats-grid">
             <div class="stat-item">
                 <div class="stat-number">+5.65%</div>
@@ -616,11 +562,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Project 2: Buy with Confidence -->
-    <div class="section-divider">
-        <span class="section-number">2</span>
-    </div>
 
     <section class="case-content">
         <h2>Helping Shoppers Buy with Confidence</h2>
@@ -638,65 +579,35 @@
 
         <h3>Explorations</h3>
         <p>
-            We explored multiple approaches across different product categories, testing with real users to understand what information they needed most at the moment of decision.
-        </p>
-
-        <ul>
-            <li><strong>Rich product information:</strong> Detailed specs, sizing guides, and comparison tools</li>
-            <li><strong>Social proof:</strong> Reviews, ratings, and real customer photos</li>
-            <li><strong>Price context:</strong> Historical pricing, price comparisons across retailers</li>
-            <li><strong>Return policies:</strong> Clear information about returns and guarantees</li>
-        </ul>
-
-        <p>
-            The explorations spanned categories from women's down jackets to Nike Air Max sneakers—understanding that different products require different confidence-building signals.
+            We explored multiple approaches across different product categories, testing with real users to understand what information they needed most at the moment of decision: rich product information (specs, sizing guides, comparison tools), social proof (reviews, ratings, real customer photos), price context (historical pricing, cross-retailer comparisons), and clear return policies. The explorations spanned categories from women's down jackets to Nike Air Max sneakers—understanding that different products require different confidence-building signals.
         </p>
     </section>
 
-    <!-- Explorations Gallery -->
-    <div class="case-gallery">
+    <div class="case-gallery gallery-tight">
         <div class="gallery-grid">
             <div class="gallery-item full">
-                <img src="images/shopping-nike-price.png" alt="Nike Air Max 270 product page with price tracking showing 'Total price is low for this item' and 6-month price history">
+                <img src="images/google shopping/compressed/buy-this-confidence-1.png" alt="Buy with confidence feature exploration">
             </div>
-        </div>
-        <p class="gallery-caption">Nike Air Max 270 product page with price insights and history tracking</p>
-    </div>
-
-    <div class="case-gallery">
-        <div class="gallery-grid">
             <div class="gallery-item full">
-                <img src="images/shopping-personalized.png" alt="Google Shopping personalized homepage showing welcome message, recommendations, and trip packing suggestions">
+                <video src="images/google shopping/compressed/buy-this-confidence-2.mp4" autoplay loop muted playsinline aria-label="Buy with confidence interaction"></video>
             </div>
         </div>
-        <p class="gallery-caption">Personalized homepage with "Pick up where you left off" and contextual recommendations based on upcoming trips</p>
+        <p class="gallery-caption">Explorations for helping shoppers buy with confidence—price context, rich product info, and decision support</p>
     </div>
-
 
     <!-- Reflection -->
     <section class="case-content">
         <h2>Reflection</h2>
-        
-        <div class="highlight-box lavender">
-            <h4>Key Learnings</h4>
-            <p>
-                Competing with Amazon wasn't about copying their features—it was about finding our unique strengths. Google's search intelligence and cross-platform presence gave us insights that no other shopping platform had. The key was translating those signals into genuinely helpful shopping experiences.
-            </p>
-        </div>
-
-        <ul>
-            <li><strong>Personalization must feel personal:</strong> Generic "recommended for you" isn't enough—users can tell when recommendations are truly relevant</li>
-            <li><strong>Discovery is undervalued:</strong> Not every shopping session starts with a specific intent—creating space for browsing unlocks new engagement</li>
-            <li><strong>Confidence drives conversion:</strong> Reducing anxiety at the moment of purchase is just as important as getting users to that moment</li>
-            <li><strong>Play to your strengths:</strong> Being 10 years behind doesn't mean you can't win—it means you need to compete differently</li>
-        </ul>
+        <p>
+            Competing with Amazon wasn't about copying their features—it was about finding our unique strengths. Google's search intelligence and cross-platform presence gave us insights no other shopping platform had; the real work was turning those signals into experiences that felt genuinely helpful. Personalization only works when it feels personal. Discovery is undervalued: not every session starts with a specific intent, and creating space for browsing unlocks a different kind of engagement. Reducing anxiety at the moment of purchase is just as important as getting users there. Being 10 years behind doesn't mean you can't win—it means you have to compete differently.
+        </p>
     </section>
 
     <!-- Next Project -->
     <section class="next-project">
         <p class="next-project-label">Next Project</p>
-        <h2>Snapchat+</h2>
-        <a href="snapchat-plus.html">
+        <h2>Snapchat Ad Formats</h2>
+        <a href="ad-formats.html">
             View case study
             <span>→</span>
         </a>

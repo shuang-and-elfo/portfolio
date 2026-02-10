@@ -173,13 +173,28 @@
             max-width: 960px;
         }
 
-        .section-title {
+        .section-title,
+        .section-title--large {
             font-family: 'Sora', sans-serif;
-            font-size: clamp(1.6rem, 3vw, 2rem);
+            font-size: 2rem;
             font-weight: 600;
             margin-bottom: 1.5rem;
             letter-spacing: -0.02em;
             line-height: 1.3;
+        }
+
+        .topic-heading {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: var(--text);
+            margin: 2rem 0 0.75rem;
+            letter-spacing: -0.02em;
+            line-height: 1.3;
+        }
+
+        .topic-heading:first-of-type {
+            margin-top: 1.5rem;
         }
 
         .section-subtitle {
@@ -226,7 +241,6 @@
             padding: 2rem 2.5rem;
             border-radius: 12px;
             margin: 2.5rem 0;
-            border-left: 4px solid var(--accent-coral);
         }
 
         .callout.accent {
@@ -243,6 +257,56 @@
 
         .callout p:last-child {
             margin-bottom: 0;
+        }
+
+        /* Design challenge callout */
+        .design-challenge-box {
+            background: var(--blush);
+            border-radius: 12px;
+            padding: 2rem 2.5rem;
+            margin: 2.5rem 0;
+            box-shadow: 0 4px 16px rgba(245, 216, 210, 0.5);
+        }
+        .design-challenge-box__label {
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            color: var(--text);
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+        .design-challenge-box__text {
+            font-size: 1.1rem;
+            line-height: 1.85;
+            color: var(--text);
+            margin: 0;
+        }
+
+        /* Impact callout */
+        .impact-box {
+            background: var(--blush);
+            border-radius: 12px;
+            padding: 2rem 2.5rem;
+            margin: 2.5rem 0;
+            box-shadow: 0 4px 16px rgba(245, 216, 210, 0.5);
+        }
+        .impact-box__label {
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            color: var(--text);
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+        .impact-box__text {
+            font-size: 1.1rem;
+            line-height: 1.85;
+            color: var(--text);
+            margin: 0;
+        }
+
+        .callout--quote p {
+            font-style: italic;
         }
 
         /* Media Comparison */
@@ -348,6 +412,98 @@
             .before-after-comparison {
                 grid-template-columns: 1fr;
                 gap: 2rem;
+            }
+        }
+
+        /* Exploring New Monetization Opportunities: 1:1 layout — left title & text, right mock, vertically centered */
+        .explore-list {
+            margin: 2.5rem 0;
+        }
+
+        .explore-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        .explore-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .explore-item-text .topic-heading {
+            margin-top: 0;
+        }
+
+        .explore-item-media {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .explore-item-media video,
+        .explore-item-media img {
+            max-width: 260px;
+            width: 100%;
+            border-radius: 28px;
+        }
+
+        @media (max-width: 768px) {
+            .explore-item {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                margin-bottom: 3rem;
+            }
+
+            .explore-item-media {
+                order: -1;
+            }
+        }
+
+        /* In-section 1:1 split: text left, mock right, vertically centered */
+        .split-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin: 2rem 0;
+        }
+
+        .split-row-text .topic-heading {
+            margin-top: 0;
+        }
+
+        .split-row-media {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .split-row-media video,
+        .split-row-media img {
+            max-width: 100%;
+            width: 100%;
+            border-radius: 12px;
+        }
+
+        .split-row-media video {
+            max-width: 260px;
+            border-radius: 28px;
+        }
+
+        .split-row-media--small img {
+            max-width: 60%;
+        }
+
+        @media (max-width: 768px) {
+            .split-row {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .split-row-media {
+                order: -1;
             }
         }
 
@@ -466,18 +622,23 @@
         }
 
         .use-case-caption {
-            font-size: 0.55rem;
+            font-size: 0.9rem;
             color: var(--text-tertiary);
             text-align: center;
-            margin-top: 0.4rem;
-            line-height: 1;
+            margin-top: 1rem;
+            line-height: 1.5;
+        }
+
+        .case-section .use-case-item .use-case-caption {
+            font-size: 0.9rem;
+            color: var(--text-tertiary);
         }
 
         .use-case-caption strong {
-            font-size: 0.7rem;
+            font-size: inherit;
             color: var(--text);
             display: block;
-            margin-bottom: 0.05rem;
+            margin-bottom: 0.25rem;
         }
 
         @media (max-width: 768px) {
@@ -596,19 +757,20 @@
             }
         }
 
-        /* Stats */
+        /* Stats / Impact (Google Shopping style: card grid) */
         .stats-row {
-            display: flex;
-            gap: 3rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 2rem;
             margin: 3rem 0;
-            flex-wrap: wrap;
-            padding: 2rem;
-            background: var(--accent);
-            border-radius: 16px;
         }
 
         .stat-item {
-            text-align: left;
+            text-align: center;
+            padding: 2rem;
+            background: var(--bg-alt);
+            border-radius: 12px;
+            border: 1px solid var(--border);
         }
 
         .stat-number {
@@ -621,9 +783,8 @@
         }
 
         .stat-label {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: var(--text-secondary);
-            max-width: 140px;
         }
 
         /* Image */
@@ -733,19 +894,6 @@
             .segment-arrow {
                 transform: rotate(90deg);
             }
-        }
-
-        /* Divider */
-        .divider {
-            max-width: 960px;
-            margin: 0 auto;
-            padding: 0 3rem;
-        }
-
-        .divider hr {
-            border: none;
-            height: 1px;
-            background: var(--border);
         }
 
         /* Next Project */
@@ -869,9 +1017,9 @@
 <body>
     <script>
         // Authentication check (DISABLED - uncomment to enable)
-        // if (sessionStorage.getItem('portfolio_auth') !== 'true') {
-        //     window.location.href = 'login.html';
-        // }
+        if (sessionStorage.getItem('portfolio_auth') !== 'true') {
+            window.location.href = 'login.html';
+        }
     </script>
 
     <!-- Navigation -->
@@ -909,30 +1057,48 @@
     <!-- Intro -->
     <section class="case-section intro">
         <p>
-            Over three years, I led the design of ad formats across Snapchat's surfaces, shaping how ads across different verticals look and behave. I helped evolve Snapchat's advertising experience from a patchwork of legacy patterns into a more mature, scalable system, while also driving improvements in ad performance and revenue.
+            Advertising design is often treated as a necessary evil—something to maximize for clicks while minimizing user complaints. I've always believed it can be more than that. The best ads don't feel like interruptions. They feel like they belong.
         </p>
         <p>
-            The work focused on making ads feel native to the product, grounding design decisions in real user behavior, and improving ad performance by earning consideration rather than forcing clicks.
-        </p>
-        <p>
-            Below are a few selected highlights and key learnings from this work.
+            My time on Snap's ads team was spent pursuing that belief: designing formats that respect how people actually use Snapchat, deliver real value to advertisers, and protect the trust that makes our platform special. The best-performing ads didn't win by shouting louder. They won by feeling like part of the experience—same language, same rhythms, same expectations as organic content.
         </p>
     </section>
 
-    <!-- Section 1: Winning the First Few Seconds -->
+    <!-- Designing for How People Actually Behave -->
     <section class="case-section">
-        <h2 class="section-title">Winning the First Few Seconds</h2>
+        <h2 class="section-title--large">Designing for How People Actually Behave</h2>
+        <p>
+            Every design decision started with the same question: how do people naturally use Snapchat, and how can ads fit into that behavior rather than fight against it?
+        </p>
+        <h3 class="topic-heading">Setting interaction guardrails</h3>
+        <p>
+            Snapchat users tap quickly. They're skipping through Stories at a pace that makes accidental clicks almost inevitable. We introduced a delay before tap targets become active, and reserved screen edges for navigation. These guardrails dramatically improved click quality—ensuring that when someone taps, they meant to. At the system level, this work shifted success metrics away from raw CTR toward higher-quality engagement and more reliable downstream signals.
+        </p>
+        <div class="media-single">
+            <img src="images/ad formats/ui guardrails.jpg" alt="Navigation and activation zones">
+        </div>
 
-        <p>
-            The first and most important step in the ad funnel is not the click. It is getting people to stay long enough to give the ad a real chance.
-        </p>
-        <p>
-            On Snapchat, people move fast. Tapping to skip is instinctive, not dismissive. Through behavioral analysis and research, we learned that consideration only begins after users spend a few seconds with the content. If an ad fails to earn that moment, everything downstream—clicks, installs, conversions—is compromised.
-        </p>
-        <p>
-            I focused on making the opening moments of an ad easier to engage with. The goal was to quickly communicate value and relevance so users were more likely to pause instead of immediately skipping.
-        </p>
+        <div class="split-row">
+            <div class="split-row-text">
+                <h3 class="topic-heading">CTA progressive disclosure</h3>
+                <p>
+                    CTAs evolve over time—subtle at first, then more prominent after 3+ seconds when we know someone is actually watching. The ad card appears after a short delay, then expands and becomes more prominent later, aligning with moments when users are more likely to engage intentionally.
+                </p>
+                <p>
+                    We tested several variants of the delay (500ms, 750ms, 1000ms) and expansion (2.5s, 3s, 4s) and launched the most performant one (1s, 3s). Accidental clicks were reduced by 47%, while high-quality clicks increased by 33%.
+                </p>
+            </div>
+            <div class="split-row-media">
+                <video autoplay loop muted playsinline>
+                    <source src="images/ad formats/progressive disclosure.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
 
+        <h3 class="topic-heading">Multi-segment story ads</h3>
+        <p>
+            People post multiple Snaps in a Story. It's a natural behavior—so why should ads be limited to one frame? I designed story ads that unfold across multiple segments, giving advertisers room to tell a story while matching how organic content works. First the brand video, then product tiles. It mirrors how friends share, not how billboards shout.
+        </p>
         <div class="use-cases-grid">
             <div class="use-case-item">
                 <img src="images/ad formats/app_install_2.jpg" alt="App Install Ad">
@@ -950,113 +1116,48 @@
             </div>
         </div>
 
-        <p>
-            Most product ads are boring, with a plain staging background. I proposed using GenAI to dynamically generate backgrounds by understanding the product tags in the catalog and user profile, to vividly showcase how the product is used in different occasions.
-        </p>
-
-        <div class="before-after-comparison">
-            <div class="comparison-item">
-                <p class="comparison-label">Before</p>
-                <img src="images/ad formats/single dpa before.png" alt="Plain staging background">
-                <p class="comparison-caption">Plain staging background</p>
+        <h3 class="topic-heading">Dynamic product ad</h3>
+        <div class="split-row">
+            <div class="split-row-text">
+                <p>
+                    Eye-tracking studies we ran showed that Snapchatters' attention goes to two places when watching an ad: the content itself, and the brand attribution. Almost no one looks at the bottom—where most CTAs traditionally lived. Visual attention concentrated near the top and center of the screen, while most of our legacy CTAs lived lower down. This insight led us to redesign where and how calls-to-action appear, bringing them closer to where people actually look.
+                </p>
             </div>
-            <div class="comparison-item">
-                <p class="comparison-label">After</p>
-                <video autoplay loop muted playsinline>
-                    <source src="images/ad formats/single dpa after.mp4" type="video/mp4">
-                </video>
-                <p class="comparison-caption">GenAI backgrounds stitched together</p>
+            <div class="split-row-media split-row-media--small">
+                <img src="images/ad formats/eye tracking study.png" alt="Eye-tracking study: attention heatmap">
             </div>
         </div>
-    </section>
-
-    <div class="divider"><hr></div>
-
-    <!-- Section 2: Turning Attention into Consideration -->
-    <section class="case-section">
-        <h2 class="section-title">Turning Attention into Consideration</h2>
-
         <p>
-            Users who remain after the first few seconds are no longer passive viewers. They are showing early intent, and the experience should respond accordingly.
-        </p>
-        <p>
-            Research and behavioral data showed that consideration builds gradually. Higher-quality engagement begins several seconds into the experience, not immediately on load. Showing all interactive elements upfront often overwhelms users or distracts from the content itself.
-        </p>
-        <p>
-            I led multiple projects focused on supporting consideration for these deeper viewers.
-        </p>
-
-        <p class="section-subtitle">Progressive Disclosure</p>
-        <p>
-            Instead of presenting all actions at once, the ad experience evolves over time. The ad card appears after a short delay, then expands and becomes more prominent later, aligning with moments when users are more likely to engage intentionally.
-        </p>
-        <div class="media-single">
-            <video autoplay loop muted playsinline>
-                <source src="images/ad formats/progressive disclosure.mp4" type="video/mp4">
-            </video>
-        </div>
-        <p>
-            We tested several variants of the delay (500ms, 750ms, 1000ms) and expansion (2.5s, 3s, 4s) and launched the most performant one (1s, 3s). Accidental clicks were reduced by 47%, while high-quality clicks increased by 33%.
-        </p>
-
-        <p class="section-subtitle">Redesigned Dynamic Product Ads</p>
-        <p>
-            Eye-tracking studies showed that visual attention concentrated near the top and center of the screen, while most of our legacy CTAs lived lower down. I redesigned these formats with larger, more prominent product tiles placed in attention-dense areas so interaction aligned with where people naturally look.
+            A direct outcome of this insight is my redesign of DPA Collection Ads, a format to dynamically display advertisers' products from a catalog. I upgraded the tiny product tiles placed at the bottom to larger, more prominent product tiles placed in attention-dense areas so interaction aligned with where people naturally look.
         </p>
         <div class="media-single">
             <img src="images/ad formats/domino.jpg" alt="Redesigned Dynamic Product Ad layout">
         </div>
         <p>
-            <strong>Impact:</strong> This became the biggest product ad format evolution in the last 5 years. The launch drove +89.2% conversion rate and +39% dynamic product ad revenue.
+            This became the biggest product ad format evolution in the last 5 years.
         </p>
-    </section>
-
-    <div class="divider"><hr></div>
-
-    <!-- Section 3: Good Clicks -->
-    <section class="case-section">
-        <h2 class="section-title">We Do Not Want Just Clicks. We Want the <span class="highlight">Good</span> Clicks.</h2>
-
-        <p>
-            Many early interactions with an ad can be accidental, driven by navigation rather than interest. Optimizing for raw click volume creates noisy signals and degrades both user experience and advertiser performance.
-        </p>
-        <p>
-            To address this, I focused on designing guardrails that protect intent.
-        </p>
-        <p>
-            I defined clearer navigation and activation zones so skipping content remained easy, while intentional engagement required deliberate action.
-        </p>
-        <div class="media-single">
-            <img src="images/ad formats/ui guardrails.jpg" alt="Navigation and activation zones">
+        <div class="stats-row">
+            <div class="stat-item">
+                <div class="stat-number">+89.2%</div>
+                <div class="stat-label">Conversion rate</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">+39%</div>
+                <div class="stat-label">Dynamic product ad revenue</div>
+            </div>
         </div>
-        <p>
-            At the system level, this work shifted success metrics away from raw CTR toward higher-quality engagement and more reliable downstream signals.
-        </p>
     </section>
 
-    <div class="divider"><hr></div>
-
-    <!-- Section 4: The Most Effective Ads Do Not Feel Like Ads -->
+    <!-- Sponsored Snaps: standalone section -->
     <section class="case-section">
-        <h2 class="section-title">The Most Effective Ads Do Not Feel Like Ads</h2>
+        <h2 class="section-title--large">Launching Sponsored Snaps: Snap's first ad format on Chat.</h2>
         <p>
-            Across all stages of the funnel, the strongest results consistently came from ads that felt native to the product.
+            In 2024, we launched Sponsored Snaps—the first time Snapchat monetized the Chat tab, where people connect with their closest friends. It was the most sensitive surface we'd ever touched with advertising, and I led the 0→1 design of this format, defining the user experience, interaction model, and guardrails from scratch.
         </p>
-        <p>
-            A significant part of my work focused on cleaning up and unifying ad UI so formats felt consistent with Snapchat's organic language. This included reducing visual clutter, borrowing from familiar elements like captions and stickers, and aligning interaction patterns across surfaces so ads no longer felt layered on top of the experience.
-        </p>
-        <!-- Visual: to be added -->
-
-        <p class="section-subtitle">Sponsored Snaps</p>
-        <p>
-            This philosophy culminated in <strong>Sponsored Snaps</strong>, Snapchat's first ad product in Chat and the most sensitive surface in the app.
-        </p>
-        <p>
-            As the lead designer, I took Sponsored Snaps from early concept through executive pitch and approval, defining how ads could exist in a highly personal, high-frequency space without breaking social norms. The guiding principle was simple: <strong>it should feel like your favorite brand sent you a Snap, not like you were shown an ad.</strong>
-        </p>
-        <p>
-            Imagine getting a Snap from Starbucks. You open it, reply with a quick emoji, and suddenly you're craving that pumpkin spice latte. That's the experience we designed for—Sponsored Snaps blend seamlessly into the chat feed, reuse familiar affordances, and respect expectations users already have for messaging.
-        </p>
+        <div class="design-challenge-box">
+            <div class="design-challenge-box__label">The design challenge</div>
+            <p class="design-challenge-box__text">The Chat tab is where you talk to your best friends. Putting an ad there felt risky—even to us. The bar for 'feeling right' was higher than anything we'd done before.</p>
+        </div>
 
         <div class="media-row-3">
             <div class="media-row-item" style="transform: scale(0.96); transform-origin: top center;">
@@ -1074,28 +1175,73 @@
             </div>
         </div>
 
+        <h3 class="topic-heading">Designed to feel like a Snap</h3>
         <p>
-            We've since expanded Sponsored Snaps beyond brand takeovers. Creators can now send Snaps directly to their followers on special occasions like birthdays, creating direct, personal engagement with fans.
+            A Sponsored Snap arrives just like any other Snap—sitting in your Chat feed, from a brand instead of a friend. You tap to open it. It feels immediate and personal, the way Snaps should. If the brand has a Story, it appears in the Chat header naturally. Everything was designed to respect the patterns people already know.
         </p>
 
-        <div class="media-single">
-            <video autoplay loop muted playsinline>
-                <source src="images/ad formats/sponsored snaps/creator.mp4" type="video/mp4">
-            </video>
-        </div>
-
-        <p class="section-subtitle">Sponsored Slots on Maps</p>
+        <h3 class="topic-heading">Real conversation, not just broadcast</h3>
         <p>
-            The same principle—ads that don't feel like ads—drove a newer format idea. We used to show ads mainly for physical stores, which captured only a small slice of the real economy. I proposed adding lightweight, contextual ad slots in places where people already expect to see promotion in the real world: for example, billboards along highways in Maps. That concept became <strong>Sponsored Slots on Maps</strong>. The pitch was well received by leadership and is being prioritized.
+            Unlike traditional ads, Sponsored Snaps open into a Chat experience. Users can see links, saved Chats, even respond with freeform messages or prompts. The advertiser receives these responses. It's advertising that invites dialogue rather than demanding attention.
         </p>
-        <div class="media-single">
-            <video autoplay loop muted playsinline>
-                <source src="images/ad formats/sponsored snaps/billboard ad.mp4" type="video/mp4">
-            </video>
+
+        <div class="impact-box">
+            <div class="impact-box__label">Impact</div>
+            <p class="impact-box__text">I filed 3 design patterns for this innovative new format. By bringing a native, chat-first ad experience to life, Sponsored Snaps outperformed benchmark formats in CTR and downstream actions. The format quickly became one of the most effective ways for advertisers to reach Snapchatters, supporting Snap's ads revenue growth in 2025.</p>
         </div>
     </section>
 
-    <div class="divider"><hr></div>
+    <!-- Exploring New Monetization Opportunities -->
+    <section class="case-section">
+        <h2 class="section-title--large">Exploring New Monetization Opportunities</h2>
+        <p>
+            Beyond shipped features, a big part of my role was exploring what's next—concepts that push the business forward while staying true to Snapchat's experience. Many of these I pitched directly to leadership.
+        </p>
+
+        <div class="explore-list">
+            <div class="explore-item">
+                <div class="explore-item-text">
+                    <h3 class="topic-heading">Sponsored Slots on Maps</h3>
+                    <p>
+                        We used to show ads mainly for physical stores, which captured only a small slice of the real economy. I proposed adding lightweight, contextual ad slots in places where people already expect to see promotion in the real world: for example, billboards along highways in Maps. That concept became <strong>Sponsored Slots on Maps</strong>. The pitch was well received and is being prioritized.
+                    </p>
+                </div>
+                <div class="explore-item-media">
+                    <video autoplay loop muted playsinline>
+                        <source src="images/ad formats/sponsored snaps/billboard ad.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+
+            <div class="explore-item">
+                <div class="explore-item-text">
+                    <h3 class="topic-heading">Creators’ birthday wishes</h3>
+                    <p>
+                        We've expanded Sponsored Snaps beyond brand takeovers. Creators can now send Snaps directly to their followers on special occasions like birthdays, creating direct, personal engagement with fans.
+                    </p>
+                </div>
+                <div class="explore-item-media">
+                    <video autoplay loop muted playsinline>
+                        <source src="images/ad formats/sponsored snaps/creator.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+
+            <div class="explore-item">
+                <div class="explore-item-text">
+                    <h3 class="topic-heading">Making product ads feel personal</h3>
+                    <p>
+                        Dynamic Product Ads (DPA) often felt cold and catalog-like. I explored using audience signals—age, location, interests—to generate contextually relevant backgrounds with GenAI. A backpack shown in a college dorm for a student. The same backpack in an office for a young professional. Same product, but it suddenly feels like it belongs in your life.
+                    </p>
+                </div>
+                <div class="explore-item-media">
+                    <video autoplay loop muted playsinline>
+                        <source src="images/ad formats/single dpa after.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Takeaway -->
     <section class="case-section">
@@ -1111,8 +1257,8 @@
     <!-- Next Project -->
     <section class="next-project">
         <p class="next-project-label">Next Project</p>
-        <h2>Google Shopping</h2>
-        <a href="google-shopping.html">
+        <h2>Google Ads</h2>
+        <a href="google-ads.html">
             View case study
             <span>→</span>
         </a>

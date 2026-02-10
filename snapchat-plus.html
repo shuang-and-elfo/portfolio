@@ -195,6 +195,27 @@
             letter-spacing: -0.02em;
         }
 
+        .section-divider {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 3rem 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .section-number {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            background: var(--text);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 32px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
         .case-content h3 {
             font-family: 'Sora', sans-serif;
             font-size: 1.25rem;
@@ -460,9 +481,9 @@
 <body>
     <script>
         // Authentication check (DISABLED - uncomment to enable)
-        // if (sessionStorage.getItem('portfolio_auth') !== 'true') {
-        //     window.location.href = 'login.html';
-        // }
+        if (sessionStorage.getItem('portfolio_auth') !== 'true') {
+            window.location.href = 'login.html';
+        }
     </script>
     <!-- Navigation -->
     <nav id="nav">
@@ -541,6 +562,9 @@
         </div>
     </section>
 
+    <div class="section-divider">
+        <span class="section-number">1</span>
+    </div>
     <!-- Process -->
     <section class="case-content">
         <h2>My Approach</h2>
@@ -589,6 +613,9 @@
         </div>
     </div>
 
+    <div class="section-divider">
+        <span class="section-number">2</span>
+    </div>
     <!-- Key Features -->
     <section class="case-content">
         <h2>Key Features Designed</h2>

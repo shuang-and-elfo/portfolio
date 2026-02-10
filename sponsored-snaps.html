@@ -165,11 +165,32 @@
 
         .section-title {
             font-family: 'Sora', sans-serif;
-            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-size: 2rem;
             font-weight: 600;
             margin-bottom: 2rem;
             letter-spacing: -0.02em;
-            line-height: 1.2;
+            line-height: 1.3;
+        }
+
+        .section-divider {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 4rem 3rem 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .section-number {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            background: var(--text);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 32px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
         }
 
         .section-subtitle {
@@ -255,16 +276,20 @@
             line-height: 1.7;
         }
 
-        /* Stats */
+        /* Stats / Impact (Google Shopping style) */
         .stats-row {
-            display: flex;
-            gap: 3rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 2rem;
             margin: 3rem 0;
-            flex-wrap: wrap;
         }
 
         .stat-item {
-            text-align: left;
+            text-align: center;
+            padding: 2rem;
+            background: var(--bg-alt);
+            border-radius: 12px;
+            border: 1px solid var(--border);
         }
 
         .stat-number {
@@ -390,6 +415,10 @@
                 padding: 3rem 1.5rem;
             }
 
+            .section-divider {
+                padding: 4rem 1.5rem 0;
+            }
+
             .case-image {
                 padding: 0 1.5rem;
             }
@@ -434,9 +463,9 @@
 <body>
     <script>
         // Authentication check (DISABLED - uncomment to enable)
-        // if (sessionStorage.getItem('portfolio_auth') !== 'true') {
-        //     window.location.href = 'login.html';
-        // }
+        if (sessionStorage.getItem('portfolio_auth') !== 'true') {
+            window.location.href = 'login.html';
+        }
     </script>
 
     <!-- Navigation -->
@@ -484,8 +513,9 @@
         </p>
     </section>
 
-    <div class="divider"><hr></div>
-
+    <div class="section-divider">
+        <span class="section-number">1</span>
+    </div>
     <!-- Native to Organic -->
     <section class="case-section">
         <h2 class="section-title">Designing for How People Actually Behave</h2>
@@ -539,8 +569,9 @@
         </p>
     </section>
 
-    <div class="divider"><hr></div>
-
+    <div class="section-divider">
+        <span class="section-number">2</span>
+    </div>
     <!-- Sponsored Snaps -->
     <section class="case-section">
         <h2 class="section-title">Sponsored Snaps: A New Surface, A New Responsibility</h2>
@@ -588,11 +619,12 @@
         </div>
     </section>
 
-    <div class="divider"><hr></div>
-
+    <div class="section-divider">
+        <span class="section-number">3</span>
+    </div>
     <!-- Explorations -->
     <section class="case-section">
-        <h2 class="section-title">Always Exploring</h2>
+        <h2 class="section-title">Exploring New Monetization Opportunities</h2>
         <p>
             Beyond shipped features, a big part of my role was exploring what's next—concepts that push the business forward while staying true to Snapchat's experience. Many of these I pitched directly to our CEO.
         </p>
@@ -613,8 +645,9 @@
         </p>
     </section>
 
-    <div class="divider"><hr></div>
-
+    <div class="section-divider">
+        <span class="section-number">4</span>
+    </div>
     <!-- Reflection -->
     <section class="case-section">
         <h2 class="section-title">What I Learned</h2>

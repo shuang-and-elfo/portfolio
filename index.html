@@ -49,7 +49,7 @@
         }
 
         ::selection {
-            background: var(--coral);
+            background: var(--blush);
             color: var(--text);
         }
 
@@ -423,17 +423,13 @@
             overflow: hidden;
             aspect-ratio: 4/3;
             background: var(--border);
+            transition: transform 0.4s ease;
         }
 
         .project-image img {
             width: 100%;
             height: auto;
             object-fit: contain;
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .project-card:hover .project-image img {
-            transform: scale(1.05);
         }
 
         .project-image-placeholder {
@@ -443,11 +439,6 @@
             align-items: center;
             justify-content: center;
             font-size: 4rem;
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .project-card:hover .project-image-placeholder {
-            transform: scale(1.1);
         }
 
         .project-image::before {
@@ -472,6 +463,11 @@
             font-weight: 600;
             margin-bottom: 0.75rem;
             letter-spacing: -0.02em;
+        }
+
+        .project-content h3 a {
+            color: inherit;
+            text-decoration: none;
         }
 
         .project-meta {
@@ -989,7 +985,7 @@
                 </a>
                 <div class="project-content">
                     <span class="project-number">01</span>
-                    <h3>Driving Snapchat+'s subscription growth</h3>
+                    <h3><a href="snapchat-plus.html">Driving Snapchat+'s subscription growth</a></h3>
                     <p class="project-meta">Snap Inc. • Subscription • 2023–Present</p>
                     <p class="project-description">
                         Design owner for Snapchat+, driving product direction and subscriber experience. Grew the subscription from 3M to 24M subscribers over two years by defining the roadmap with PMs and pitching major features directly to CEO Evan Spiegel.
@@ -1009,13 +1005,13 @@
             <!-- Project 2 -->
             <article class="project-card">
                 <a href="ad-formats.html" class="project-image-link">
-                    <div class="project-image" style="background: linear-gradient(135deg, #c4a1ff 0%, #f8b4d9 100%);">
-                        <div class="project-image-placeholder">📱</div>
+                    <div class="project-image">
+                        <img src="images/thumbnail-ad-formats.jpg" alt="Snap Ad Formats">
                     </div>
                 </a>
                 <div class="project-content">
                     <span class="project-number">02</span>
-                    <h3>Making ads feel native on Snapchat</h3>
+                    <h3><a href="ad-formats.html">Making ads feel native on Snapchat</a></h3>
                     <p class="project-meta">Snap Inc. • Ad Formats • 2021–2024</p>
                     <p class="project-description">
                         Leading design strategy for Snap's ad formats, a key product area of our $5B ad business. Owned the 0→1 design of Sponsored Snaps, the evolution of Dynamic Product Ads, and other formats—defining user experience, guardrails, and interaction models for ads across Snapchat's most sensitive surfaces.
@@ -1035,21 +1031,22 @@
             <!-- Project 3 -->
             <article class="project-card">
                 <a href="google-ads.html" class="project-image-link">
-                    <div class="project-image" style="background: linear-gradient(135deg, #4285f4 0%, #34a853 100%);">
-                        <div class="project-image-placeholder">📢</div>
+                    <div class="project-image">
+                        <img src="images/thumbnail-google-ads.jpg" alt="Google Ads Smart Campaigns">
                     </div>
                 </a>
                 <div class="project-content">
                     <span class="project-number">03</span>
-                    <h3>Simplifying ad creation for small businesses</h3>
+                    <h3><a href="google-ads.html">Simplifying ad creation for small businesses</a></h3>
                     <p class="project-meta">Google • AdWords Smart Campaigns • 2018–2019</p>
                     <p class="project-description">
                         Redesigned the Smart Campaigns signup experience from 13 steps with 14.5% conversion to a streamlined flow with +7.94% improvement. Built campaign management tools and auto-generated landing pages adopted by 90k+ advertisers.
                     </p>
                     <div class="project-tags">
-                        <span class="tag">SMB Products</span>
+                        <span class="tag">Ads & Monetization</span>
+                        <span class="tag">Desktop Web</span>
                         <span class="tag">Signup UX</span>
-                        <span class="tag">Ads</span>
+                        <span class="tag">Dashboard design</span>
                     </div>
                     <a href="google-ads.html" class="project-link">
                         View case study
@@ -1061,13 +1058,13 @@
             <!-- Project 4 -->
             <article class="project-card">
                 <a href="google-shopping.html" class="project-image-link">
-                    <div class="project-image" style="background: linear-gradient(135deg, #a8d8ea 0%, #d4f0f0 100%);">
-                        <div class="project-image-placeholder">🛒</div>
+                    <div class="project-image">
+                        <img src="images/thumbnail-google-shopping.jpg" alt="Google Shopping">
                     </div>
                 </a>
                 <div class="project-content">
                     <span class="project-number">04</span>
-                    <h3>Personalizing product discovery</h3>
+                    <h3><a href="google-shopping.html">Personalizing product discovery</a></h3>
                     <p class="project-meta">Google • Shopping • 2020–2021</p>
                     <p class="project-description">
                         Redesigned the Google Shopping homepage with personalized product discovery and confidence-building features. Drove +22.59% increase in Add to Carts and +5.65% whole page engagement.

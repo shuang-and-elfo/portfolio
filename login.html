@@ -194,12 +194,12 @@
     </div>
 
     <script>
-        const PORTFOLIO_PASSWORD = 'shuang2026';
+        const PORTFOLIO_PASSWORD = '2026';
         const letsGoBtn = document.getElementById('letsGo');
         
         function checkLength() {
             const input = document.getElementById('password').value;
-            if (input.length > 6) {
+            if (input.length >= 4) {
                 letsGoBtn.classList.add('visible');
             } else {
                 letsGoBtn.classList.remove('visible');

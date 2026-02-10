@@ -387,6 +387,10 @@
             transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
+        .project-card--hidden {
+            display: none !important;
+        }
+
         .project-card.visible {
             opacity: 1;
             transform: translateY(0);
@@ -938,9 +942,9 @@
 <body>
     <script>
         // Check authentication (DISABLED - uncomment to enable)
-        // if (sessionStorage.getItem('portfolio_auth') !== 'true') {
-        //     window.location.href = 'login.html';
-        // }
+        if (sessionStorage.getItem('portfolio_auth') !== 'true') {
+            window.location.href = 'login.html';
+        }
     </script>
     <!-- Navigation -->
     <nav id="nav">
@@ -976,8 +980,8 @@
     <section class="projects" id="work">
 
         <div class="projects-grid">
-            <!-- Project 1 -->
-            <article class="project-card">
+            <!-- Project 1: Snapchat+ (hidden until ready) -->
+            <article class="project-card project-card--hidden">
                 <a href="snapchat-plus.html" class="project-image-link">
                     <div class="project-image" style="background: linear-gradient(135deg, #FFFC00 0%, #ffe066 100%);">
                         <div class="project-image-placeholder">👻</div>

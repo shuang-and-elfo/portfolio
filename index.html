@@ -5,9 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
     <title>Shuang Li | Product Designer</title>
+    <!-- Open Graph / iMessage, WhatsApp, etc. -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Shuang Li | Product Designer">
+    <meta property="og:description" content="Product designer with 10+ years building products used by millions. Leading design for Snapchat+ and ad formats at Snap.">
+    <meta property="og:url" content="https://shuangli.design/">
+    <meta property="og:image" content="https://shuangli.design/images/shuang-photo.png">
+    <meta property="og:site_name" content="Shuang Li">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Shuang Li | Product Designer">
+    <meta name="twitter:description" content="Product designer with 10+ years building products used by millions. Leading design for Snapchat+ and ad formats at Snap.">
+    <meta name="twitter:image" content="https://shuangli.design/images/shuang-photo.png">
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
     <link rel="apple-touch-icon" href="images/logo.png">
+    <!-- Google Analytics (GA4) - Replace G-BW7NH0PNB9 with your Measurement ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BW7NH0PNB9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-BW7NH0PNB9');
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -38,6 +58,7 @@
 
         html {
             scroll-behavior: smooth;
+            overflow-x: hidden;
         }
 
         body {
@@ -46,6 +67,15 @@
             background: #ffffff;
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            -webkit-text-size-adjust: 100%;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        img, video {
+            max-width: 100%;
+            height: auto;
         }
 
         ::selection {

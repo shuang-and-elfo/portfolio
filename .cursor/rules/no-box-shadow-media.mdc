@@ -1,0 +1,10 @@
+---
+description: Do not use box-shadow on images or videos unless the user explicitly asks for it
+globs: "**/*.html"
+alwaysApply: false
+---
+
+# Media: No box-shadow by default
+
+- Do **not** add `box-shadow` to `img`, `video`, or their wrapper elements (e.g. `.gallery-item`, `.case-image`, `.overview-video-wrap`, `.project-image-link`) unless the user explicitly requests it.
+- This applies to the entire site.

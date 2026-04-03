@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Google Ads Smart Campaigns | Shuang Li</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
+    <link rel="apple-touch-icon" href="images/logo.png">
+    <!-- Google Analytics (GA4) - Replace G-BW7NH0PNB9 with your Measurement ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BW7NH0PNB9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-BW7NH0PNB9');
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #ffffff;
+            --bg-alt: #faf5f3;
+            --text: #1a1a1a;
+            --text-secondary: #1a1a1a;
+            --text-tertiary: #888888;
+            --accent: #faf5f3;
+            --accent-hover: #f5eeeb;
+            --blush: #faf5f3;
+            --peach: #fff0ec;
+            --coral: #f5d8d2;
+            --border: #f0e4e0;
+            --shadow: rgba(245, 216, 210, 0.3);
+            --shadow-hover: 0 8px 24px rgba(245, 216, 210, 0.4);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            -webkit-user-select: text !important;
+            user-select: text !important;
+        }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            -webkit-text-size-adjust: 100%;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            -webkit-user-select: text !important;
+            user-select: text !important;
+        }
+
+        *,
+        *::before,
+        *::after {
+            -webkit-user-select: text !important;
+            user-select: text !important;
+        }
+
+        img, video {
+            max-width: 100%;
+            height: auto;
+        }
+
+        ::selection {
+            background: var(--lavender);
+            color: var(--text);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            transition: box-shadow 0.3s ease, background 0.3s ease;
+        }
+
+        nav.scrolled {
+            box-shadow: 0 1px 0 var(--border);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-logo:hover {
+            opacity: 0.7;
+        }
+
+        .nav-logo img {
+            height: 50px;
+            width: 50px;
+            object-fit: contain;
+        }
+
+        .nav-back {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            transition: color 0.3s, gap 0.3s;
+        }
+
+        .nav-back:hover {
+            color: var(--text);
+            gap: 0.75rem;
+        }
+
+        /* Hero */
+        .case-hero {
+            padding: 10rem 3rem 6rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            -webkit-user-select: text;
+            user-select: text;
+        }
+
+        .case-hero-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-tertiary);
+            margin-bottom: 1rem;
+        }
+
+        .case-hero h1 {
+            font-family: 'Sora', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+        }
+
+        .case-hero-description {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 1200px;
+            line-height: 1.7;
+            margin-bottom: 3rem;
+        }
+
+        .case-meta {
+            display: flex;
+            gap: 3rem;
+            flex-wrap: wrap;
+            padding: 2rem 0;
+        }
+
+        .meta-item h4 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-tertiary);
+            margin-bottom: 0.5rem;
+        }
+
+        .meta-item p {
+            font-size: 1rem;
+            color: var(--text);
+        }
+
+        /* Hero Image */
+        .case-hero-image {
+            width: 100%;
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 3rem;
+        }
+
+        .case-hero-image .image-container {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: var(--bg-alt);
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .case-hero-image .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Media in case study */
+        .media-single {
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .media-single img,
+        .media-single video {
+            max-width: 100%;
+            border-radius: 12px;
+        }
+
+        .media-single--small {
+            max-width: 70%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Chart with 7:3 ratio and vertically centered right-side text */
+        .chart-with-legend {
+            display: grid;
+            grid-template-columns: 7fr 3fr;
+            gap: 0;
+            margin: 2rem 0;
+            max-width: 100%;
+            align-items: stretch;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .chart-with-legend .chart-image-wrap {
+            min-width: 0;
+        }
+
+        .chart-with-legend .chart-image-wrap img {
+            width: 100%;
+            height: auto;
+            display: block;
+            vertical-align: top;
+        }
+
+        .chart-with-legend .chart-legend-panel {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 1.5rem 2rem;
+            background: #fff;
+        }
+
+        .chart-with-legend .chart-legend-panel .chart-copy {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.9;
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .chart-with-legend {
+                grid-template-columns: 1fr;
+            }
+            .chart-with-legend .chart-legend-panel {
+                align-items: center;
+                text-align: center;
+            }
+        }
+
+        .media-row-2,
+        .media-row-3 {
+            display: grid;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .media-row-2 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .media-row-3 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .media-row-item img,
+        .media-row-item video {
+            width: 100%;
+            border-radius: 12px;
+            display: block;
+        }
+
+        /* Before/After tabbed slideshow (pill style like nav Work/About) */
+        .before-after-slideshow {
+            margin: 2.5rem 0;
+            max-width: 100%;
+        }
+
+        .ba-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .ba-tab {
+            padding: 0.5rem 1rem;
+            font-family: 'Sora', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+            background: transparent;
+            border: 1px solid transparent;
+            border-radius: 100px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .ba-tab:hover {
+            color: var(--text);
+            background: var(--blush);
+            border-color: var(--coral);
+            box-shadow: 0 4px 16px rgba(245, 216, 210, 0.5);
+        }
+
+        .ba-tab.active {
+            color: var(--text);
+            background: var(--blush);
+            border-color: var(--coral);
+        }
+
+        .ba-slides {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ba-slide {
+            display: none;
+            width: 100%;
+        }
+
+        .ba-slide.active {
+            display: block;
+        }
+
+        .ba-slide img {
+            width: 100%;
+            height: auto;
+            display: block;
+            vertical-align: top;
+        }
+
+        /* Image carousel with dots */
+        .media-carousel {
+            margin: 2rem 0;
+            max-width: 100%;
+            position: relative;
+        }
+
+        .media-carousel .carousel-slides {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .media-carousel .carousel-slide {
+            display: none;
+            width: 100%;
+        }
+
+        .media-carousel .carousel-slide.active {
+            display: block;
+        }
+
+        .media-carousel .carousel-slide img {
+            width: 100%;
+            height: auto;
+            display: block;
+            vertical-align: top;
+        }
+
+        .media-carousel .carousel-chevron {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 2;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--text);
+            cursor: pointer;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            transition: background 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+        }
+
+        .media-carousel .carousel-chevron:hover:not(:disabled) {
+            background: #fff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .media-carousel .carousel-chevron.carousel-prev {
+            left: 1rem;
+        }
+
+        .media-carousel .carousel-chevron.carousel-next {
+            right: 1rem;
+        }
+
+        .media-carousel .carousel-chevron svg {
+            width: 20px;
+            height: 20px;
+            stroke: currentColor;
+        }
+
+        .media-carousel .carousel-chevron:disabled {
+            opacity: 0.35;
+            cursor: not-allowed;
+        }
+
+        .media-carousel .carousel-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .media-carousel .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.4rem;
+            align-items: center;
+        }
+
+        .media-carousel .carousel-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            border: none;
+            padding: 0;
+            background: var(--border);
+            cursor: pointer;
+            transition: background 0.25s ease, transform 0.25s ease;
+        }
+
+        .media-carousel .carousel-dot:hover {
+            background: var(--text-tertiary);
+        }
+
+        .media-carousel .carousel-dot.active {
+            background: var(--text);
+            transform: scale(1.15);
+        }
+
+        /* Content Sections */
+        .case-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 3rem;
+            -webkit-user-select: text;
+            user-select: text;
+        }
+
+        .section-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            background: var(--text);
+            color: #fff;
+            font-family: 'Sora', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .case-content h2 {
+            font-family: 'Sora', sans-serif;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .case-content h3 {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 3rem 0 1rem;
+            color: var(--text);
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .case-content h3:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+
+        .case-content h4 {
+            font-family: 'Sora', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin: 3.5rem 0 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .case-content p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .case-content ul {
+            margin: 1.5rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .case-content li {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: var(--blush);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2.5rem 0;
+        }
+
+        .highlight-box.lavender {
+            background: #f0e8f8;
+        }
+
+        .highlight-box.soft-blue {
+            background: #e8f4f8;
+        }
+
+        .highlight-box h4 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-tertiary);
+            margin-bottom: 1rem;
+        }
+
+        .highlight-box p {
+            font-size: 1.1rem;
+            color: var(--text);
+            margin-bottom: 0;
+        }
+
+        /* Impact launch line (above stats) */
+        .impact-launch {
+            text-align: center;
+            font-family: 'Sora', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text);
+            margin: 0 0 2rem;
+            letter-spacing: -0.02em;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .impact-num {
+            font-weight: 700;
+        }
+
+        .stat-number {
+            font-family: 'Sora', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Before After */
+        .before-after {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .before-after-item {
+            min-width: 0;
+            padding: 2rem 2rem 2.25rem;
+            border-radius: 16px;
+            border: 1px solid transparent;
+            transition: transform 0.2s ease;
+        }
+
+
+        .before-after-item.before {
+            background: linear-gradient(160deg, #fef6f6 0%, #fdf2f2 100%);
+            border-color: rgba(190, 130, 130, 0.2);
+        }
+
+        .before-after-item.after {
+            background: linear-gradient(160deg, #f4fbf6 0%, #eef8f1 100%);
+            border-color: rgba(130, 170, 130, 0.2);
+        }
+
+        .before-after-item h5 {
+            font-family: 'Sora', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            margin-bottom: 1.25rem;
+            color: var(--text-tertiary);
+        }
+
+        .before-after-item ul {
+            margin: 0;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .before-after-item li {
+            font-size: 0.95rem;
+            line-height: 1.65;
+            margin-bottom: 0.65rem;
+            padding-left: 1.35rem;
+            position: relative;
+            color: var(--text-secondary);
+        }
+
+        .before-after-item li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.55em;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: currentColor;
+            opacity: 0.45;
+        }
+
+        .before-after-item.after li::before {
+            opacity: 0.5;
+        }
+
+        /* Image Gallery */
+        .case-gallery {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 3rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .gallery-item {
+            aspect-ratio: 4/3;
+            background: var(--lavender);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .gallery-item.full {
+            grid-column: 1 / -1;
+            aspect-ratio: 2/1;
+        }
+
+        .gallery-item.blue {
+            background: linear-gradient(135deg, #a8d8ea 0%, #d4f0f0 100%);
+        }
+
+        /* Project Cards */
+        .project-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .project-card {
+            padding: 1.5rem;
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+
+        .project-card-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .project-card h4 {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-card p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+            line-height: 1.6;
+        }
+
+        /* Problem Statement */
+        .problem-stat {
+            font-family: 'Sora', sans-serif;
+            font-size: 3rem;
+            text-align: center;
+            padding: 3rem 0;
+            color: var(--text);
+        }
+
+        .problem-stat span {
+            color: #e57373;
+        }
+
+        /* Next Project */
+        .next-project {
+            background: var(--bg-alt);
+            padding: 6rem 3rem;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        .next-project-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-tertiary);
+            margin-bottom: 1rem;
+        }
+
+        .next-project h2 {
+            font-family: 'Sora', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .next-project a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: gap 0.3s;
+        }
+
+        .next-project a:hover {
+            gap: 0.75rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem 3rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: color 0.3s ease, opacity 0.3s ease;
+        }
+
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #FFF0EC;
+            transition: background 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 0.6;
+        }
+
+        .footer-links a:hover::after {
+            background: #1a1a1a;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 0.75rem 1rem;
+            }
+
+            nav.scrolled {
+                padding: 0.75rem 1rem;
+            }
+
+            .nav-logo img {
+                height: 36px;
+                width: 36px;
+            }
+
+            .nav-back {
+                font-size: 0.8rem;
+            }
+
+            .case-hero, .case-content {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+
+            .case-content {
+                padding-top: 2.5rem;
+                padding-bottom: 2.5rem;
+            }
+
+            .case-hero-image, .case-gallery {
+                padding: 0 1rem;
+            }
+
+            .case-meta {
+                gap: 1.5rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                margin: 2rem 0;
+            }
+
+            .stat-item {
+                padding: 1.5rem 1rem;
+            }
+
+            .case-content p {
+                margin-bottom: 1.25rem;
+            }
+
+            .case-content h2 {
+                margin-bottom: 1.25rem;
+            }
+
+            .case-content h3 {
+                margin: 2.5rem 0 0.75rem;
+            }
+
+            .impact-launch {
+                margin-bottom: 1.5rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .media-row-2,
+            .media-row-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-item.full {
+                aspect-ratio: 4/3;
+            }
+
+            .project-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .before-after {
+                grid-template-columns: 1fr;
+            }
+
+            .problem-stat {
+                font-size: 2rem;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+                padding: 2rem 1rem;
+            }
+
+            .next-project {
+                padding: 3rem 1rem;
+            }
+
+            .case-hero {
+                padding-top: 8rem;
+                padding-bottom: 3rem;
+            }
+
+            .case-nav {
+                padding: 2rem 1rem;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .fade-in-delay-1 { animation-delay: 0.1s; }
+        .fade-in-delay-2 { animation-delay: 0.2s; }
+        .fade-in-delay-3 { animation-delay: 0.3s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Force text selection on all content */
+        p, .meta-item, .meta-item *, .hero-impact p, .case-content p, .case-content li, .case-content h2, .case-content h3, span, li, .case-hero, .case-hero * {
+            -webkit-user-select: text !important;
+            user-select: text !important;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // Authentication check (DISABLED - uncomment to enable)
+        if (sessionStorage.getItem('portfolio_auth') !== 'true') {
+            window.location.href = 'login.html';
+        }
+    </script>
+    <!-- Navigation -->
+    <nav id="nav">
+        <a href="index.html" class="nav-back">
+            <span>←</span>
+            Back to home
+        </a>
+        <a href="index.html" class="nav-logo"><img src="images/logo.png" loading="lazy" alt="Shuang Li"></a>
+    </nav>
+
+    <!-- Hero -->
+    <section class="case-hero">
+        <p class="case-hero-label fade-in">Case Study</p>
+        <h1 class="fade-in fade-in-delay-1">Google Ads Smart Campaigns</h1>
+        <p class="case-hero-description fade-in fade-in-delay-2">
+            During my time at Google Ads, I worked on AdWords Express, which later became Google Ads Smart Campaigns, a team focused on helping small businesses run ads on Google effectively. I completely redesigned and revamped the campaign creation and management experience; both launched with strong results. I also led the end to end design of automated business websites so small advertisers could run ads without having a site of their own.
+        </p>
+        <div class="case-meta fade-in fade-in-delay-3">
+            <div class="meta-item">
+                <h4>Role</h4>
+                <p>Interaction Designer</p>
+            </div>
+            <div class="meta-item">
+                <h4>Company</h4>
+                <p>Google</p>
+            </div>
+            <div class="meta-item">
+                <h4>Timeline</h4>
+                <p>Jan 2018 – May 2019</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview -->
+    <section class="case-content">
+        <h2>The Challenge</h2>
+        <p>
+            Google Ads is incredibly powerful, but that power comes with complexity. For small business owners juggling a hundred responsibilities, learning a complex ad platform isn't realistic.
+        </p>
+        <p>
+            That's why we built Smart Campaigns: a campaign type that offers an automated ad experience with no learning curve. My mission was to help small advertisers grow their businesses and compete with the bigger guys.
+        </p>
+
+        <div class="project-cards">
+            <div class="project-card">
+                <div class="project-card-icon">✍️</div>
+                <h4>Signup Redesign</h4>
+                <p>Transformed a 13-step flow with <span class="impact-num">14.5%</span> conversion into a streamlined experience.</p>
+            </div>
+            <div class="project-card">
+                <div class="project-card-icon">📊</div>
+                <h4>Dashboard Redesign</h4>
+                <p>Rebuilt the management experience to show what actually matters to small businesses.</p>
+            </div>
+            <div class="project-card">
+                <div class="project-card-icon">🌐</div>
+                <h4>Ads Landing Pages</h4>
+                <p>Created auto generated business pages for advertisers without websites.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project 1: Signup -->
+    <section class="case-content">
+        <div class="section-num" aria-hidden="true">1</div>
+        <h2>Redesigning the Campaign Creation Experience</h2>
+
+        <div class="chart-with-legend">
+            <div class="chart-image-wrap">
+                <img src="images/google ads/nb-chart.png" loading="lazy" alt="Signup flow funnel: 10 steps with drop-off annotations, 14.5% conversion">
+            </div>
+            <div class="chart-legend-panel">
+                <p class="chart-copy">Our signup flow had 13 steps and a <span class="impact-num">14.5%</span> conversion rate. It was long and repetitive. The visual design was outdated, the language was confusing, and it lacked proper guidance. We needed a complete overhaul.</p>
+            </div>
+        </div>
+
+        <h3>The Process</h3>
+        <p>
+            From the drawing board to UX approval, we spent 4 months with 30+ iterations, testing and refining every step of the experience. We ran several rounds of testing and iterated the experience based on small advertisers’ feedback.
+        </p>
+
+        <div class="media-single">
+            <img src="images/google ads/nb-process.png" loading="lazy" alt="Signup redesign process and iterations">
+        </div>
+
+        <h3>What We Changed</h3>
+        <p>
+            The old flow had an outdated look, long and confusing copy, and an ad creation step that felt intimidating with irrelevant sample ads and complex budget choices. We replaced it with a clean, consistent design, clearer and more conversational language, auto generated ad text suggestions, smart defaults based on the advertiser’s vertical, and budget packages with clear price anchors.
+        </p>
+
+        <div class="media-single">
+            <img src="images/google ads/nb-compare.png" loading="lazy" alt="Visual and copy refresh: before and after">
+        </div>
+
+        <h3>Ad Creation: Before & After</h3>
+        <p>
+            The old ad creation step had a <span class="impact-num">24%</span> drop-off rate. Advertisers felt intimidated and didn't know what to write. The sample ad was irrelevant to their vertical, making it hard to relate.
+        </p>
+        <p>
+            We fixed this with auto generated ad text suggestions, clear expectations about where ads would show, and more conversational language throughout.
+        </p>
+        <div class="before-after-slideshow" data-view="after">
+            <div class="ba-tabs">
+                <button type="button" class="ba-tab" data-tab="before">BEFORE</button>
+                <button type="button" class="ba-tab active" data-tab="after">AFTER</button>
+            </div>
+            <div class="ba-slides">
+                <div class="ba-slide" data-slide="before">
+                    <img src="images/google ads/nb-before-1.png" loading="lazy" alt="Ad creation before">
+                </div>
+                <div class="ba-slide active" data-slide="after">
+                    <img src="images/google ads/nb-after-1.png" loading="lazy" alt="Ad creation after">
+                </div>
+            </div>
+        </div>
+
+        <h3>Budget Selection: Before & After</h3>
+        <p>
+            <span class="impact-num">15%</span> of users dropped off at budget selection. Many tried to "test it out" with the lowest budget possible, which made their campaigns hard to succeed. Showing both views and clicks was confusing since we charge by clicks.
+        </p>
+        <p>
+            We introduced budget packages that offer stronger price anchors, and simplified to show only click estimates so users understand exactly what they're paying for.
+        </p>
+        <div class="before-after-slideshow" data-view="after">
+            <div class="ba-tabs">
+                <button type="button" class="ba-tab" data-tab="before">BEFORE</button>
+                <button type="button" class="ba-tab active" data-tab="after">AFTER</button>
+            </div>
+            <div class="ba-slides">
+                <div class="ba-slide" data-slide="before">
+                    <img src="images/google ads/nb-before-2.png" loading="lazy" alt="Budget selection before">
+                </div>
+                <div class="ba-slide active" data-slide="after">
+                    <img src="images/google ads/nb-after-2.png" loading="lazy" alt="Budget selection after">
+                </div>
+            </div>
+        </div>
+
+        <h3>Smart Defaults That Save Time</h3>
+        <ul>
+            <li><strong>Business vertical → Prefilled keywords:</strong> We recognized your industry and suggested relevant keywords</li>
+            <li><strong>Business vertical → Ad text suggestions:</strong> Auto-generated copy based on what works in your category</li>
+            <li><strong>Sign-in account → Business profile:</strong> Pulled your business info automatically</li>
+            <li><strong>Business profile → Website:</strong> Pre-populated from your existing web presence</li>
+        </ul>
+        <div class="media-single">
+            <img src="images/google ads/nb-defaults.png" loading="lazy" alt="Smart defaults in signup flow">
+        </div>
+
+    </section>
+
+    <section class="case-content">
+        <p>
+            After we fully launched in June 2020, the experience was so well received that it became the default campaign creation flow for all new Google advertisers, even though it was designed for small and medium businesses.
+        </p>
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">+7.94%</div>
+                <div class="stat-label">Conversion rate</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">+2.4%</div>
+                <div class="stat-label">Average budget</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">+4.11%</div>
+                <div class="stat-label">Revenue per listing</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project 2: Dashboard -->
+    <section class="case-content">
+        <div class="section-num" aria-hidden="true">2</div>
+        <h2>Redesigning Campaign Management</h2>
+        
+        <p>
+            Small advertisers didn't know what actions to take looking at their dashboard. The old dashboard was full of empty states and offered no clear action items, so our retention rate was low. They'd set up a campaign and then... never come back.
+        </p>
+
+        <div class="media-single">
+            <img src="images/google ads/cm-old dashboard.png" loading="lazy" alt="Old management dashboard">
+        </div>
+
+        <h3>What We Changed</h3>
+        <p>
+            In the redesign, we surface insights, offer education, and for advertisers at different stages we populated a set of cards customized for each business.
+        </p>
+        <div class="media-carousel" data-slide="0">
+            <div class="carousel-slides">
+                <button type="button" class="carousel-chevron carousel-prev" aria-label="Previous slide">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+                </button>
+                <div class="carousel-slide active" data-index="0">
+                    <img src="images/google ads/cm-new-1.png" loading="lazy" alt="Campaign management redesign">
+                </div>
+                <div class="carousel-slide" data-index="1">
+                    <img src="images/google ads/cm-new-4.png" loading="lazy" alt="Campaign management redesign">
+                </div>
+                <div class="carousel-slide" data-index="2">
+                    <img src="images/google ads/cm-new-3.png" loading="lazy" alt="Campaign management redesign">
+                </div>
+                <button type="button" class="carousel-chevron carousel-next" aria-label="Next slide">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+                </button>
+            </div>
+            <div class="carousel-nav">
+                <div class="carousel-dots">
+                    <button type="button" class="carousel-dot active" data-index="0" aria-label="Slide 1"></button>
+                    <button type="button" class="carousel-dot" data-index="1" aria-label="Slide 2"></button>
+                    <button type="button" class="carousel-dot" data-index="2" aria-label="Slide 3"></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="highlight-box soft-blue">
+            <h4>Key Insight</h4>
+            <p>
+                Small advertisers care less about fancy charts. They want to understand if "the ad is working," they want transparency to trust the product, and they want to know what actions to take to improve performance.
+            </p>
+        </div>
+
+        <p>
+            I explored different frameworks for a recommendation feed: gallery style, vertical feed, and horizontal style. We tested with advertisers at different stages and populated a set of cards customized for each business.
+        </p>
+        <div class="media-single">
+            <img src="images/google ads/cm-framework.png" loading="lazy" alt="Recommendation feed options: gallery, vertical feed, horizontal style">
+        </div>
+        <p>
+            Ultimately, we decided to provide in context recommendations at the right spots, showing relevant actions when and where users could actually take them.
+        </p>
+        <div class="media-single">
+            <img src="images/google ads/cm-new-2.png" loading="lazy" alt="Campaign management redesign">
+        </div>
+    </section>
+
+    <section class="case-content">
+        <p class="impact-launch">Fully launched October 2020</p>
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">+8.8%</div>
+                <div class="stat-label">Monthly Active Users</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">+9.5%</div>
+                <div class="stat-label">Daily Active Users</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">+3.25%</div>
+                <div class="stat-label">Revenue per listing</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project 3: Landing Pages -->
+    <section class="case-content">
+        <div class="section-num" aria-hidden="true">3</div>
+        <h2>Ads Landing Pages</h2>
+        
+        <div class="highlight-box">
+            <h4>The Challenge</h4>
+            <p>
+                Every ad on Google sends clicks somewhere, and that somewhere is usually a website. But what if an advertiser doesn’t have one? How might we help them create ads on the web without having a website?
+            </p>
+        </div>
+
+        <p>
+            Many small businesses, especially in emerging markets, wanted to advertise but didn't have a website to send traffic to. This was a significant barrier to entry.
+        </p>
+
+        <div class="media-single">
+            <img src="images/google ads/saopaulo.jpg" loading="lazy" alt="Research in São Paulo: laundromat owners, wedding dress designers, hair stylists">
+        </div>
+        <p>
+            We visited and interviewed laundromat owners, wedding dress designers, and hair stylists in São Paulo to understand what they wanted to display about their business, and the tools they had access to to promote their businesses.
+        </p>
+
+        <h3>The Solution</h3>
+        <p>
+            I designed the structure and experience of an auto generated business page (how it’s laid out, what information it surfaces, and how it fits into the signup flow) so advertisers without a website could still run ads. The page is responsive, supports conversion tracking, and gives them a real landing page that’s created for them as they set up their campaign.
+        </p>
+
+        <div class="media-single">
+            <img src="images/google ads/alp.png" loading="lazy" alt="Auto-generated Ads Landing Page">
+        </div>
+
+        <p>
+            We integrated the creation of this automated landing page into the ad signup flow, minimizing the information advertisers need to provide. The page is created for them and ready to go once their campaign is set up.
+        </p>
+
+        <div class="media-single">
+            <video autoplay loop muted playsinline preload="none" style="max-width: 100%; border-radius: 12px;">
+                <source src="images/google ads/alp2.mp4" type="video/mp4">
+            </video>
+        </div>
+    </section>
+
+    <section class="case-content">
+        <p class="impact-launch">Full launch in Brazil, November 2020</p>
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">90k+</div>
+                <div class="stat-label">Advertiser adoption</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">+5.4%</div>
+                <div class="stat-label">Conversion rate</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">+8.9%</div>
+                <div class="stat-label">Revenue per listing</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reflection -->
+    <section class="case-content">
+        <h2>Reflection</h2>
+        <p>
+            It's very powerful to me how design could help small businesses thrive using Google Ads and drive real business impact. This experience also got me hooked and deeply rooted in the monetization domain. For all the years after departing this team, I've always strived to strike a balance between business needs and UX.
+        </p>
+    </section>
+
+    <!-- Next Project -->
+    <section class="next-project">
+        <p class="next-project-label">Next Project</p>
+        <h2>Google Shopping</h2>
+        <a href="google-shopping.html">
+            View case study
+            <span>→</span>
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Shuang Li</p>
+        <div class="footer-links">
+            <a href="resume_shuang_li.pdf" target="_blank">Resume ↓</a>
+            <a href="https://www.linkedin.com/in/shuangshuangli/" target="_blank">LinkedIn</a>
+            <a href="https://github.com/shuang-and-elfo/" target="_blank">GitHub</a>
+            <a href="mailto:shuang.sara.li@gmail.com">Email me</a>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation scroll effect
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Before/After tabbed slideshow
+        document.querySelectorAll('.before-after-slideshow').forEach(show => {
+            const tabs = show.querySelectorAll('.ba-tab');
+            const slides = show.querySelectorAll('.ba-slide');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const view = tab.dataset.tab;
+                    show.dataset.view = view;
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    slides.forEach(slide => {
+                        slide.classList.toggle('active', slide.dataset.slide === view);
+                    });
+                });
+            });
+        });
+
+        // Image carousel with dots and chevrons
+        document.querySelectorAll('.media-carousel').forEach(carousel => {
+            const slides = carousel.querySelectorAll('.carousel-slide');
+            const dots = carousel.querySelectorAll('.carousel-dot');
+            const prevBtn = carousel.querySelector('.carousel-prev');
+            const nextBtn = carousel.querySelector('.carousel-next');
+            const total = slides.length;
+
+            function goTo(i) {
+                const idx = ((i % total) + total) % total;
+                carousel.dataset.slide = idx;
+                slides.forEach((s, j) => s.classList.toggle('active', j === idx));
+                dots.forEach((d, j) => d.classList.toggle('active', j === idx));
+                if (prevBtn) prevBtn.disabled = idx === 0;
+                if (nextBtn) nextBtn.disabled = idx === total - 1;
+            }
+
+            dots.forEach((dot, i) => {
+                dot.addEventListener('click', () => goTo(i));
+            });
+            if (prevBtn) prevBtn.addEventListener('click', () => goTo(parseInt(carousel.dataset.slide, 10) - 1));
+            if (nextBtn) nextBtn.addEventListener('click', () => goTo(parseInt(carousel.dataset.slide, 10) + 1));
+            goTo(0);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+# Added by Snap Cursor Rules extension
+.cursor/rules/remote
+
+node_modules/
+.DS_Store
+.env*.local

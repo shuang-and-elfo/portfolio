@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Scaling Snapchat+ from Feature Experiment to 25M-Subscriber Platform | Shuang Li</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
+    <link rel="apple-touch-icon" href="images/logo.png">
+    <!-- Google Analytics (GA4) - Replace G-BW7NH0PNB9 with your Measurement ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BW7NH0PNB9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-BW7NH0PNB9');
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #ffffff;
+            --bg-alt: #faf5f3;
+            --text: #1a1a1a;
+            --text-secondary: #1a1a1a;
+            --text-tertiary: #888888;
+            --accent: #faf5f3;
+            --accent-hover: #f5eeeb;
+            --blush: #faf5f3;
+            --peach: #fff0ec;
+            --coral: #f5d8d2;
+            --border: #f0e4e0;
+            --shadow: rgba(245, 216, 210, 0.3);
+            --shadow-hover: 0 8px 24px rgba(245, 216, 210, 0.4);
+            --snap-yellow: #FFFC00;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            -webkit-user-select: text !important;
+            user-select: text !important;
+        }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            -webkit-text-size-adjust: 100%;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            -webkit-user-select: text !important;
+            user-select: text !important;
+        }
+
+        *,
+        *::before,
+        *::after {
+            -webkit-user-select: text !important;
+            user-select: text !important;
+        }
+
+        img, video {
+            max-width: 100%;
+            height: auto;
+        }
+
+        ::selection {
+            background: var(--lavender);
+            color: var(--text);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            transition: box-shadow 0.3s ease, background 0.3s ease;
+        }
+
+        nav.scrolled {
+            box-shadow: 0 1px 0 var(--border);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-logo:hover {
+            opacity: 0.7;
+        }
+
+        .nav-logo img {
+            height: 50px;
+            width: 50px;
+            object-fit: contain;
+        }
+
+        .nav-back {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            transition: color 0.3s, gap 0.3s;
+        }
+
+        .nav-back:hover {
+            color: var(--text);
+            gap: 0.75rem;
+        }
+
+        /* Hero */
+        .case-hero {
+            padding: 10rem 3rem 6rem;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .case-hero-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-tertiary);
+            margin-bottom: 1rem;
+        }
+
+        .case-hero h1 {
+            font-family: 'Sora', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+        }
+
+        .case-hero-description {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-highlight {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            line-height: 1.4;
+            color: var(--text);
+            margin: 2rem 0 3rem;
+            max-width: 720px;
+        }
+
+        .case-meta {
+            display: flex;
+            gap: 3rem;
+            flex-wrap: wrap;
+            padding: 2rem 0;
+        }
+
+        .meta-item h4 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-tertiary);
+            margin-bottom: 0.5rem;
+        }
+
+        .meta-item p {
+            font-size: 1rem;
+            color: var(--text);
+        }
+
+        /* Content Sections */
+        .case-content {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 6rem 3rem;
+        }
+
+        .case-content h2 {
+            font-family: 'Sora', sans-serif;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .case-content h3 {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 3rem 0 1rem;
+            color: var(--text);
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .case-content h3:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+
+        .case-content h4 {
+            font-family: 'Sora', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin: 3.5rem 0 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .section-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            background: var(--text);
+            color: #fff;
+            font-family: 'Sora', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        [id^="section-"] {
+            scroll-margin-top: 6rem;
+        }
+
+        .case-content p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Overview intro: text left, video right, heights aligned */
+        .overview-intro-row {
+            display: grid;
+            grid-template-columns: 1fr minmax(160px, 220px);
+            gap: 2.5rem;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        .overview-intro-row .overview-text {
+            text-align: left;
+        }
+        .overview-intro-row .overview-text p:last-child {
+            margin-bottom: 0;
+        }
+        .overview-intro-row .overview-video-wrap {
+            position: sticky;
+            top: 8rem;
+            border-radius: 16px;
+            overflow: hidden;
+            min-height: 160px;
+            background: var(--bg-alt, #f5f5f5);
+        }
+        .overview-intro-row .overview-video-wrap video {
+            width: 100%;
+            height: auto;
+            display: block;
+            vertical-align: middle;
+        }
+        @media (max-width: 768px) {
+            .overview-intro-row {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .overview-intro-row .overview-video-wrap {
+                position: static;
+                max-width: 220px;
+            }
+        }
+
+        .case-content ul {
+            margin: 1.5rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .case-content li {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: var(--blush);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2.5rem 0;
+        }
+
+        .highlight-box h4 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-tertiary);
+            margin-bottom: 1rem;
+        }
+
+        .highlight-box p {
+            font-size: 1.1rem;
+            color: var(--text);
+            margin-bottom: 0;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            background: var(--bg-alt);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .impact-num {
+            font-weight: 700;
+        }
+
+        .stat-number {
+            font-family: 'Sora', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .metric-block {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 600;
+            line-height: 1.4;
+            color: var(--text);
+            margin: 2.5rem 0;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .metric-block .stat-line {
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-block .stat-line:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-highlight {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            line-height: 1.4;
+            color: var(--text);
+            margin: 2rem 0 2.5rem;
+        }
+
+        .tracks-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+            margin: 2.5rem 0;
+        }
+
+        .track-box {
+            display: block;
+            text-decoration: none;
+            background: #fdf8f7;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            border-radius: 12px;
+            padding: 1.5rem 1.75rem;
+            transition: border-color 0.2s ease, background 0.2s ease;
+            color: inherit;
+        }
+
+        .track-box:hover {
+            border-color: var(--coral, #e8a598);
+            background: #fefaf9;
+        }
+
+        .track-box .track-num {
+            font-family: 'Sora', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-tertiary, #888);
+            margin-bottom: 0.5rem;
+        }
+
+        .track-box p {
+            font-size: 1rem;
+            color: var(--text);
+            line-height: 1.6;
+            margin: 0;
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .tracks-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Side-by-side text + media */
+        .text-media-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            align-items: center;
+            margin: 2rem 0;
+        }
+        .text-media-row.media-small {
+            grid-template-columns: 1fr 0.6fr;
+        }
+
+        /* Three modes side by side */
+        .modes-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            width: 120%;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            margin: 2rem 0;
+        }
+        .mode-card {
+            text-align: center;
+        }
+        .mode-card video {
+            width: 100%;
+            max-width: 280px;
+            border-radius: 12px;
+            margin-bottom: 0.75rem;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+        .mode-card h4 {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin: 0 0 0.5rem;
+            text-transform: none;
+            letter-spacing: 0;
+            color: var(--text);
+        }
+        .mode-card p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin: 0;
+        }
+        @media (max-width: 768px) {
+            .modes-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                width: 100%;
+                left: 0;
+                transform: none;
+            }
+        }
+        .text-media-row .text-media-content p:last-child {
+            margin-bottom: 0;
+        }
+        .text-media-row .text-media-visual img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+        }
+        @media (max-width: 768px) {
+            .text-media-row {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+
+        /* Image Gallery */
+        .case-gallery {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 3rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .gallery-item {
+            aspect-ratio: 4/3;
+            background: var(--lavender);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .gallery-item.full {
+            grid-column: 1 / -1;
+            aspect-ratio: 2/1;
+        }
+
+        /* Next Project */
+        .next-project {
+            background: var(--bg-alt);
+            padding: 6rem 3rem;
+            text-align: center;
+        }
+
+        .next-project-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-tertiary);
+            margin-bottom: 1rem;
+        }
+
+        .next-project h2 {
+            font-family: 'Sora', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .next-project a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: gap 0.3s;
+        }
+
+        .next-project a:hover {
+            gap: 0.75rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem 3rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: color 0.3s ease, opacity 0.3s ease;
+        }
+
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #FFF0EC;
+            transition: background 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 0.6;
+        }
+
+        .footer-links a:hover::after {
+            background: #1a1a1a;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 0.75rem 1rem;
+            }
+
+            nav.scrolled {
+                padding: 0.75rem 1rem;
+            }
+
+            .nav-logo img {
+                height: 36px;
+                width: 36px;
+            }
+
+            .nav-back {
+                font-size: 0.8rem;
+            }
+
+            .case-hero, .case-content {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+
+            .case-gallery {
+                padding: 0 1.5rem;
+            }
+
+            .case-meta {
+                gap: 1.5rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-item.full {
+                aspect-ratio: 4/3;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+                padding: 2rem 1.5rem;
+            }
+
+            .next-project {
+                padding: 4rem 1.5rem;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .fade-in-delay-1 { animation-delay: 0.1s; }
+        .fade-in-delay-2 { animation-delay: 0.2s; }
+        .fade-in-delay-3 { animation-delay: 0.3s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Force text selection on all content (overrides any inherited or external rules) */
+        p, .meta-item, .meta-item *, .hero-impact p, .case-content p, .case-content li, .case-content h2, .case-content h3, span, li, .case-hero, .case-hero * {
+            -webkit-user-select: text !important;
+            user-select: text !important;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // Authentication check (DISABLED - uncomment to enable)
+        if (sessionStorage.getItem('portfolio_auth') !== 'true') {
+            window.location.href = 'login.html';
+        }
+    </script>
+    <!-- Navigation -->
+    <nav id="nav">
+        <a href="index.html" class="nav-back">
+            <span>←</span>
+            Back to home
+        </a>
+        <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="Shuang Li" loading="lazy"></a>
+    </nav>
+
+    <!-- Hero -->
+    <section class="case-hero">
+        <h1>Scaling Snapchat+ from Feature Experiment to 25M-Subscriber Platform</h1>
+        <div class="case-meta">
+            <div class="meta-item">
+                <h4>Role</h4>
+                <p>Lead Product Designer</p>
+            </div>
+            <div class="meta-item">
+                <h4>Company</h4>
+                <p>Snap Inc.</p>
+            </div>
+            <div class="meta-item">
+                <h4>Time</h4>
+                <p>2023–Present</p>
+            </div>
+            <div class="meta-item">
+                <h4>Scope</h4>
+                <p>Snapchat's subscription products</p>
+            </div>
+            <div class="meta-item">
+                <h4>Partners</h4>
+                <p>3 PMs & 15 Engs</p>
+            </div>
+            <div class="meta-item">
+                <h4>Impact</h4>
+                <p>Grew Snapchat+ from 3M to 25M subscribers</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview -->
+    <section class="case-content">
+        <p>
+            Snapchat+ is Snap's $3.99 per month subscription for power users, offering more than 40 exclusive features across customization, messaging, and social expression.
+        </p>
+        <p>
+            When I took over design, Snapchat+ was growing but still operated as a series of feature drops. Growth spiked with each launch, then flattened. The opportunity was to transform it from a collection of perks into a cohesive membership powered by compounding systems.
+        </p>
+        <p>
+            Snapchat+ sits within Snap's direct revenue pillar and serves a young, price-sensitive audience. Value had to feel fun, visible, and instantly legible.
+        </p>
+        <figure class="case-figure" style="margin: 2rem 0;">
+            <img src="images/snapchat+/research.jpg" alt="Research findings: structural issues identified" loading="lazy">
+        </figure>
+        <p>
+            Through CSAT surveys, UXR sessions, and data reviews, I identified three structural issues:
+        </p>
+        <ul>
+            <li>Growth relied too heavily on new features instead of durable systems.</li>
+            <li>Perks felt fragmented and did not read as one coherent membership.</li>
+            <li>The funnel and paywall underperformed relative to the product's actual value.</li>
+        </ul>
+        <p>
+            I drove work across three parallel tracks designed to reinforce one another.
+        </p>
+        <div class="tracks-grid">
+            <a href="#section-1" class="track-box">
+                <span class="track-num">Section 1</span>
+                <p>Strengthen the Subscription Foundation</p>
+            </a>
+            <a href="#section-2" class="track-box">
+                <span class="track-num">Section 2</span>
+                <p>Design Lifecycle and Network-Driven Growth</p>
+            </a>
+            <a href="#section-3" class="track-box">
+                <span class="track-num">Section 3</span>
+                <p>Build Hit Perks Snapchatters Love</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- 1. Strengthen the Subscription Foundation -->
+    <section class="case-content" id="section-1">
+        <div class="section-num" aria-hidden="true">1</div>
+        <h2>Strengthen the Subscription Foundation</h2>
+
+        <h3>Paywall Redesign: Clarifying Value and Plan Structure</h3>
+        <p>
+            The first priority was fixing the foundation, starting with the paywall. Our paywall has two steps: first introducing the value of Snapchat+, then asking users to choose a plan.
+        </p>
+        <p>
+            The original feature page presented everything in one long list. Most people never scrolled past the first screen, so the strongest perks were buried.
+        </p>
+        <p>
+            I restructured the page to surface the five most loved perks at the top, making the value immediately clear. The remaining features were grouped into simple categories to improve scanning and help the membership feel cohesive rather than scattered.
+        </p>
+        <p>
+            The redesign shifted the paywall from a dense list of features to a clear story about value, making it easier for users to understand what they were getting and why it was worth paying for.
+        </p>
+        <figure class="case-figure" style="margin: 2rem auto; max-width: 70%; display: block;">
+            <video autoplay loop muted playsinline preload="none" style="max-width: 100%; border-radius: 12px;">
+                <source src="images/snapchat+/paywall_feature_page_compressed.mp4" type="video/mp4">
+            </video>
+        </figure>
+        <p>
+            With the value story clarified, the next step was optimizing plan selection.
+        </p>
+        <p>
+            We simplified the comparison experience and made annual plans more prominent, reducing friction and improving clarity at the moment of decision. This led to a <span class="impact-num">1.8%</span> lift in total purchases and an <span class="impact-num">8%</span> increase in annual plan adoption.
+        </p>
+        <p>
+            We ran multiple iterations across pricing structure, discount presentation, badging, and comparison layouts. By building a systematic set of plan picker components, we could test quickly and personalize the paywall for different cohorts, ensuring we surfaced the right plan at the right time. We also introduced Quick Checkout directly on the feature page — removing that extra step sped up decision making and drove a <span class="impact-num">9.3 percent</span> lift in conversion.
+        </p>
+        <figure class="case-figure" style="margin: 2rem 0;">
+            <img src="images/snapchat+/paywall_2.jpg" alt="Plan selection and checkout optimization" loading="lazy">
+        </figure>
+
+    </section>
+
+    <!-- 2. Design Lifecycle and Network-Driven Growth -->
+    <section class="case-content" id="section-2">
+        <div class="section-num" aria-hidden="true">2</div>
+        <h2>Design Lifecycle and Network-Driven Growth</h2>
+
+        <h3>New Member Onboarding: Activating Early Value</h3>
+        <p>
+            We found some Snapchat+ members never engage with many key perks, which led to limiting perceived value and hurt retention.
+        </p>
+        <p>
+            I redesigned new member onboarding to guide members toward high-impact actions that demonstrate value quickly, like applying app themes, selecting a Bitmoji pet, pinning a best friend, and enabling their membership badge. Instead of listing features, the step-by-step flow prompted immediate personalization and social expression.
+        </p>
+        <figure class="case-figure" style="margin: 2rem 0;">
+            <img src="images/snapchat+/onboarding.jpg" alt="Member onboarding experience" loading="lazy">
+        </figure>
+        <p>
+            By front-loading meaningful actions, the experience shifted from passive access to active participation.
+        </p>
+        <p>
+            Adoption of key perks increased between <span class="impact-num">5 to 20 percent</span>, and total feature usage increased by <span class="impact-num">1.5 percent</span>. Helping members quickly experience value improved retention stability.
+        </p>
+
+        <h3>Gifting Snapchat+: Turning Members into Advocates</h3>
+        <p>
+            Snapchat+ could be gifted, but the experience felt transactional and visually plain. It supported one-time purchases, yet lacked emotional depth and long-term upside.
+        </p>
+        <p>
+            I redesigned gifting to feel personal and occasion-driven, introducing themed visuals and integrating sender and recipient Bitmojis to make the interaction feel shared rather than generic.
+        </p>
+        <figure class="case-figure" style="margin: 2rem 0;">
+            <img src="images/snapchat+/gifting.jpg" alt="Gifting and Family Plans experience" loading="lazy">
+        </figure>
+        <p>
+            Beyond design, I expanded the monetization model by adding an upsell to include recipients in a Family Plan. This shifted gifting from a temporary gesture to an ongoing membership relationship, increasing long-term revenue potential while keeping the flow seamless.
+        </p>
+        <p>
+            The result was a more expressive, socially native gifting experience that strengthened advocacy and deepened monetization.
+        </p>
+        <p>
+            The Family Plan upsell within gifting drove a <span class="impact-num">47.07 percent</span> increase in Family Plan purchases. Revenue modeling showed approximately <span class="impact-num">16.5 percent</span> more revenue compared to relying only on individual plans. Family Plan subscribers grew roughly <span class="impact-num">220 percent</span> after launch.
+        </p>
+
+        <h3>Buddy Pass: Designing Recurring, Network-Driven Growth</h3>
+        <p>
+            As Snapchat+ matured, I saw a pattern: one-time perks drove spikes. Recurring mechanics drove behavior.
+        </p>
+        <p>
+            Inspired by the guest passes offered in my climbing gym membership, I designed Buddy Pass as a monthly redeemable perk. Members could gift friends 7-day access to Snapchat+ directly inside Chat. Passes reset each billing cycle, creating light urgency.
+        </p>
+        <p>
+            This reframed referrals from transactional discounts to personal gestures — and introduced a recurring social growth loop embedded into the subscription. Buddy Pass was heavily adopted and internally recognized as one of the highest-leverage drivers of network-based conversion.
+        </p>
+        <figure class="case-figure" style="margin: 2rem auto; max-width: 80%; display: block;">
+            <img src="images/snapchat+/buddy_pass.jpg" alt="Buddy Pass experience" loading="lazy">
+        </figure>
+
+        <h3>Monthly Drops: Turning Perks into Habit Loops</h3>
+        <p>
+            After seeing how Buddy Pass built habit through recurring redemption, I proposed expanding the mechanic beyond referrals. Many Snapchat+ perks existed passively in the background, which limited perceived value. Members often weren't aware of the full set of benefits or weren't prompted to actively engage with them.
+        </p>
+        <div class="text-media-row media-small">
+            <div class="text-media-content">
+                <p>
+                    I pitched converting a few background perks into monthly drops — limited-time, redeemable items that members actively claim. This shifted the experience from static entitlement to participatory ritual. Instead of simply "having access," members now had something to anticipate, redeem, and share.
+                </p>
+                <p>
+                    The result was a consistent monthly return trigger embedded directly into the subscription. It also created a flexible framework for launching experimental features and highlighting new releases in a structured way.
+                </p>
+            </div>
+            <div class="text-media-visual">
+                <video autoplay loop muted playsinline preload="none" style="max-width: 80%; border-radius: 12px;">
+                    <source src="images/snapchat+/monthly_drops.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+
+        <h3>Redeemable Perks and Mystery Draws: Retention Through Ritual and Surprise</h3>
+        <p>
+            Building on this system, I designed additional redeemable perks, including a mystery pet draw, to introduce surprise and variability — reinforcing retention through both habit and delight.
+        </p>
+        <figure class="case-figure" style="margin: 2rem 0;">
+            <img src="images/snapchat+/pet_collection.jpg" alt="Mystery Pet Draw and Pet Collection" loading="lazy">
+        </figure>
+
+        <h3>Badge Visibility: Social Proof as a Scalable Acquisition Lever</h3>
+        <p>
+            Research showed that having at least one close friend with Snapchat+ increased adoption by <span class="impact-num">633%</span>. The opportunity was clear: social proximity drove conversion. The constraint was cultural. Snapchat resists overt status signaling, and overexposing membership risked backlash and UI clutter across dense surfaces like Chat.
+        </p>
+        <div class="text-media-row">
+            <div class="text-media-content">
+                <p>
+                    When I took ownership, the badge was inconsistently surfaced and easy to miss, limiting its network effect. I reframed badge visibility as infrastructure, not decoration. Instead of adding more upsell prompts, I embedded passive social signals directly into high-frequency interaction surfaces including Chat feed, Chat header, and Stories. This shifted badge visibility from a cosmetic element to a compounding distribution system.
+                </p>
+            </div>
+            <div class="text-media-visual">
+                <img src="images/snapchat+/badges.jpg" alt="Badge visibility across Snapchat surfaces" loading="lazy">
+            </div>
+        </div>
+        <h4>Impact</h4>
+        <ul>
+            <li><span class="impact-num">+20%</span> increase in new subscriptions</li>
+            <li><span class="impact-num">+17%</span> increase in Snapchat+ revenue</li>
+            <li>Established social visibility as a durable organic acquisition channel</li>
+        </ul>
+    </section>
+
+    <!-- 3. Build Hit Perks Snapchatters Love -->
+    <section class="case-content" id="section-3">
+        <div class="section-num" aria-hidden="true">3</div>
+        <h2>Build Hit Perks Snapchatters Love</h2>
+
+        <h3>Snap Modes: Meaningful Control in Everyday Snaps</h3>
+        <p>
+            Snapchat is built on ephemerality, but before Snap Modes, users had limited, hard-to-discover controls over how ephemeral or replayable their Snaps were. At the same time, the Snapchat+ team needed high-impact "superpower" features that could justify subscription and deepen daily Snapping.
+        </p>
+        <p>
+            I created the concept and design vision for Snap Modes, a member-only feature that lets Snapchatters choose how their Snaps are delivered and viewed. I defined the opportunity as making ephemerality expressive: give people fun, contextual ways to control how a Snap behaves, while keeping the camera experience fast and lightweight.
+        </p>
+
+        <h4>What I Shipped</h4>
+        <p>
+            I led end-to-end UX for the Snap Modes framework, partnered closely with UXR on concept validation, and drove the cross-functional spec, implementation details, and roadmap for future modes. For the MVP, I focused on core ephemerality controls:
+        </p>
+
+        <div class="modes-grid">
+            <div class="mode-card">
+                <video autoplay loop muted playsinline preload="none">
+                    <source src="images/snapchat+/snap_mode_codeword.mp4" type="video/mp4">
+                </video>
+                <h4>Codeword</h4>
+                <p>A Snap locked behind a prompt — the recipient enters the correct answer to reveal it, adding playfulness and a privacy guardrail.</p>
+            </div>
+            <div class="mode-card">
+                <video autoplay loop muted playsinline preload="none">
+                    <source src="images/snapchat+/snap_mode_snap_to_reveal.mp4" type="video/mp4">
+                </video>
+                <h4>Snap to Reveal</h4>
+                <p>A Snap that stays hidden until the recipient sends one back, encouraging reciprocity and more authentic back-and-forth.</p>
+            </div>
+            <div class="mode-card">
+                <video autoplay loop muted playsinline preload="none">
+                    <source src="images/snapchat+/snap_mode_scheduled_snap.mp4" type="video/mp4">
+                </video>
+                <h4>Scheduled Snap</h4>
+                <p>Compose a Snap now and schedule it to arrive at a specific time — ideal for birthdays, time zones, and timed reminders.</p>
+            </div>
+        </div>
+
+        <h4>UX Research Insights</h4>
+        <p>
+            With UXR, I concept-tested multiple candidate modes (Scheduled Snap, Snap to Reveal, Codeword, Location Snap, Self Destruct) using interactive mocks that reflected the actual Snap Modes tray and flows. Key findings that shaped the roadmap:
+        </p>
+        <div class="text-media-row">
+            <div class="text-media-content">
+                <ul>
+                    <li><strong>Framework comprehension was strong.</strong> Users immediately read the tray as "different ways to send this Snap" and could explain each mode's behavior in their own words.</li>
+                    <li><strong>High excitement for Codeword & Snap to Reveal.</strong> Codeword felt new and "mysterious," and doubled as a privacy guardrail. Snap to Reveal was seen as a fun way to encourage reciprocity and more authentic back-and-forth.</li>
+                    <li><strong>Clear utility for Scheduled and Location Snaps.</strong> Participants mentioned birthdays, time-zones, school-day connectivity, and sensitive content that should only be opened at home or a specific place.</li>
+                </ul>
+            </div>
+            <div class="text-media-visual">
+                <img src="images/snapchat+/snap_modes_uxr.jpg" alt="Snap Modes UX research insights" loading="lazy">
+            </div>
+        </div>
+        <p>
+            This gave us confidence in the overall Snap Modes framework and a user-validated shortlist of future modes to prioritize.
+        </p>
+
+        <h4>Future Modes Framework</h4>
+        <p>
+            To scale beyond the MVP, I partnered with PM and UXR on brainstorming ideas and organizing them into four opportunity areas: Crushes, Privacy, Utility, and Fanout.
+        </p>
+        <p>
+            I turned this into a prioritized backlog of modes, balancing desirability, implementation cost, and differentiation for Snapchat+.
+        </p>
+        <figure class="case-figure" style="margin: 2rem 0;">
+            <img src="images/snapchat+/snap_modes_framework.jpg" alt="Snap Modes future framework" loading="lazy">
+        </figure>
+
+        <h4>Outcomes</h4>
+        <ul>
+            <li>In our 2025 Top Tasks study, <span class="impact-num">57%</span> of members reported "Use a Snap Mode" as a desired camera task, on par with established tools like Lenses and Director Mode — strong signal for a brand-new control surface.</li>
+            <li>I now have a research-backed roadmap of future modes, making Snap Modes an extensible platform for new ephemerality behaviors and an ongoing lever for Snapchat+ growth.</li>
+        </ul>
+
+        <h3>Personalized Pets: Social Identity and Emotional Engagement</h3>
+        <p>
+            Pets have been top retention drivers for Snapchat+: members who adopt a pet retain <span class="impact-num">+9.9%</span> higher in their first month compared to non-adopters.
+        </p>
+        <figure class="case-figure" style="margin: 2rem auto; max-width: 70%; display: block;">
+            <img src="images/snapchat+/pets_today.jpg" alt="Snapchat+ Pets experience" loading="lazy">
+        </figure>
+        <p>
+            I designed, pitched, and shipped several follow-on features that amplified Pets by making them more visible to non-members and tying them to sharing and close friendships. These improvements drove significant new subscriptions and established Pets as the most retentive perk Snapchat+ offers.
+        </p>
+        <figure class="case-figure" style="margin: 2rem 0;">
+            <img src="images/snapchat+/pets_new.jpg" alt="New Pets features for Snapchat+" loading="lazy">
+        </figure>
+
+        <h3>App Themes: Personalizing the Entire Experience</h3>
+        <p>
+            Customization is core to Snapchat identity, but early theming felt limited. I led the redesign of theming as a cross-surface system that changed Chat, Stories, navigation, and profile surfaces in a cohesive way.
+        </p>
+        <p>
+            I partnered with Design Systems to introduce scalable color tokens and redesigned the theme picker to feel expressive yet simple. Themes ranged from bold aesthetics to minimal everyday options, allowing members to control how visible their identity felt.
+        </p>
+        <figure class="case-figure" style="margin: 2rem 0;">
+            <img src="images/snapchat+/app_themes.jpg" alt="Custom App Themes for Snapchat+" loading="lazy">
+        </figure>
+        <figure class="case-figure" style="margin: 2rem 0;">
+            <img src="images/snapchat+/app_themes_2.jpg" alt="Custom App Themes details" loading="lazy">
+        </figure>
+        <p>
+            The launch drove a <span class="impact-num">28 percent</span> lift in new subscriptions and a <span class="impact-num">24.85 percent</span> lift in re-subscriptions. It added roughly <span class="impact-num">15,000</span> incremental purchases per day and reached <span class="impact-num">2.76 million</span> adopters, about <span class="impact-num">18 percent</span> of Snapchat+ daily active users. It ranked as Snapchat's eighth largest app opens event since 2022 with <span class="impact-num">74 million</span> impressions.
+        </p>
+        <p>
+            Beyond acquisition, themes increased daily visibility of membership value and became a reusable platform for future premium drops.
+        </p>
+    </section>
+
+    <!-- 4. Tier Expansion -->
+    <!-- Reflections -->
+    <section class="case-content">
+        <h2>Reflections</h2>
+        <p>
+            <strong>1. Visibility is the real growth loop.</strong> The biggest growth levers weren't feature launches. They were moments where membership became visible in daily interactions. Badges appearing in Chat drove a 20% subscription lift. Wallpapers and Themes changed how the app looked. Pets showed up on the Map. I learned that for a social subscription product, the most important design question is not only "what do members get?" but also "where do non-members see it?"
+        </p>
+        <p>
+            <strong>2. Systems compound; features plateau.</strong> Early growth came from shipping new perks. That works temporarily, but each launch produces a smaller spike. The shift that mattered was connecting features into systems: onboarding that drove adoption, adoption that increased visibility, visibility that drove referrals. Once those loops were in place, growth compounded instead of resetting with every launch.
+        </p>
+        <p>
+            <strong>3. Gen Z will pay! But only if the value is obvious in three seconds.</strong> The paywall had 40+ features, but conversion improved most when I surfaced just five up front. Buddy Pass worked because "give your friend a free week" needs no explanation. I stopped designing for comprehensiveness and started designing for instant legibility.
+        </p>
+        <p>
+            <strong>4. The best monetization solves an emotional need, not a feature gap.</strong> Streak Restore taught me this clearly. People losing streaks with close friends are in a moment of genuine anxiety, and bulk restore addressed that honestly and became a $6.8M/month revenue line. The features that retained best were also the most emotionally resonant.
+        </p>
+    </section>
+
+    <!-- Next Project -->
+    <section class="next-project">
+        <p class="next-project-label">Next Project</p>
+        <h2>Snap Ad Formats</h2>
+        <a href="ad-formats.html">
+            View case study
+            <span>→</span>
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Shuang Li</p>
+        <div class="footer-links">
+            <a href="resume_shuang_li.pdf" target="_blank">Resume ↓</a>
+            <a href="https://www.linkedin.com/in/shuangshuangli/" target="_blank">LinkedIn</a>
+            <a href="https://github.com/shuang-and-elfo/" target="_blank">GitHub</a>
+            <a href="mailto:shuang.sara.li@gmail.com">Email me</a>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation scroll effect
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>

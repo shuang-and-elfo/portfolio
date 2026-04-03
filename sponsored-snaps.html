@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Snap Ad Formats | Shuang Li</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
+    <link rel="apple-touch-icon" href="images/logo.png">
+    <!-- Google Analytics (GA4) - Replace G-BW7NH0PNB9 with your Measurement ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BW7NH0PNB9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-BW7NH0PNB9');
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #ffffff;
+            --bg-alt: #faf5f3;
+            --text: #1a1a1a;
+            --text-secondary: #1a1a1a;
+            --text-tertiary: #888888;
+            --accent: #faf5f3;
+            --accent-light: #fce8e4;
+            --blush: #faf5f3;
+            --peach: #fff0ec;
+            --coral: #f5d8d2;
+            --border: #f0e4e0;
+            --shadow: rgba(245, 216, 210, 0.3);
+            --shadow-hover: 0 8px 24px rgba(245, 216, 210, 0.4);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        html {
+            -webkit-user-select: text !important;
+            user-select: text !important;
+        }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            -webkit-text-size-adjust: 100%;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            -webkit-user-select: text !important;
+            user-select: text !important;
+        }
+
+        *,
+        *::before,
+        *::after {
+            -webkit-user-select: text !important;
+            user-select: text !important;
+        }
+
+        img, video {
+            max-width: 100%;
+            height: auto;
+        }
+
+        ::selection {
+            background: var(--accent);
+            color: var(--text);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            transition: box-shadow 0.3s ease, background 0.3s ease;
+        }
+
+        nav.scrolled {
+            box-shadow: 0 1px 0 var(--border);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-logo:hover {
+            opacity: 0.7;
+        }
+
+        .nav-logo img {
+            height: 50px;
+            width: 50px;
+            object-fit: contain;
+        }
+
+        .nav-back {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            transition: color 0.3s, gap 0.3s;
+        }
+
+        .nav-back:hover {
+            color: var(--text);
+            gap: 0.75rem;
+        }
+
+        /* Hero */
+        .case-hero {
+            padding: 12rem 3rem 6rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .case-hero h1 {
+            font-family: 'Sora', sans-serif;
+            font-size: clamp(2.8rem, 6vw, 4.5rem);
+            font-weight: 600;
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+            margin-bottom: 2rem;
+        }
+
+        .case-hero-description {
+            font-size: 1.35rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .case-meta {
+            display: flex;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 4rem;
+            padding-top: 2rem;
+        }
+
+        .meta-item h4 {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-tertiary);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .meta-item p {
+            font-size: 0.95rem;
+            color: var(--text);
+        }
+
+        /* Content */
+        .case-section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 5rem 3rem;
+        }
+
+        .case-section.wide {
+            max-width: 1100px;
+        }
+
+        .section-title {
+            font-family: 'Sora', sans-serif;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+            line-height: 1.3;
+        }
+
+        .section-divider {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 4rem 3rem 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .section-number {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            background: var(--text);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 32px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 3rem 0 1rem;
+            color: var(--text);
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .section-subtitle:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+
+        .case-section h4 {
+            font-family: 'Sora', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin: 3.5rem 0 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .case-section p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .case-section p strong {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .case-section ul {
+            margin: 1.5rem 0 2rem;
+            padding-left: 1.25rem;
+        }
+
+        .case-section li {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Callout */
+        .callout {
+            background: var(--blush);
+            padding: 2.5rem;
+            border-radius: 16px;
+            margin: 3rem 0;
+        }
+
+        .callout.accent {
+            background: var(--accent-light);
+        }
+
+        .callout p {
+            font-size: 1.15rem;
+            color: var(--text);
+            margin-bottom: 0;
+            font-style: italic;
+        }
+
+        .callout p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Insight Cards */
+        .insight-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .insight-card {
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.75rem;
+        }
+
+        .insight-card h4 {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            color: var(--text);
+        }
+
+        .insight-card p {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+            line-height: 1.7;
+        }
+
+        /* Stats / Impact (Google Shopping style) */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .impact-num {
+            font-weight: 700;
+        }
+
+        .stat-number {
+            font-family: 'Sora', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Image */
+        .case-image {
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 0 3rem;
+        }
+
+        .case-image img {
+            width: 100%;
+            border-radius: 12px;
+        }
+
+        .case-image figcaption {
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-tertiary);
+            margin-top: 1rem;
+        }
+
+        /* Divider */
+        .divider {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+
+        .divider hr {
+            border: none;
+            border-top: 1px solid var(--border);
+        }
+
+        /* Next Project */
+        .next-project {
+            background: var(--bg-alt);
+            padding: 6rem 3rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .next-project-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-tertiary);
+            margin-bottom: 1rem;
+        }
+
+        .next-project h2 {
+            font-family: 'Sora', sans-serif;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .next-project a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: gap 0.3s;
+        }
+
+        .next-project a:hover {
+            gap: 0.75rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem 3rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: color 0.3s ease, opacity 0.3s ease;
+        }
+
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #FFF0EC;
+            transition: background 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 0.6;
+        }
+
+        .footer-links a:hover::after {
+            background: #1a1a1a;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 0.75rem 1rem;
+            }
+
+            nav.scrolled {
+                padding: 0.75rem 1rem;
+            }
+
+            .nav-logo img {
+                height: 36px;
+                width: 36px;
+            }
+
+            .nav-back {
+                font-size: 0.8rem;
+            }
+
+            .case-hero {
+                padding: 8rem 1.5rem 4rem;
+            }
+
+            .case-section {
+                padding: 3rem 1.5rem;
+            }
+
+            .section-divider {
+                padding: 4rem 1.5rem 0;
+            }
+
+            .case-image {
+                padding: 0 1.5rem;
+            }
+
+            .case-meta {
+                gap: 1.5rem;
+            }
+
+            .insight-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-row {
+                gap: 2rem;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+                padding: 2rem 1.5rem;
+            }
+
+            .next-project {
+                padding: 4rem 1.5rem;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .fade-in-delay-1 { animation-delay: 0.1s; }
+        .fade-in-delay-2 { animation-delay: 0.2s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Force text selection on all content */
+        p, .meta-item, .meta-item *, .hero-impact p, .case-content p, .case-content li, .case-content h2, .case-content h3, span, li, .case-hero, .case-hero * {
+            -webkit-user-select: text !important;
+            user-select: text !important;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // Authentication check (DISABLED - uncomment to enable)
+        if (sessionStorage.getItem('portfolio_auth') !== 'true') {
+            window.location.href = 'login.html';
+        }
+    </script>
+
+    <!-- Navigation -->
+    <nav id="nav">
+        <a href="index.html" class="nav-back">
+            <span>←</span>
+            Back to home
+        </a>
+        <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="Shuang Li" loading="lazy"></a>
+    </nav>
+
+    <!-- Hero -->
+    <section class="case-hero">
+        <h1 class="fade-in">Designing Ads That Belong</h1>
+        <p class="case-hero-description fade-in fade-in-delay-1">
+            From 2021 to 2024, I was the lead—and often sole—designer responsible for ad formats at Snap, a $5 billion ads business. I evolved existing formats, created new ones, and designed experiences for advertisers across the entire funnel. I regularly pitched ideas directly to our CEO for design approval.
+        </p>
+        <div class="case-meta fade-in fade-in-delay-2">
+            <div class="meta-item">
+                <h4>Role</h4>
+                <p>Design Lead</p>
+            </div>
+            <div class="meta-item">
+                <h4>Company</h4>
+                <p>Snap Inc.</p>
+            </div>
+            <div class="meta-item">
+                <h4>Timeline</h4>
+                <p>2021–2024</p>
+            </div>
+            <div class="meta-item">
+                <h4>Scope</h4>
+                <p>Full-funnel ad formats</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Work -->
+    <section class="case-section">
+        <p>
+            Advertising design is often treated as a necessary evil—something to maximize for clicks while minimizing user complaints. I've always believed it can be more than that. The best ads don't feel like interruptions. They feel like they belong.
+        </p>
+        <p>
+            My time on Snap's ads team was spent pursuing that belief: designing formats that respect how people actually use Snapchat, deliver real value to advertisers, and protect the trust that makes our platform special.
+        </p>
+    </section>
+
+    <div class="section-divider">
+        <span class="section-number">1</span>
+    </div>
+    <!-- Native to Organic -->
+    <section class="case-section">
+        <h2 class="section-title">Designing for How People Actually Behave</h2>
+        <p>
+            Every design decision started with the same question: <strong>how do people naturally use Snapchat, and how can ads fit into that behavior rather than fight against it?</strong>
+        </p>
+        <p>
+            We ran eye-tracking studies, analyzed tap patterns, and watched thousands of sessions. What we found shaped everything.
+        </p>
+
+        <h3 class="section-subtitle">People don't look at the bottom of the screen</h3>
+        <p>
+            Eye-tracking showed that attention goes to two places: the content itself, and the brand attribution. Almost no one looks at the bottom—where most CTAs traditionally lived. This insight led us to redesign where and how calls-to-action appear, bringing them closer to where people actually look.
+        </p>
+
+        <h3 class="section-subtitle">The first two seconds are sacred</h3>
+        <p>
+            Snapchat users tap quickly. They're skipping through Stories at a pace that makes accidental clicks almost inevitable. We introduced a 600ms delay before tap targets become active, and reserved screen edges for navigation. These guardrails dramatically improved click quality—ensuring that when someone taps, they meant to.
+        </p>
+
+        <div class="insight-grid">
+            <div class="insight-card">
+                <h4>Double-tap activation</h4>
+                <p>The first tap shows a CTA prompt; the second confirms intent. This guarantees clicks are driven by genuine interest, not accidents.</p>
+            </div>
+            <div class="insight-card">
+                <h4>Progressive disclosure</h4>
+                <p>CTAs evolve over time—subtle at first, then more prominent after 3+ seconds when we know someone is actually watching.</p>
+            </div>
+            <div class="insight-card">
+                <h4>Navigation zones</h4>
+                <p>Screen edges remain reserved for skipping, even on interactive ads. Users always have a way out.</p>
+            </div>
+            <div class="insight-card">
+                <h4>Consideration timing</h4>
+                <p>High-quality clicks start after 3 seconds. Our formats are designed to earn attention before asking for action.</p>
+            </div>
+        </div>
+
+        <h3 class="section-subtitle">Multi-segment story ads</h3>
+        <p>
+            People post multiple Snaps in a Story. It's a natural behavior—so why should ads be limited to one frame? I designed story ads that unfold across multiple segments, giving advertisers room to tell a story while matching how organic content works. First the brand video, then product tiles. It mirrors how friends share, not how billboards shout.
+        </p>
+
+        <h3 class="section-subtitle">Making product ads feel personal</h3>
+        <p>
+            Dynamic Product Ads (DPA) often felt cold and catalog-like. I explored using audience signals—age, location, interests—to generate contextually relevant backgrounds with GenAI. A backpack shown in a college dorm for a student. The same backpack in an office for a young professional. Same product, but it suddenly feels like it belongs in your life.
+        </p>
+        <p>
+            We even experimented with adding subtle grain and Snapchat-style filters to make product images feel less polished and more organic—like something a friend might post.
+        </p>
+    </section>
+
+    <div class="section-divider">
+        <span class="section-number">2</span>
+    </div>
+    <!-- Sponsored Snaps -->
+    <section class="case-section">
+        <h2 class="section-title">Sponsored Snaps: A New Surface, A New Responsibility</h2>
+        <p>
+            In 2024, we launched Sponsored Snaps—the first time Snapchat monetized the Chat tab, where people connect with their closest friends. It was the most sensitive surface we'd ever touched with advertising.
+        </p>
+        <p>
+            I led the 0→1 design of this format, defining the user experience, interaction model, and guardrails from scratch.
+        </p>
+
+        <div class="callout">
+            <p>
+                "The Chat tab is where you talk to your best friends. Putting an ad there felt risky—even to us. The bar for 'feeling right' was higher than anything we'd done before."
+            </p>
+        </div>
+
+        <h3 class="section-subtitle">Designed to feel like a Snap</h3>
+        <p>
+            A Sponsored Snap arrives just like any other Snap—sitting in your Chat feed, from a brand instead of a friend. You tap to open it. It feels immediate and personal, the way Snaps should. If the brand has a Story, it appears in the Chat header naturally. Everything was designed to respect the patterns people already know.
+        </p>
+
+        <h3 class="section-subtitle">Real conversation, not just broadcast</h3>
+        <p>
+            Unlike traditional ads, Sponsored Snaps open into a Chat experience. Users can see links, saved Chats, even respond with freeform messages or prompts. The advertiser receives these responses. It's advertising that invites dialogue rather than demanding attention.
+        </p>
+
+        <h3 class="section-subtitle">Strong results with user trust intact</h3>
+        <p>
+            The format launched to strong performance. Q4 2024 saw Sponsored Snaps click-through rates grow <span class="impact-num">7%</span> and click-through purchases grow <span class="impact-num">17%</span> quarter-over-quarter. Features like swipe gestures, expiration timers, and sticker CTAs continued improving the direct response conversion funnel month over month.
+        </p>
+
+        <div class="stats-row">
+            <div class="stat-item">
+                <div class="stat-number">+7%</div>
+                <div class="stat-label">Click-through rate (Q3→Q4)</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">+17%</div>
+                <div class="stat-label">Click-through purchases (Q3→Q4)</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">+175%</div>
+                <div class="stat-label">Quality click-through rate</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider">
+        <span class="section-number">3</span>
+    </div>
+    <!-- Explorations -->
+    <section class="case-section">
+        <h2 class="section-title">Exploring New Monetization Opportunities</h2>
+        <p>
+            Beyond shipped features, a big part of my role was exploring what's next—concepts that push the business forward while staying true to Snapchat's experience. Many of these I pitched directly to our CEO.
+        </p>
+
+        <h3 class="section-subtitle">Picture-in-Picture ads</h3>
+        <p>
+            What if skipping an ad didn't mean losing the impression? I designed a format where tapping to skip shrinks the ad to a small floating window, letting people continue browsing while the video plays out. Less interruption, more completion.
+        </p>
+
+        <h3 class="section-subtitle">Pre-roll to Spotlight</h3>
+        <p>
+            A once-a-day takeover video when people open Spotlight for the first time. Designed to compete with TikTok's Top View product, but always skippable—respecting user control while giving premium advertisers the reach they need.
+        </p>
+
+        <h3 class="section-subtitle">Tap-to-advance commercials</h3>
+        <p>
+            Turning traditional video commercials into multi-frame skippable experiences. This puts us on a path toward a "skippable-only" world—better for users, and it helps solve advertiser challenges around social video budgets.
+        </p>
+    </section>
+
+    <div class="section-divider">
+        <span class="section-number">4</span>
+    </div>
+    <!-- Reflection -->
+    <section class="case-section">
+        <h2 class="section-title">What I Learned</h2>
+        <p>
+            This work reinforced something I believe deeply: <strong>great monetization design isn't about compromise—it's about finding solutions that genuinely work for everyone.</strong>
+        </p>
+        <p>
+            Users aren't allergic to ads. They're allergic to ads that waste their time, trick them into clicking, or feel like they don't belong. When you design with respect for their attention, they'll engage willingly.
+        </p>
+        <p>
+            Advertisers don't just want clicks. They want quality—people who meant to engage and are likely to convert. Guardrails that protect users also protect advertiser ROI.
+        </p>
+        <p>
+            And the business doesn't have to choose between growth and trust. In fact, trust is what makes the growth sustainable.
+        </p>
+
+        <div class="callout accent">
+            <p>
+                The best ad format decisions compound over time. The principles and frameworks I established are now used across multiple teams and surfaces at Snap, shaping how the company thinks about balancing monetization with user experience.
+            </p>
+        </div>
+    </section>
+
+    <!-- Next Project -->
+    <section class="next-project">
+        <p class="next-project-label">Next Project</p>
+        <h2>Google Shopping</h2>
+        <a href="google-shopping.html">
+            View case study
+            <span>→</span>
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Shuang Li</p>
+        <div class="footer-links">
+            <a href="resume_shuang_li.pdf" target="_blank">Resume ↓</a>
+            <a href="https://www.linkedin.com/in/shuangshuangli/" target="_blank">LinkedIn</a>
+            <a href="https://github.com/shuang-and-elfo/" target="_blank">GitHub</a>
+            <a href="mailto:shuang.sara.li@gmail.com">Email me</a>
+        </div>
+    </footer>
+
+    <script>
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>

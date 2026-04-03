@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Google Shopping | Shuang Li</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
+    <link rel="apple-touch-icon" href="images/logo.png">
+    <!-- Google Analytics (GA4) - Replace G-BW7NH0PNB9 with your Measurement ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BW7NH0PNB9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-BW7NH0PNB9');
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #ffffff;
+            --bg-alt: #faf5f3;
+            --text: #1a1a1a;
+            --text-secondary: #1a1a1a;
+            --text-tertiary: #888888;
+            --accent: #faf5f3;
+            --accent-hover: #f5eeeb;
+            --blush: #faf5f3;
+            --peach: #fff0ec;
+            --coral: #f5d8d2;
+            --border: #f0e4e0;
+            --shadow: rgba(245, 216, 210, 0.3);
+            --shadow-hover: 0 8px 24px rgba(245, 216, 210, 0.4);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        html {
+            -webkit-user-select: text !important;
+            user-select: text !important;
+        }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            -webkit-text-size-adjust: 100%;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            -webkit-user-select: text !important;
+            user-select: text !important;
+        }
+
+        *,
+        *::before,
+        *::after {
+            -webkit-user-select: text !important;
+            user-select: text !important;
+        }
+
+        img, video {
+            max-width: 100%;
+            height: auto;
+        }
+
+        ::selection {
+            background: var(--lavender);
+            color: var(--text);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            transition: box-shadow 0.3s ease, background 0.3s ease;
+        }
+
+        nav.scrolled {
+            box-shadow: 0 1px 0 var(--border);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-logo:hover {
+            opacity: 0.7;
+        }
+
+        .nav-logo img {
+            height: 50px;
+            width: 50px;
+            object-fit: contain;
+        }
+
+        .nav-back {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            transition: color 0.3s, gap 0.3s;
+        }
+
+        .nav-back:hover {
+            color: var(--text);
+            gap: 0.75rem;
+        }
+
+        /* Hero */
+        .case-hero {
+            padding: 10rem 3rem 6rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .case-hero-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-tertiary);
+            margin-bottom: 1rem;
+        }
+
+        .case-hero h1 {
+            font-family: 'Sora', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+        }
+
+        .case-hero-description {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            line-height: 1.7;
+            margin-bottom: 3rem;
+        }
+
+        .case-meta {
+            display: flex;
+            gap: 3rem;
+            flex-wrap: wrap;
+            padding: 2rem 0;
+        }
+
+        .meta-item h4 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-tertiary);
+            margin-bottom: 0.5rem;
+        }
+
+        .meta-item p {
+            font-size: 1rem;
+            color: var(--text);
+        }
+
+        /* Content Sections */
+        .case-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 3rem;
+        }
+
+        .case-content h2 {
+            font-family: 'Sora', sans-serif;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .case-content h3 {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 3rem 0 1rem;
+            color: var(--text);
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .case-content h3:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+
+        .case-content h4 {
+            font-family: 'Sora', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin: 3.5rem 0 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .case-content p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .case-content ul {
+            margin: 1.5rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .case-content li {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: var(--blush);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2.5rem 0;
+        }
+
+        .highlight-box.lavender {
+            background: #f0e8f8;
+        }
+
+        .highlight-box.soft-blue {
+            background: #e8f4f8;
+        }
+
+        .highlight-box h4 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-tertiary);
+            margin-bottom: 1rem;
+        }
+
+        .highlight-box p {
+            font-size: 1.1rem;
+            color: var(--text);
+            margin-bottom: 0;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .impact-num {
+            font-weight: 700;
+        }
+
+        .stat-number {
+            font-family: 'Sora', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Image Gallery */
+        .case-gallery {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 3rem;
+        }
+
+        .case-gallery.gallery-tight {
+            margin: 2rem auto;
+        }
+
+        /* Buy with confidence: two images 30% smaller (display at 70%) */
+        .case-gallery.gallery-tight .gallery-item.full {
+            max-width: 70%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .gallery-item {
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .gallery-item img,
+        .gallery-item video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .gallery-item.full {
+            grid-column: 1 / -1;
+        }
+
+        .gallery-caption {
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-tertiary);
+            margin-top: 1rem;
+        }
+
+        /* Project Cards */
+        .project-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .project-card {
+            padding: 1.5rem;
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+
+        .project-card-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .project-card h4 {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-card p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+            line-height: 1.6;
+        }
+
+        /* Launch date (above stats) */
+        .launch-date {
+            text-align: center;
+            font-size: 1.15rem;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Next Project */
+        .next-project {
+            background: var(--bg-alt);
+            padding: 6rem 3rem;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        .next-project-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-tertiary);
+            margin-bottom: 1rem;
+        }
+
+        .next-project h2 {
+            font-family: 'Sora', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .next-project a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: gap 0.3s;
+        }
+
+        .next-project a:hover {
+            gap: 0.75rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem 3rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: color 0.3s ease, opacity 0.3s ease;
+        }
+
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #FFF0EC;
+            transition: background 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 0.6;
+        }
+
+        .footer-links a:hover::after {
+            background: #1a1a1a;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 0.75rem 1rem;
+            }
+
+            nav.scrolled {
+                padding: 0.75rem 1rem;
+            }
+
+            .nav-logo img {
+                height: 36px;
+                width: 36px;
+            }
+
+            .nav-back {
+                font-size: 0.8rem;
+            }
+
+            .case-hero, .case-content {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+
+            .case-gallery {
+                padding: 0 1.5rem;
+            }
+
+            .case-meta {
+                gap: 1.5rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-item.full {
+                aspect-ratio: 4/3;
+            }
+
+            .project-cards {
+                grid-template-columns: 1fr;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+                padding: 2rem 1.5rem;
+            }
+
+            .next-project {
+                padding: 4rem 1.5rem;
+            }
+
+            .case-hero {
+                padding-top: 8rem;
+                padding-bottom: 4rem;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .fade-in-delay-1 { animation-delay: 0.1s; }
+        .fade-in-delay-2 { animation-delay: 0.2s; }
+        .fade-in-delay-3 { animation-delay: 0.3s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Force text selection on all content */
+        p, .meta-item, .meta-item *, .hero-impact p, .case-content p, .case-content li, .case-content h2, .case-content h3, span, li, .case-hero, .case-hero * {
+            -webkit-user-select: text !important;
+            user-select: text !important;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // Authentication check (DISABLED - uncomment to enable)
+        if (sessionStorage.getItem('portfolio_auth') !== 'true') {
+            window.location.href = 'login.html';
+        }
+    </script>
+    <!-- Navigation -->
+    <nav id="nav">
+        <a href="index.html" class="nav-back">
+            <span>←</span>
+            Back to home
+        </a>
+        <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="Shuang Li" loading="lazy"></a>
+    </nav>
+
+    <!-- Hero -->
+    <section class="case-hero">
+        <p class="case-hero-label fade-in">Case Study</p>
+        <h1 class="fade-in fade-in-delay-1">Google Shopping</h1>
+        <p class="case-hero-description fade-in fade-in-delay-2">
+            Providing unique value to shoppers in a mega-competitive space—creating a personalized homepage experience that helps users discover products and buy with confidence.
+        </p>
+        <div class="case-meta fade-in fade-in-delay-3">
+            <div class="meta-item">
+                <h4>Role</h4>
+                <p>Interaction Designer</p>
+            </div>
+            <div class="meta-item">
+                <h4>Company</h4>
+                <p>Google</p>
+            </div>
+            <div class="meta-item">
+                <h4>Timeline</h4>
+                <p>May 2019 – Nov 2019</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview -->
+    <section class="case-content">
+        <h2>The Challenge</h2>
+        <p>
+            Google Shopping was competing in a mega-competitive space—we were 10 years behind Amazon. To win, we couldn't just match the competition. We needed to provide unique value that shoppers couldn't find anywhere else. How might we leverage Google's unique strengths—search intelligence, personalization, and cross-platform presence—to create a shopping experience that feels distinctly valuable? We focused on two areas: a personalized homepage with smart recommendations tailored to each shopper, and features that help shoppers make informed decisions and trust their purchases.
+        </p>
+    </section>
+
+    <section class="case-content">
+        <h2>A More Personalized Homepage</h2>
+        
+        <p>
+            The existing Google Shopping homepage was underutilized. Users went directly to search, missing opportunities for discovery. We set out to create a destination worth visiting—a place where shoppers could browse, discover, and find things they didn't know they wanted.
+        </p>
+
+        <div class="highlight-box">
+            <h4>Design Goal</h4>
+            <p>
+                Create a homepage with really good recommendations—ones that feel personally relevant, not just algorithmically generated.
+            </p>
+        </div>
+
+        <h3>The Approach</h3>
+        <p>
+            We leveraged Google's deep understanding of user intent—search history, browsing patterns, and cross-platform signals—to surface products that matched each user's interests and needs.
+        </p>
+        
+        <ul>
+            <li><strong>Personalized product feeds:</strong> Recommendations based on browsing history, search queries, and purchase patterns</li>
+            <li><strong>Category discovery:</strong> Curated collections that introduce users to new product categories</li>
+            <li><strong>Deal surfacing:</strong> Prominent placement for sales and limited-time offers to drive return visits</li>
+            <li><strong>Price tracking:</strong> Let users follow products and get notified when prices drop</li>
+        </ul>
+
+        <div class="case-gallery">
+            <div class="gallery-grid">
+                <div class="gallery-item full">
+                    <video src="images/google shopping/compressed/personalized-homepage.mp4" autoplay loop muted playsinline preload="none" aria-label="Personalized homepage experience"></video>
+                </div>
+            </div>
+            <p class="gallery-caption">Personalized homepage with "Pick up where you left off" and contextual recommendations based on upcoming trips</p>
+        </div>
+    </section>
+
+    <section class="case-content">
+        <p class="launch-date">Fully launched December 2019</p>
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">+5.65%</div>
+                <div class="stat-label">Whole page engagement</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">+22.59%</div>
+                <div class="stat-label">Add to Carts</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="case-content">
+        <h2>Helping Shoppers Buy with Confidence</h2>
+        
+        <p>
+            Online shopping comes with inherent uncertainty. Is this the right size? Is this a good deal? Will I regret this purchase? We explored ways to reduce this anxiety and help shoppers feel confident in their decisions.
+        </p>
+
+        <div class="highlight-box">
+            <h4>The Challenge</h4>
+            <p>
+                How might we reduce purchase anxiety and help shoppers make informed decisions—especially for considered purchases like clothing, electronics, and home goods?
+            </p>
+        </div>
+
+        <h3>Explorations</h3>
+        <p>
+            We explored multiple approaches across different product categories, testing with real users to understand what information they needed most at the moment of decision: rich product information (specs, sizing guides, comparison tools), social proof (reviews, ratings, real customer photos), price context (historical pricing, cross-retailer comparisons), and clear return policies. The explorations spanned categories from women's down jackets to Nike Air Max sneakers—understanding that different products require different confidence-building signals.
+        </p>
+    </section>
+
+    <div class="case-gallery gallery-tight">
+        <div class="gallery-grid">
+            <div class="gallery-item full">
+                <img src="images/google shopping/compressed/buy-this-confidence-1.png" alt="Buy with confidence feature exploration" loading="lazy">
+            </div>
+            <div class="gallery-item full">
+                <video src="images/google shopping/compressed/buy-this-confidence-2.mp4" autoplay loop muted playsinline preload="none" aria-label="Buy with confidence interaction"></video>
+            </div>
+        </div>
+        <p class="gallery-caption">Explorations for helping shoppers buy with confidence—price context, rich product info, and decision support</p>
+    </div>
+
+    <!-- Reflection -->
+    <section class="case-content">
+        <h2>Reflection</h2>
+        <p>
+            Competing with Amazon wasn't about copying their features—it was about finding our unique strengths. Google's search intelligence and cross-platform presence gave us insights no other shopping platform had; the real work was turning those signals into experiences that felt genuinely helpful. Personalization only works when it feels personal. Discovery is undervalued: not every session starts with a specific intent, and creating space for browsing unlocks a different kind of engagement. Reducing anxiety at the moment of purchase is just as important as getting users there. Being 10 years behind doesn't mean you can't win—it means you have to compete differently.
+        </p>
+    </section>
+
+    <!-- Next Project -->
+    <section class="next-project">
+        <p class="next-project-label">Next Project</p>
+        <h2>Snapchat+</h2>
+        <a href="snapchat-plus.html">
+            View case study
+            <span>→</span>
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Shuang Li</p>
+        <div class="footer-links">
+            <a href="resume_shuang_li.pdf" target="_blank">Resume ↓</a>
+            <a href="https://www.linkedin.com/in/shuangshuangli/" target="_blank">LinkedIn</a>
+            <a href="https://github.com/shuang-and-elfo/" target="_blank">GitHub</a>
+            <a href="mailto:shuang.sara.li@gmail.com">Email me</a>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation scroll effect
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>

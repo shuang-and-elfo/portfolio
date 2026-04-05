@@ -658,24 +658,6 @@
         .about-image {
             position: relative;
             align-self: start;
-            overflow: hidden;
-            border-radius: 16px;
-        }
-
-        .about-image canvas.parallax-canvas {
-            position: absolute;
-            inset: 0;
-            width: 100% !important;
-            height: 100% !important;
-            z-index: 2;
-            display: block;
-            border-radius: inherit;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        .about-image canvas.parallax-canvas.ready {
-            opacity: 1;
         }
 
         .about-photo {
@@ -1210,7 +1192,7 @@
     <!-- About Section -->
     <section class="about" id="about">
         <div class="about-container">
-            <div class="about-image fade-in" id="parallax-about">
+            <div class="about-image fade-in">
                 <img src="images/shuang-photo.png" alt="Shuang with Elfo the corgi" class="about-photo">
                 <span class="photo-label label-left">Shuang</span>
                 <a href="elfo.html" class="photo-label label-right">Elfo</a>
@@ -1350,121 +1332,6 @@
             });
         });
 
-    </script>
-
-    <script type="module">
-    import * as THREE from 'https://esm.sh/three@0.162.0';
-
-    if (window.innerWidth < 768) { /* skip on mobile */ }
-    else {
-    await new Promise(r => requestAnimationFrame(r));
-
-    const container = document.getElementById('parallax-about');
-    if (container) {
-        const canvas = document.createElement('canvas');
-        canvas.className = 'parallax-canvas';
-        container.appendChild(canvas);
-
-        let W = container.offsetWidth;
-        let H = container.offsetHeight;
-
-        const FOV = 55;
-        const CAM_Z = 5;
-        const OVERSIZE = 1.25;
-
-        const scene  = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(FOV, W / H, 0.1, 100);
-        camera.position.z = CAM_Z;
-
-        const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-        renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
-        renderer.setSize(W, H);
-        renderer.setClearColor(0x000000, 0);
-        renderer.outputColorSpace = THREE.SRGBColorSpace;
-
-        const loader  = new THREE.TextureLoader();
-        const loadTex = src => new Promise((res, rej) => loader.load(src, tex => {
-            tex.colorSpace = THREE.SRGBColorSpace;
-            res(tex);
-        }, undefined, rej));
-
-        function computePlaneSize(cw, ch, iw, ih) {
-            const vFov = FOV * Math.PI / 180;
-            const visH = 2 * Math.tan(vFov / 2) * CAM_Z;
-            const cAspect = cw / ch;
-            const visW = visH * cAspect;
-            const iAspect = iw / ih;
-            if (iAspect > cAspect) {
-                const ph = visH * OVERSIZE;
-                return [ph * iAspect, ph];
-            }
-            const pw = visW * OVERSIZE;
-            return [pw, pw / iAspect];
-        }
-
-        const IMG_W = 675, IMG_H = 1200;
-        const tex = await loadTex('images/shuang-photo.png');
-        const [pw, ph] = computePlaneSize(W, H, IMG_W, IMG_H);
-        const geo = new THREE.PlaneGeometry(1, 1);
-        const mat = new THREE.MeshBasicMaterial({ map: tex, transparent: true, depthWrite: false });
-        const mesh = new THREE.Mesh(geo, mat);
-        mesh.scale.set(pw, ph, 1);
-        scene.add(mesh);
-
-        let tX = 0, tY = 0, cX = 0, cY = 0;
-        document.addEventListener('mousemove', e => {
-            tX =  (e.clientX / window.innerWidth  - 0.5) * 2;
-            tY = -(e.clientY / window.innerHeight - 0.5) * 2;
-        });
-
-        let scrollProg = 0, smoothScrollProg = 0;
-        function updateScroll() {
-            const rect = container.getBoundingClientRect();
-            const vh = window.innerHeight;
-            const mid = rect.top + rect.height * 0.5;
-            scrollProg = (vh * 0.5 - mid) / (vh * 0.5 + rect.height * 0.5);
-            scrollProg = Math.max(-1.4, Math.min(1.4, scrollProg));
-        }
-        window.addEventListener('scroll', updateScroll, { passive: true });
-        updateScroll();
-
-        const ro = new ResizeObserver(() => {
-            W = container.offsetWidth;
-            H = container.offsetHeight;
-            camera.aspect = W / H;
-            camera.updateProjectionMatrix();
-            renderer.setSize(W, H);
-            const [npw, nph] = computePlaneSize(W, H, IMG_W, IMG_H);
-            mesh.scale.set(npw, nph, 1);
-        });
-        ro.observe(container);
-
-        let isVisible = false;
-        const obs = new IntersectionObserver(entries => {
-            isVisible = entries[0].isIntersecting;
-        }, { threshold: 0 });
-        obs.observe(container);
-
-        function animate() {
-            requestAnimationFrame(animate);
-            if (!isVisible) return;
-
-            cX += (tX - cX) * 0.065;
-            cY += (tY - cY) * 0.065;
-            smoothScrollProg += (scrollProg - smoothScrollProg) * 0.06;
-
-            camera.rotation.y = cX * 0.035;
-            camera.rotation.x = cY * 0.025;
-
-            mesh.position.x = cX * 0.30;
-            mesh.position.y = cY * 0.30 + 0.12 * smoothScrollProg;
-
-            renderer.render(scene, camera);
-        }
-        animate();
-        canvas.classList.add('ready');
-    }
-    }
     </script>
 </body>
 </html>

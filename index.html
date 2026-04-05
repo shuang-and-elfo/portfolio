@@ -173,31 +173,14 @@
 
         .hero-logo {
             margin-bottom: 2rem;
-            position: relative;
             width: 200px;
             height: 200px;
-            overflow: hidden;
         }
 
         .hero-logo img {
             width: 200px;
             height: 200px;
             object-fit: contain;
-        }
-
-        .hero-logo canvas.parallax-canvas {
-            position: absolute;
-            inset: 0;
-            width: 100% !important;
-            height: 100% !important;
-            z-index: 2;
-            display: block;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        .hero-logo canvas.parallax-canvas.ready {
-            opacity: 1;
         }
 
         .nav-links {
@@ -514,22 +497,6 @@
             object-fit: contain;
         }
 
-        .project-image canvas.parallax-canvas {
-            position: absolute;
-            inset: 0;
-            width: 100% !important;
-            height: 100% !important;
-            z-index: 2;
-            display: block;
-            border-radius: inherit;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        .project-image canvas.parallax-canvas.ready {
-            opacity: 1;
-        }
-
         .project-image::before {
             content: '';
             position: absolute;
@@ -691,6 +658,24 @@
         .about-image {
             position: relative;
             align-self: start;
+            overflow: hidden;
+            border-radius: 16px;
+        }
+
+        .about-image canvas.parallax-canvas {
+            position: absolute;
+            inset: 0;
+            width: 100% !important;
+            height: 100% !important;
+            z-index: 2;
+            display: block;
+            border-radius: inherit;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .about-image canvas.parallax-canvas.ready {
+            opacity: 1;
         }
 
         .about-photo {
@@ -1110,7 +1095,7 @@
     <!-- Hero Section -->
     <section class="hero page" id="home">
         <div class="hero-content">
-            <div class="hero-logo" id="parallax-logo">
+            <div class="hero-logo">
                 <img src="images/logo.png" alt="Shuang Li" loading="lazy">
             </div>
             <p class="hero-greeting">
@@ -1133,7 +1118,7 @@
             <!-- Project 1: Snapchat+ -->
             <article class="project-card">
                 <a href="snapchat-plus.html" class="project-image-link">
-                    <div class="project-image" id="parallax-snapchat">
+                    <div class="project-image">
                         <img src="images/snapchat_plus_thumbnail.jpg" alt="Snapchat+" loading="lazy">
                     </div>
                 </a>
@@ -1155,7 +1140,7 @@
             <!-- Project 2 -->
             <article class="project-card">
                 <a href="ad-formats.html" class="project-image-link">
-                    <div class="project-image" id="parallax-adformats">
+                    <div class="project-image">
                         <img src="images/ad_formats_thumbnail.jpg" alt="Snap Ad Formats" loading="lazy">
                     </div>
                 </a>
@@ -1177,7 +1162,7 @@
             <!-- Project 3 -->
             <article class="project-card">
                 <a href="google-ads.html" class="project-image-link">
-                    <div class="project-image" id="parallax-googleads">
+                    <div class="project-image">
                         <img src="images/thumbnail-google-ads.jpg" alt="Google Ads Smart Campaigns" loading="lazy">
                     </div>
                 </a>
@@ -1200,7 +1185,7 @@
             <!-- Project 4 -->
             <article class="project-card">
                 <a href="google-shopping.html" class="project-image-link">
-                    <div class="project-image" id="parallax-googleshopping">
+                    <div class="project-image">
                         <img src="images/thumbnail-google-shopping.jpg" alt="Google Shopping">
                     </div>
                 </a>
@@ -1225,7 +1210,7 @@
     <!-- About Section -->
     <section class="about" id="about">
         <div class="about-container">
-            <div class="about-image fade-in">
+            <div class="about-image fade-in" id="parallax-about">
                 <img src="images/shuang-photo.png" alt="Shuang with Elfo the corgi" class="about-photo">
                 <span class="photo-label label-left">Shuang</span>
                 <a href="elfo.html" class="photo-label label-right">Elfo</a>
@@ -1365,66 +1350,27 @@
             });
         });
 
-        // 2.5D parallax is handled by the Three.js module script below
     </script>
 
     <script type="module">
     import * as THREE from 'https://esm.sh/three@0.162.0';
 
-    const CONFIGS = [
-        { id: 'parallax-logo',            src: 'images/logo.png',                      w: 1200, h: 1200 },
-        { id: 'parallax-snapchat',        src: 'images/snapchat_plus_thumbnail.jpg',   w: 1024, h: 770  },
-        { id: 'parallax-adformats',       src: 'images/ad_formats_thumbnail.jpg',      w: 1024, h: 770  },
-        { id: 'parallax-googleads',       src: 'images/thumbnail-google-ads.jpg',       w: 2230, h: 1680 },
-        { id: 'parallax-googleshopping',  src: 'images/thumbnail-google-shopping.jpg',  w: 1200, h: 903  },
-    ];
+    if (window.innerWidth < 768) { /* skip on mobile */ }
+    else {
+    await new Promise(r => requestAnimationFrame(r));
 
-    const FOV = 55;
-    const CAM_Z = 5;
-    const OVERSIZE = 1.30;
-    const PARALLAX_FACTOR = 0.42;
-    const SCROLL_FY = 0.15;
-    const LERP_MOUSE = 0.07;
-    const LERP_SCROLL = 0.06;
-
-    let tX = 0, tY = 0, cX = 0, cY = 0;
-    document.addEventListener('mousemove', e => {
-        tX =  (e.clientX / window.innerWidth  - 0.5) * 2;
-        tY = -(e.clientY / window.innerHeight - 0.5) * 2;
-    });
-
-    const loader = new THREE.TextureLoader();
-    const loadTex = src => new Promise((res, rej) => loader.load(src, tex => {
-        tex.colorSpace = THREE.SRGBColorSpace;
-        res(tex);
-    }, undefined, rej));
-
-    function computePlaneSize(cw, ch, iw, ih) {
-        const vFov = FOV * Math.PI / 180;
-        const visH = 2 * Math.tan(vFov / 2) * CAM_Z;
-        const cAspect = cw / ch;
-        const visW = visH * cAspect;
-        const iAspect = iw / ih;
-        if (iAspect > cAspect) {
-            const ph = visH * OVERSIZE;
-            return [ph * iAspect, ph];
-        }
-        const pw = visW * OVERSIZE;
-        return [pw, pw / iAspect];
-    }
-
-    const scenes = [];
-
-    function initScene(config) {
-        const container = document.getElementById(config.id);
-        if (!container) return;
-
+    const container = document.getElementById('parallax-about');
+    if (container) {
         const canvas = document.createElement('canvas');
         canvas.className = 'parallax-canvas';
         container.appendChild(canvas);
 
         let W = container.offsetWidth;
         let H = container.offsetHeight;
+
+        const FOV = 55;
+        const CAM_Z = 5;
+        const OVERSIZE = 1.25;
 
         const scene  = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(FOV, W / H, 0.1, 100);
@@ -1436,75 +1382,88 @@
         renderer.setClearColor(0x000000, 0);
         renderer.outputColorSpace = THREE.SRGBColorSpace;
 
-        loadTex(config.src).then(tex => {
-            const [pw, ph] = computePlaneSize(W, H, config.w, config.h);
-            const geo = new THREE.PlaneGeometry(1, 1);
-            const mat = new THREE.MeshBasicMaterial({ map: tex, transparent: true, depthWrite: false });
-            const mesh = new THREE.Mesh(geo, mat);
-            mesh.scale.set(pw, ph, 1);
-            scene.add(mesh);
+        const loader  = new THREE.TextureLoader();
+        const loadTex = src => new Promise((res, rej) => loader.load(src, tex => {
+            tex.colorSpace = THREE.SRGBColorSpace;
+            res(tex);
+        }, undefined, rej));
 
-            const entry = {
-                container, renderer, scene, camera, mesh,
-                imgW: config.w, imgH: config.h,
-                isVisible: false,
-                scrollProg: 0, smoothScrollProg: 0,
-            };
-            scenes.push(entry);
-
-            const obs = new IntersectionObserver(entries => {
-                entry.isVisible = entries[0].isIntersecting;
-            }, { threshold: 0 });
-            obs.observe(container);
-
-            function updateScroll() {
-                const rect = container.getBoundingClientRect();
-                const vh = window.innerHeight;
-                const mid = rect.top + rect.height * 0.5;
-                entry.scrollProg = (vh * 0.5 - mid) / (vh * 0.5 + rect.height * 0.5);
-                entry.scrollProg = Math.max(-1.4, Math.min(1.4, entry.scrollProg));
+        function computePlaneSize(cw, ch, iw, ih) {
+            const vFov = FOV * Math.PI / 180;
+            const visH = 2 * Math.tan(vFov / 2) * CAM_Z;
+            const cAspect = cw / ch;
+            const visW = visH * cAspect;
+            const iAspect = iw / ih;
+            if (iAspect > cAspect) {
+                const ph = visH * OVERSIZE;
+                return [ph * iAspect, ph];
             }
-            window.addEventListener('scroll', updateScroll, { passive: true });
-            updateScroll();
-
-            const ro = new ResizeObserver(() => {
-                W = container.offsetWidth;
-                H = container.offsetHeight;
-                camera.aspect = W / H;
-                camera.updateProjectionMatrix();
-                renderer.setSize(W, H);
-                const [npw, nph] = computePlaneSize(W, H, config.w, config.h);
-                mesh.scale.set(npw, nph, 1);
-            });
-            ro.observe(container);
-
-            canvas.classList.add('ready');
-        });
-    }
-
-    function animate() {
-        requestAnimationFrame(animate);
-        cX += (tX - cX) * LERP_MOUSE;
-        cY += (tY - cY) * LERP_MOUSE;
-
-        for (const s of scenes) {
-            if (!s.isVisible) continue;
-            s.smoothScrollProg += (s.scrollProg - s.smoothScrollProg) * LERP_SCROLL;
-
-            s.camera.rotation.y = cX * 0.06;
-            s.camera.rotation.x = cY * 0.045;
-
-            s.mesh.position.x = cX * PARALLAX_FACTOR;
-            s.mesh.position.y = cY * PARALLAX_FACTOR + SCROLL_FY * s.smoothScrollProg;
-
-            s.renderer.render(s.scene, s.camera);
+            const pw = visW * OVERSIZE;
+            return [pw, pw / iAspect];
         }
-    }
 
-    await new Promise(r => requestAnimationFrame(r));
-    if (window.innerWidth >= 768) {
-        CONFIGS.forEach(initScene);
+        const IMG_W = 675, IMG_H = 1200;
+        const tex = await loadTex('images/shuang-photo.png');
+        const [pw, ph] = computePlaneSize(W, H, IMG_W, IMG_H);
+        const geo = new THREE.PlaneGeometry(1, 1);
+        const mat = new THREE.MeshBasicMaterial({ map: tex, transparent: true, depthWrite: false });
+        const mesh = new THREE.Mesh(geo, mat);
+        mesh.scale.set(pw, ph, 1);
+        scene.add(mesh);
+
+        let tX = 0, tY = 0, cX = 0, cY = 0;
+        document.addEventListener('mousemove', e => {
+            tX =  (e.clientX / window.innerWidth  - 0.5) * 2;
+            tY = -(e.clientY / window.innerHeight - 0.5) * 2;
+        });
+
+        let scrollProg = 0, smoothScrollProg = 0;
+        function updateScroll() {
+            const rect = container.getBoundingClientRect();
+            const vh = window.innerHeight;
+            const mid = rect.top + rect.height * 0.5;
+            scrollProg = (vh * 0.5 - mid) / (vh * 0.5 + rect.height * 0.5);
+            scrollProg = Math.max(-1.4, Math.min(1.4, scrollProg));
+        }
+        window.addEventListener('scroll', updateScroll, { passive: true });
+        updateScroll();
+
+        const ro = new ResizeObserver(() => {
+            W = container.offsetWidth;
+            H = container.offsetHeight;
+            camera.aspect = W / H;
+            camera.updateProjectionMatrix();
+            renderer.setSize(W, H);
+            const [npw, nph] = computePlaneSize(W, H, IMG_W, IMG_H);
+            mesh.scale.set(npw, nph, 1);
+        });
+        ro.observe(container);
+
+        let isVisible = false;
+        const obs = new IntersectionObserver(entries => {
+            isVisible = entries[0].isIntersecting;
+        }, { threshold: 0 });
+        obs.observe(container);
+
+        function animate() {
+            requestAnimationFrame(animate);
+            if (!isVisible) return;
+
+            cX += (tX - cX) * 0.065;
+            cY += (tY - cY) * 0.065;
+            smoothScrollProg += (scrollProg - smoothScrollProg) * 0.06;
+
+            camera.rotation.y = cX * 0.035;
+            camera.rotation.x = cY * 0.025;
+
+            mesh.position.x = cX * 0.30;
+            mesh.position.y = cY * 0.30 + 0.12 * smoothScrollProg;
+
+            renderer.render(scene, camera);
+        }
         animate();
+        canvas.classList.add('ready');
+    }
     }
     </script>
 </body>

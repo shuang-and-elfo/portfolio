@@ -1,0 +1,19 @@
+---
+description: Git push safety rules for this GitHub Pages portfolio
+alwaysApply: true
+---
+
+# Git Push Safety
+
+This project is deployed via GitHub Pages with a custom domain (shuangli.design).
+
+## Critical Files
+
+- `CNAME` — required for the custom domain. **Never delete or omit this file.**
+
+## Rules
+
+- **Never force push** unless absolutely necessary. If the local repo has diverged from remote, pull and merge first.
+- Before any push, verify `CNAME` exists and contains `shuangli.design`.
+- Before force pushing, always check for remote-only files (e.g. `git fetch && git diff origin/main --name-only`) and preserve them locally first.
+- After pushing, verify GitHub Pages build status with `gh api repos/shuang-and-elfo/portfolio/pages`.

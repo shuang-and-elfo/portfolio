@@ -226,6 +226,13 @@
             padding-top: 0;
         }
 
+        /* Stack related subheads without a rule between them (e.g. Sponsored Snaps) */
+        .topic-heading.topic-heading--no-divider {
+            border-top: none;
+            padding-top: 0;
+            margin-top: 2rem;
+        }
+
         .section-subtitle {
             font-family: 'Sora', sans-serif;
             font-size: 0.85rem;
@@ -367,6 +374,11 @@
             border-radius: 12px;
         }
 
+        .media-comparison > .media-item:first-child img,
+        .media-comparison > .media-item:first-child video {
+            max-width: 324px; /* was 270px; +20% */
+        }
+
         @media (max-width: 600px) {
             .media-comparison {
                 grid-template-columns: 1fr;
@@ -385,6 +397,18 @@
             border-radius: 24px;
         }
 
+        .media-single.media-single--landscape {
+            width: 100%;
+        }
+
+        .media-single.media-single--landscape img,
+        .media-single.media-single--landscape video {
+            max-width: 100%;
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+        }
+
         .media-single img {
             max-width: 100%;
             border-radius: 12px;
@@ -393,53 +417,6 @@
         .media-single--phone img {
             max-width: 260px;
             border-radius: 28px;
-        }
-
-        /* Before/After Comparison */
-        .before-after-comparison {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2.5rem;
-            margin: 2.5rem 0;
-        }
-
-        .comparison-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .comparison-label {
-            font-family: 'Sora', sans-serif;
-            font-weight: 600;
-            font-size: 0.7rem;
-            color: var(--text-tertiary);
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            line-height: 1.2;
-        }
-
-        .comparison-item video,
-        .comparison-item img {
-            width: 100%;
-            max-width: 240px;
-            border-radius: 20px;
-        }
-
-        .comparison-caption {
-            font-size: 0.7rem;
-            color: var(--text-tertiary);
-            text-align: center;
-            margin-top: 0.5rem;
-            line-height: 1.25;
-        }
-
-        @media (max-width: 600px) {
-            .before-after-comparison {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
         }
 
         /* Exploring New Monetization Opportunities: 1:1 layout — left title & text, right mock, vertically centered */
@@ -1159,7 +1136,7 @@
             Snapchat users tap quickly. They're skipping through Stories at a pace that makes accidental clicks almost inevitable. I introduced a delay before tap targets become active and reserved screen edges for navigation. These guardrails dramatically improved click quality—ensuring that when someone taps, they meant to. At the system level, this work shifted success metrics away from raw CTR toward higher-quality engagement and more reliable downstream signals.
         </p>
         <div class="media-single">
-            <img src="images/ad formats/ui guardrails.jpg" alt="Navigation and activation zones" loading="lazy">
+            <img src="images/ad formats/dpa-guardrail.jpg" alt="Interaction model: skip zones within 500ms, edge navigation, two-step tap activation, and product tile targets" loading="lazy">
         </div>
 
         <div class="split-row">
@@ -1179,57 +1156,6 @@
             </div>
         </div>
 
-        <h3 class="topic-heading">Multi-segment story ads</h3>
-        <p>
-            People post multiple Snaps in a Story. It's a natural behavior—so why should ads be limited to one frame? I designed story ads that unfold across multiple segments, giving advertisers room to tell a story while matching how organic content works. First the brand video, then product tiles. It mirrors how friends share, not how billboards shout.
-        </p>
-        <div class="use-cases-grid">
-            <div class="use-case-item">
-                <img src="images/ad formats/app_install_2.jpg" alt="App Install Ad" loading="lazy">
-                <p class="use-case-caption">Adding app store reviews</p>
-            </div>
-            <div class="use-case-item">
-                <video autoplay loop muted playsinline preload="none">
-                    <source src="images/ad formats/ar_ad.mp4" type="video/mp4">
-                </video>
-                <p class="use-case-caption">AR try-on experiences that invite low-effort interaction</p>
-            </div>
-            <div class="use-case-item">
-                <img src="images/ad formats/dta.jpg" alt="Travel ad" loading="lazy">
-                <p class="use-case-caption">Social proof example showing friend activity</p>
-            </div>
-        </div>
-
-        <h3 class="topic-heading">Dynamic product ad</h3>
-        <div class="split-row">
-            <div class="split-row-text">
-                <p>
-                    Eye-tracking studies I led showed that Snapchatters' attention goes to two places when watching an ad: the content itself, and the brand attribution. Almost no one looks at the bottom—where most CTAs traditionally lived. Visual attention concentrated near the top and center of the screen, while most legacy CTAs lived lower down. That insight led me to redesign where and how calls-to-action appear, bringing them closer to where people actually look.
-                </p>
-            </div>
-            <div class="split-row-media split-row-media--small">
-                <img src="images/ad formats/eye tracking study.png" alt="Eye-tracking study: attention heatmap" loading="lazy">
-            </div>
-        </div>
-        <p>
-            A direct outcome of this insight is my redesign of DPA Collection Ads, a format to dynamically display advertisers' products from a catalog. I upgraded the tiny product tiles placed at the bottom to larger, more prominent product tiles placed in attention-dense areas so interaction aligned with where people naturally look.
-        </p>
-        <div class="media-single">
-            <img src="images/ad formats/domino.jpg" alt="Redesigned Dynamic Product Ad layout" loading="lazy">
-        </div>
-        <p>
-            This became the biggest product ad format evolution in the last 5 years.
-        </p>
-        <div class="stats-row">
-            <div class="stat-item">
-                <div class="stat-number">+89.2%</div>
-                <div class="stat-label">Conversion rate</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">+39%</div>
-                <div class="stat-label">Dynamic product ad revenue</div>
-            </div>
-        </div>
     </section>
 
     <!-- Sponsored Snaps: standalone section -->
@@ -1264,7 +1190,7 @@
             A Sponsored Snap arrives just like any other Snap—sitting in your Chat feed, from a brand instead of a friend. You tap to open it. It feels immediate and personal, the way Snaps should. If the brand has a Story, it appears in the Chat header naturally. Everything was designed to respect the patterns people already know.
         </p>
 
-        <h3 class="topic-heading">Real conversation, not just broadcast</h3>
+        <h3 class="topic-heading topic-heading--no-divider">Real conversation, not just broadcast</h3>
         <p>
             Unlike traditional ads, Sponsored Snaps open into a Chat experience. Users can see links, saved Chats, even respond with freeform messages or prompts. The advertiser receives these responses. It's advertising that invites dialogue rather than demanding attention.
         </p>
@@ -1321,6 +1247,23 @@
                 <div class="explore-item-media">
                     <video autoplay loop muted playsinline preload="none">
                         <source src="images/ad formats/single dpa after.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+
+            <div class="explore-item">
+                <div class="explore-item-text">
+                    <h3 class="topic-heading">Ads you participate in</h3>
+                    <p>
+                        Ads should feel like something you participate in, not just watch. AR Lenses are already part of how Snapchatters play with the camera—filters, try-ons, and playful effects people use every day, not a separate “ad surface.” That popularity is exactly why they’re a strong canvas for brands: the behavior is familiar, low-friction, and genuinely fun.
+                    </p>
+                    <p>
+                        I designed and pitched a new format that leans into that habit, letting people engage with a brand through an AI-powered transformation layered on top of the Lens experience—so the ad shows up as something you try on yourself, not a polished spot you scroll past.
+                    </p>
+                </div>
+                <div class="explore-item-media">
+                    <video autoplay loop muted playsinline preload="none">
+                        <source src="images/ad formats/ar video.mp4" type="video/mp4">
                     </video>
                 </div>
             </div>
